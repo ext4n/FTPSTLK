@@ -19,7 +19,7 @@ uses
   Dialogs, FTPSend, StdCtrls, sButton, sEdit, sCheckBox, Mask, sMaskEdit,
   sCustomComboEdit, sToolEdit, sLabel, sSkinManager, sGroupBox, IniFiles,
   sMemo, ComCtrls, httpSend, ExtCtrls, Buttons, sSpeedButton, Menus, CLIPBrd,
-  sDialogs;
+  sDialogs, RegExpr, ShellAPI;
 
 type
   TForm1 = class(TForm)
@@ -54,8 +54,6 @@ type
     sLabelFX9: TsLabelFX;
     sEdit4: TsEdit;
     sEdit5: TsEdit;
-    sWebLabel1: TsWebLabel;
-    sWebLabel2: TsWebLabel;
     sLabelFX10: TsLabelFX;
     sLabelFX11: TsLabelFX;
     sLabelFX12: TsLabelFX;
@@ -76,7 +74,6 @@ type
     sGroupBox5: TsGroupBox;
     importall: TsMemo;
     sLabelFX21: TsLabelFX;
-    sButton9: TsButton;
     sLabelFX22: TsLabelFX;
     sButton10: TsButton;
     sLabelFX23: TsLabelFX;
@@ -85,6 +82,20 @@ type
     sLabelFX24: TsLabelFX;
     sButton12: TsButton;
     sSaveDialog1: TsSaveDialog;
+    regimport: TsButton;
+    sButton9: TsButton;
+    sOpenDialog1: TsOpenDialog;
+    sSpeedButton2: TsSpeedButton;
+    PopupMenu2: TPopupMenu;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N12: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    t1: TMenuItem;
+    M1: TMenuItem;
+    extasyes1: TMenuItem;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -106,7 +117,6 @@ type
     procedure N11Click(Sender: TObject);
     procedure N31Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
-    procedure sButton9Click(Sender: TObject);
     procedure sLabelFX22Click(Sender: TObject);
     procedure sEdit4KeyPress(Sender: TObject; var Key: Char);
     procedure sEdit5KeyPress(Sender: TObject; var Key: Char);
@@ -119,6 +129,12 @@ type
     procedure sLabelFX17Click(Sender: TObject);
     procedure sLabelFX18Click(Sender: TObject);
     procedure sLabelFX19Click(Sender: TObject);
+    procedure regimportClick(Sender: TObject);
+    procedure sButton9Click(Sender: TObject);
+    procedure N6Click(Sender: TObject);
+    procedure t1Click(Sender: TObject);
+    procedure extasyes1Click(Sender: TObject);
+    procedure M1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -131,6 +147,7 @@ var
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
+  H: THandle;
 implementation
 
 {$R *.dfm}
@@ -379,6 +396,12 @@ begin
    HTTP.Document.SaveToFile(sDirectoryEdit1.Text+'\'+namess.Lines[0]+'.dds');
     HTTP.Free;
     sButton8.Click;
+   namesav.Lines.LoadFromFile(sDirectoryEdit1.Text+'\'+namess.Lines[0]+'.dds');
+   if namesav.Lines[0]='<!DOCTYPE html>' then
+begin
+Deletefile(sDirectoryEdit1.Text+'\'+namess.Lines[0]+'.dds');
+end;
+namesav.Clear;
 end;
   end;
     end;
@@ -487,58 +510,6 @@ end;
   sButton1.Enabled:=false;
 end;
 
-procedure TForm1.sButton9Click(Sender: TObject);
-begin
-if importall.Lines[4]='' then
-begin
-sEdit4.Text:=importall.Lines[0];
-sEdit5.Text:=importall.Lines[1];
-ShowMessage ('Успешно импортировали настройки сайта и папок!:)');
-sEdit4.Text := StringReplace(sEdit4.Text, 'S:=', '', [rfReplaceAll]);
-sEdit5.Text := StringReplace(sEdit5.Text, 'F:=', '', [rfReplaceAll]);
-if importall.Lines[2]='M:=+' then
-begin
-sCheckbox1.Checked:=true;
-end;
-if importall.Lines[2]='M:=-' then
-begin
-sCheckbox1.Checked:=false;
-end;
-end else begin
-if importall.Lines[5]<>'' then
-begin
-sEdit1.Text:=importall.Lines[0];
-sEdit2.Text:=importall.Lines[1];
-sEdit3.Text:=importall.Lines[2];
-sEdit4.Text:=importall.Lines[3];
-sEdit5.Text:=importall.Lines[4];
-ShowMessage ('Успешно импортировали все настройки!:)');
-
-sEdit1.Text := StringReplace(sEdit1.Text, 'H:=', '', [rfReplaceAll]);
-sEdit2.Text := StringReplace(sEdit2.Text, 'U:=', '', [rfReplaceAll]);
-sEdit3.Text := StringReplace(sEdit3.Text, 'P:=', '', [rfReplaceAll]);
-sEdit4.Text := StringReplace(sEdit4.Text, 'S:=', '', [rfReplaceAll]);
-sEdit5.Text := StringReplace(sEdit5.Text, 'F:=', '', [rfReplaceAll]);
-if importall.Lines[5]='M:=+' then
-begin
-sCheckbox1.Checked:=true;
-end;
-if importall.Lines[5]='M:=-' then
-begin
-sCheckbox1.Checked:=false;
-end;
-end else begin
-if importall.Text='' then
-begin
-ShowMessage ('Ошибка. Проверьте заполненность данных')
-    end;
-      end;
-        end;
-          end;
-
-
-
-
 procedure TForm1.sLabelFX22Click(Sender: TObject);
 begin
 ShowMessage ('Человек с кем Вы должны играть должен предоставить Вам данные, чтобы Вы смогли вместе с ним закачивать и скачивать свои сохранения.');
@@ -609,6 +580,220 @@ end;
 procedure TForm1.sLabelFX19Click(Sender: TObject);
 begin
 ShowMessage ('После проверки можно нажимать загрузить. По завершению загрузки, ниже Вы увидите статус загрузки');
+end;
+
+procedure TForm1.regimportClick(Sender: TObject);
+var
+sum1:tregexpr;
+sum2:tregexpr;
+sum3:tregexpr;
+sum4:tregexpr;
+sum5:tregexpr;
+sum6:tregexpr;
+s,one,two,free,four,five,six:string;
+begin
+//////////////////////////////////////////////////////////////////////////
+namesav.Clear;
+s:=importall.Text;
+s := StringReplace(s, 'H:=', #13#10'H:=', [rfReplaceAll]);
+s := StringReplace(s, 'U:=', #13#10'U:=', [rfReplaceAll]);
+s := StringReplace(s, 'P:=', #13#10'P:=', [rfReplaceAll]);
+s := StringReplace(s, 'S:=', #13#10'S:=', [rfReplaceAll]);
+s := StringReplace(s, 'F:=', #13#10'F:=', [rfReplaceAll]);
+s := StringReplace(s, 'M:=', #13#10'M:=', [rfReplaceAll]);
+sum1:=tregexpr.Create;
+sum1.Expression:='(H:=)(.*)';
+if sum1.Exec(s) then
+ begin
+ namesav.Lines.Clear;
+ repeat
+ namesav.Lines.Add(sum1.Match[0]);
+ until not sum1.ExecNext;
+ end
+ else
+sum1.Free;
+one:=namesav.Lines[0];
+///////////////////////////////////////////////////////////////////////////
+namesav.Clear;
+s:=importall.Text;
+s := StringReplace(s, 'H:=', #13#10'H:=', [rfReplaceAll]);
+s := StringReplace(s, 'U:=', #13#10'U:=', [rfReplaceAll]);
+s := StringReplace(s, 'P:=', #13#10'P:=', [rfReplaceAll]);
+s := StringReplace(s, 'S:=', #13#10'S:=', [rfReplaceAll]);
+s := StringReplace(s, 'F:=', #13#10'F:=', [rfReplaceAll]);
+s := StringReplace(s, 'M:=', #13#10'M:=', [rfReplaceAll]);
+sum2:=tregexpr.Create;
+sum2.Expression:='(U:=)(.*)';
+if sum2.Exec(s) then
+ begin
+ namesav.Lines.Clear;
+ repeat
+ namesav.Lines.Add(sum2.Match[0]);
+ until not sum2.ExecNext;
+ end
+ else
+sum2.Free;
+two:=namesav.Lines[0];
+///////////////////////////////////////////////////////////////////////////
+namesav.Clear;
+s:=importall.Text;
+s := StringReplace(s, 'H:=', #13#10'H:=', [rfReplaceAll]);
+s := StringReplace(s, 'U:=', #13#10'U:=', [rfReplaceAll]);
+s := StringReplace(s, 'P:=', #13#10'P:=', [rfReplaceAll]);
+s := StringReplace(s, 'S:=', #13#10'S:=', [rfReplaceAll]);
+s := StringReplace(s, 'F:=', #13#10'F:=', [rfReplaceAll]);
+s := StringReplace(s, 'M:=', #13#10'M:=', [rfReplaceAll]);
+sum3:=tregexpr.Create;
+sum3.Expression:='(P:=)(.*)';
+if sum3.Exec(s) then
+ begin
+ namesav.Lines.Clear;
+ repeat
+ namesav.Lines.Add(sum3.Match[0]);
+ until not sum3.ExecNext;
+ end
+ else
+sum3.Free;
+free:=namesav.Lines[0];
+///////////////////////////////////////////////////////////////////////////
+namesav.Clear;
+s:=importall.Text;
+s := StringReplace(s, 'H:=', #13#10'H:=', [rfReplaceAll]);
+s := StringReplace(s, 'U:=', #13#10'U:=', [rfReplaceAll]);
+s := StringReplace(s, 'P:=', #13#10'P:=', [rfReplaceAll]);
+s := StringReplace(s, 'S:=', #13#10'S:=', [rfReplaceAll]);
+s := StringReplace(s, 'F:=', #13#10'F:=', [rfReplaceAll]);
+s := StringReplace(s, 'M:=', #13#10'M:=', [rfReplaceAll]);
+sum4:=tregexpr.Create;
+sum4.Expression:='(S:=)(.*)';
+if sum4.Exec(s) then
+ begin
+ namesav.Lines.Clear;
+ repeat
+ namesav.Lines.Add(sum4.Match[0]);
+ until not sum4.ExecNext;
+ end
+ else
+sum4.Free;
+four:=namesav.Lines[0];
+
+
+
+///////////////////////////////////////////////////////////////////////////
+namesav.Clear;
+s:=importall.Text;
+s := StringReplace(s, 'H:=', #13#10'H:=', [rfReplaceAll]);
+s := StringReplace(s, 'U:=', #13#10'U:=', [rfReplaceAll]);
+s := StringReplace(s, 'P:=', #13#10'P:=', [rfReplaceAll]);
+s := StringReplace(s, 'S:=', #13#10'S:=', [rfReplaceAll]);
+s := StringReplace(s, 'F:=', #13#10'F:=', [rfReplaceAll]);
+s := StringReplace(s, 'M:=', #13#10'M:=', [rfReplaceAll]);
+sum5:=tregexpr.Create;
+sum5.Expression:='(F:=)(.*)';
+if sum5.Exec(s) then
+ begin
+ namesav.Lines.Clear;
+ repeat
+ namesav.Lines.Add(sum5.Match[0]);
+ until not sum5.ExecNext;
+ end
+ else
+sum5.Free;
+five:=namesav.Lines[0];
+///////////////////////////////////////////////////////////////////////////
+namesav.Clear;
+s:=importall.Text;
+s := StringReplace(s, 'H:=', #13#10'H:=', [rfReplaceAll]);
+s := StringReplace(s, 'U:=', #13#10'U:=', [rfReplaceAll]);
+s := StringReplace(s, 'P:=', #13#10'P:=', [rfReplaceAll]);
+s := StringReplace(s, 'S:=', #13#10'S:=', [rfReplaceAll]);
+s := StringReplace(s, 'F:=', #13#10'F:=', [rfReplaceAll]);
+s := StringReplace(s, 'M:=', #13#10'M:=', [rfReplaceAll]);
+sum6:=tregexpr.Create;
+sum6.Expression:='(M:=)(.*)';
+if sum6.Exec(s) then
+ begin
+ namesav.Lines.Clear;
+ repeat
+ namesav.Lines.Add(sum6.Match[0]);
+ until not sum6.ExecNext;
+ end
+ else
+sum6.Free;
+six:=namesav.Lines[0];
+///////////////////////////////////////////////
+one := StringReplace(one, 'H:=', '', [rfReplaceAll]);
+two := StringReplace(two, 'U:=', '', [rfReplaceAll]);
+free := StringReplace(free, 'P:=', '', [rfReplaceAll]);
+four := StringReplace(four, 'S:=', '', [rfReplaceAll]);
+five := StringReplace(five, 'F:=', '', [rfReplaceAll]);
+six := StringReplace(six, 'M:=', '', [rfReplaceAll]);
+namesav.Clear;
+if (one= '') and (two='') and (free='') and (four='') and (five='') and (six='')then
+begin
+ShowMessage ('Упс, ошибка!!!');
+end else begin
+if one = '' then
+begin
+sEdit4.Text:=four;
+sEdit5.Text:=five;
+ShowMessage ('Успешно импортировали настройки сайта и папок!:)');
+end;
+if one <> '' then
+begin
+sEdit1.Text:=one;
+sEdit2.Text:=two;
+sEdit3.Text:=free;
+sEdit4.Text:=four;
+sEdit5.Text:=five;
+ShowMessage ('Успешно импортировали все настройки!:)');
+end;
+if six='+' then
+begin
+sCheckbox1.Checked:=true;
+end;
+if six='-' then
+begin
+sCheckbox1.Checked:=false;
+end;
+end;
+end;
+
+
+
+
+
+
+
+procedure TForm1.sButton9Click(Sender: TObject);
+begin
+if sOpenDialog1.Execute then
+begin
+importall.Lines.LoadFromFile(sOpenDialog1.FileName);
+end;
+end;
+
+procedure TForm1.N6Click(Sender: TObject);
+begin
+ShellExecute( Handle, 'open', 'https://discord.gg/qawwT7b', nil, nil, SW_NORMAL );
+end;
+
+procedure TForm1.t1Click(Sender: TObject);
+begin
+ShellExecute( Handle, 'open', 'https://t.me/theslot', nil, nil, SW_NORMAL );
+end;
+
+procedure TForm1.extasyes1Click(Sender: TObject);
+begin
+ShellExecute( Handle, 'open', 'https://extasy.es', nil, nil, SW_NORMAL );
+end;
+
+procedure TForm1.M1Click(Sender: TObject);
+var 
+  eadress : string;
+begin
+  eadress := 'admin@theslot.ru';
+  ShellExecute(application.Handle, 'Open', PChar(eadress), Nil, Nil, SW_SHOWDEFAULT);
 end;
 
 end.

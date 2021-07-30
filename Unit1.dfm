@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 1082
-  Top = 954
+  Left = 907
+  Top = 526
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'FTPSTLK [1.0] by EXT4N#8417'
-  ClientHeight = 295
-  ClientWidth = 367
+  Caption = 'FTPSTLK by EXT4N#8417'
+  ClientHeight = 293
+  ClientWidth = 366
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -90,44 +90,6 @@ object Form1: TForm1
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
     end
-    object sWebLabel1: TsWebLabel
-      Left = 200
-      Top = 216
-      Width = 75
-      Height = 18
-      Caption = 't.me/theSlot'
-      ParentFont = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Comic Sans MS'
-      Font.Style = []
-      HoverFont.Charset = DEFAULT_CHARSET
-      HoverFont.Color = clWindowText
-      HoverFont.Height = -13
-      HoverFont.Name = 'Comic Sans MS'
-      HoverFont.Style = []
-      URL = 'https://t.me/theslot'
-    end
-    object sWebLabel2: TsWebLabel
-      Left = 288
-      Top = 216
-      Width = 47
-      Height = 18
-      Caption = 'Discord'
-      ParentFont = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Comic Sans MS'
-      Font.Style = []
-      HoverFont.Charset = DEFAULT_CHARSET
-      HoverFont.Color = clWindowText
-      HoverFont.Height = -13
-      HoverFont.Name = 'Comic Sans MS'
-      HoverFont.Style = []
-      URL = 'https://discord.gg/qawwT7b'
-    end
     object sLabelFX10: TsLabelFX
       Left = 312
       Top = 112
@@ -205,6 +167,18 @@ object Form1: TForm1
       Angle = 0
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sSpeedButton2: TsSpeedButton
+      Tag = 124
+      Left = 208
+      Top = 216
+      Width = 129
+      Height = 17
+      Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103
+      ButtonStyle = tbsDropDown
+      DropdownMenu = PopupMenu2
+      ImageIndex = 7
+      Reflected = True
     end
     object sEdit1: TsEdit
       Left = 16
@@ -296,10 +270,10 @@ object Form1: TForm1
     OnClick = sButton6Click
   end
   object namesav: TsMemo
-    Left = 792
-    Top = 56
-    Width = 185
-    Height = 89
+    Left = 704
+    Top = 32
+    Width = 329
+    Height = 241
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -309,7 +283,7 @@ object Form1: TForm1
     TabOrder = 5
   end
   object sGroupBox2: TsGroupBox
-    Left = 0
+    Left = 8
     Top = 48
     Width = 353
     Height = 241
@@ -331,7 +305,7 @@ object Form1: TForm1
       Shadow.OffsetKeeper.RightBottom = 4
     end
     object sLabelFX2: TsLabelFX
-      Left = 8
+      Left = 16
       Top = 88
       Width = 313
       Height = 24
@@ -512,10 +486,10 @@ object Form1: TForm1
     end
   end
   object namess: TsMemo
-    Left = 800
-    Top = 208
-    Width = 185
-    Height = 89
+    Left = 704
+    Top = 280
+    Width = 313
+    Height = 209
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -556,7 +530,7 @@ object Form1: TForm1
     Visible = False
     object sLabelFX21: TsLabelFX
       Left = 72
-      Top = 16
+      Top = 10
       Width = 197
       Height = 24
       Caption = #1048#1084#1087#1086#1088#1090#1080#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1085#1072#1089#1090#1088#1086#1081#1082#1080
@@ -566,7 +540,7 @@ object Form1: TForm1
     end
     object sLabelFX22: TsLabelFX
       Left = 328
-      Top = 16
+      Top = 10
       Width = 13
       Height = 24
       Caption = '?'
@@ -577,7 +551,7 @@ object Form1: TForm1
     end
     object sLabelFX24: TsLabelFX
       Left = 80
-      Top = 80
+      Top = 72
       Width = 179
       Height = 24
       Caption = #1048#1083#1080' '#1076#1086#1073#1072#1074#1100#1090#1077' '#1077#1075#1086' '#1074' '#1088#1091#1095#1085#1091#1102
@@ -587,29 +561,38 @@ object Form1: TForm1
     end
     object importall: TsMemo
       Left = 16
-      Top = 112
+      Top = 96
       Width = 329
-      Height = 65
+      Height = 105
       ScrollBars = ssVertical
       TabOrder = 0
     end
-    object sButton9: TsButton
-      Left = 16
-      Top = 192
-      Width = 329
-      Height = 25
-      Caption = #1048#1084#1087#1086#1088#1090#1080#1088#1086#1074#1072#1090#1100' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1074' '#1087#1088#1086#1075#1088#1072#1084#1084#1091
-      TabOrder = 1
-      OnClick = sButton9Click
-    end
     object sButton11: TsButton
       Left = 16
-      Top = 48
-      Width = 329
-      Height = 25
+      Top = 32
+      Width = 217
+      Height = 41
       Caption = #1042#1089#1090#1072#1074#1080#1090#1100' '#1089#1082#1086#1087#1080#1088#1086#1074#1072#1085#1085#1099#1081' '#1090#1077#1082#1089#1090
-      TabOrder = 2
+      TabOrder = 1
       OnClick = sButton11Click
+    end
+    object regimport: TsButton
+      Left = 14
+      Top = 208
+      Width = 331
+      Height = 25
+      Caption = #1048#1084#1087#1086#1088#1090#1080#1088#1086#1074#1072#1090#1100' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1074' '#1087#1088#1086#1075#1088#1072#1084#1084#1091
+      TabOrder = 2
+      OnClick = regimportClick
+    end
+    object sButton9: TsButton
+      Left = 240
+      Top = 32
+      Width = 97
+      Height = 41
+      Caption = #1042#1099#1073#1088#1072#1090#1100' '#1089' '#1082#1086#1084#1087#1100#1102#1090#1077#1088#1072
+      TabOrder = 3
+      OnClick = sButton9Click
     end
   end
   object sGroupBox5: TsGroupBox
@@ -3986,9 +3969,52 @@ object Form1: TForm1
     end
   end
   object sSaveDialog1: TsSaveDialog
-    FileName = 'ftpstlk-export.txt'
-    Filter = 'Export File (*.txt)|*.txt'
-    Left = 792
-    Top = 592
+    FileName = 'setting.extexport'
+    Filter = 'Export File (*.extexport)|*.extexport'
+    Left = 392
+    Top = 8
+  end
+  object sOpenDialog1: TsOpenDialog
+    FileName = 'setting.extexport'
+    Filter = 'Export File (*.extexport)|*.extexport'
+    Left = 424
+    Top = 8
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 488
+    Top = 8
+    object N5: TMenuItem
+      Caption = #1057#1089#1099#1083#1082#1080
+      object N6: TMenuItem
+        Caption = 'Discord'
+        OnClick = N6Click
+      end
+      object t1: TMenuItem
+        Caption = 't.me/theslot'
+        OnClick = t1Click
+      end
+      object M1: TMenuItem
+        Caption = #1055#1086#1095#1090#1072': admin@theslot.ru'
+        OnClick = M1Click
+      end
+      object extasyes1: TMenuItem
+        Caption = #1057#1072#1081#1090': extasy.es'
+        OnClick = extasyes1Click
+      end
+    end
+    object N3: TMenuItem
+      Caption = #1071#1079#1099#1082
+      object N4: TMenuItem
+        Caption = #1056#1091#1089#1089#1082#1080#1081
+        Enabled = False
+      end
+    end
+    object N2: TMenuItem
+      Caption = #1042#1077#1088#1089#1080#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
+      object N12: TMenuItem
+        Caption = '1.02'
+        Enabled = False
+      end
+    end
   end
 end
