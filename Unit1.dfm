@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 907
-  Top = 526
+  Left = 1499
+  Top = 876
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'FTPSTLK by EXT4N#8417'
-  ClientHeight = 293
-  ClientWidth = 366
+  ClientHeight = 561
+  ClientWidth = 1113
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -35,9 +35,9 @@ object Form1: TForm1
     OnClick = sButton1Click
   end
   object sFilenameEdit1: TsFilenameEdit
-    Left = 544
-    Top = 440
-    Width = 401
+    Left = 1128
+    Top = 216
+    Width = 593
     Height = 26
     DoubleBuffered = False
     MaxLength = 255
@@ -53,7 +53,7 @@ object Form1: TForm1
     Filter = 'Stalker Save|*.sav'
   end
   object sGroupBox1: TsGroupBox
-    Left = 8
+    Left = 752
     Top = 48
     Width = 345
     Height = 241
@@ -270,10 +270,10 @@ object Form1: TForm1
     OnClick = sButton6Click
   end
   object namesav: TsMemo
-    Left = 704
-    Top = 32
-    Width = 329
-    Height = 241
+    Left = 1128
+    Top = 56
+    Width = 593
+    Height = 65
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -283,9 +283,9 @@ object Form1: TForm1
     TabOrder = 5
   end
   object sGroupBox2: TsGroupBox
-    Left = 8
+    Left = 16
     Top = 48
-    Width = 353
+    Width = 345
     Height = 241
     Caption = #1047#1072#1075#1088#1091#1079#1082#1072
     Font.Charset = DEFAULT_CHARSET
@@ -298,18 +298,18 @@ object Form1: TForm1
     object sLabelFX1: TsLabelFX
       Left = 8
       Top = 64
-      Width = 10
+      Width = 337
       Height = 24
+      AutoSize = False
       Angle = 0
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
     end
     object sLabelFX2: TsLabelFX
-      Left = 16
+      Left = 8
       Top = 88
-      Width = 313
+      Width = 345
       Height = 24
-      Alignment = taCenter
       AutoSize = False
       Angle = 0
       Shadow.OffsetKeeper.LeftTop = -2
@@ -318,9 +318,8 @@ object Form1: TForm1
     object sLabelFX3: TsLabelFX
       Left = 8
       Top = 112
-      Width = 313
+      Width = 345
       Height = 24
-      Alignment = taCenter
       AutoSize = False
       Angle = 0
       Shadow.OffsetKeeper.LeftTop = -2
@@ -329,11 +328,11 @@ object Form1: TForm1
     object sLabelFX5: TsLabelFX
       Left = 8
       Top = 187
-      Width = 249
+      Width = 337
       Height = 24
-      Alignment = taCenter
       AutoSize = False
       Caption = #1057#1090#1072#1090#1091#1089' '#1087#1086#1076#1082#1083#1102#1095#1077#1085#1080#1103':  '#1053#1077' '#1087#1086#1076#1082#1083#1102#1095#1077#1085#1086
+      OnClick = sLabelFX5Click
       Angle = 0
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
@@ -381,7 +380,7 @@ object Form1: TForm1
     end
   end
   object sGroupBox3: TsGroupBox
-    Left = 0
+    Left = 376
     Top = 48
     Width = 361
     Height = 241
@@ -486,10 +485,10 @@ object Form1: TForm1
     end
   end
   object namess: TsMemo
-    Left = 704
-    Top = 280
-    Width = 313
-    Height = 209
+    Left = 1128
+    Top = 128
+    Width = 593
+    Height = 81
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -499,11 +498,11 @@ object Form1: TForm1
     TabOrder = 8
   end
   object sButton8: TsButton
-    Left = 792
-    Top = 504
-    Width = 75
+    Left = 1128
+    Top = 256
+    Width = 593
     Height = 25
-    Caption = 'sButton8'
+    Caption = 'dds download'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -515,8 +514,8 @@ object Form1: TForm1
     OnClick = sButton8Click
   end
   object sGroupBox4: TsGroupBox
-    Left = 0
-    Top = 48
+    Left = 176
+    Top = 304
     Width = 361
     Height = 241
     Caption = #1048#1084#1087#1086#1088#1090
@@ -596,9 +595,9 @@ object Form1: TForm1
     end
   end
   object sGroupBox5: TsGroupBox
-    Left = 0
-    Top = 48
-    Width = 361
+    Left = 648
+    Top = 304
+    Width = 345
     Height = 241
     Caption = #1069#1082#1089#1087#1086#1088#1090
     Font.Charset = DEFAULT_CHARSET
@@ -612,7 +611,7 @@ object Form1: TForm1
     object sLabelFX23: TsLabelFX
       Left = 16
       Top = 16
-      Width = 329
+      Width = 321
       Height = 24
       Align = alCustom
       Alignment = taCenter
@@ -634,7 +633,7 @@ object Form1: TForm1
     object exportall: TsMemo
       Left = 16
       Top = 40
-      Width = 329
+      Width = 321
       Height = 145
       ScrollBars = ssVertical
       TabOrder = 1
@@ -642,7 +641,7 @@ object Form1: TForm1
     object sButton12: TsButton
       Left = 200
       Top = 192
-      Width = 145
+      Width = 137
       Height = 41
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1092#1072#1081#1083
       TabOrder = 2
@@ -4012,7 +4011,7 @@ object Form1: TForm1
     object N2: TMenuItem
       Caption = #1042#1077#1088#1089#1080#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
       object N12: TMenuItem
-        Caption = '1.02'
+        Caption = '1.03'
         Enabled = False
       end
     end

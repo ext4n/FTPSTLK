@@ -135,6 +135,7 @@ type
     procedure t1Click(Sender: TObject);
     procedure extasyes1Click(Sender: TObject);
     procedure M1Click(Sender: TObject);
+    procedure sLabelFX5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -181,6 +182,9 @@ namesav.Text:= StringReplace(namesav.Text, '.sav', '', [rfReplaceAll]);
 namesav.Lines.SaveToFile(ExtractFilePath(ParamStr(0))+'name.txt');
 if namesav.Text <> '' then
 begin
+sButton3.Enabled:=false;
+sButton3.Caption:='Загружаю...Наберитесь терпения:)';
+Application.ProcessMessages;
 FTP:=TFTPSend.Create;
 FTP.TargetHost:=sEdit1.Text;
 FTP.TargetPort:='21';
@@ -207,6 +211,9 @@ FTP.PassiveMode:=sCheckBox1.Checked;
   sLabelFX5.Caption:='Статус подключения: Что-то пошло не так :(';
 end;
 end;
+sButton3.Enabled:=true;
+sButton3.Caption:='Загрузить';
+DeleteFile(ExtractFilePath(ParamStr(0))+'name.txt');
 end;
 
 procedure TForm1.sButton1Click(Sender: TObject);
@@ -248,6 +255,20 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+Form1.ClientHeight:=300;
+Form1.ClientWidth:=360;
+sGroupBox1.Left:=8;
+sGroupBox1.Top:=48;
+sGroupBox2.Left:=8;
+sGroupBox2.Top:=48;
+sGroupBox3.Left:=8;
+sGroupBox3.Top:=48;
+sGroupBox4.Left:=8;
+sGroupBox4.Top:=48;
+sGroupBox5.Left:=8;
+sGroupBox5.Top:=48;
+
+
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 sEdit1.Text:=Ini.ReadString('MAIN','H',sEdit1.Text);
 sEdit2.Text:=Ini.ReadString('MAIN','U',sEdit2.Text);
@@ -794,6 +815,12 @@ var
 begin
   eadress := 'admin@theslot.ru';
   ShellExecute(application.Handle, 'Open', PChar(eadress), Nil, Nil, SW_SHOWDEFAULT);
+end;
+
+procedure TForm1.sLabelFX5Click(Sender: TObject);
+begin
+//Вывести форму на второй монитор. Разрешением 3840x2160
+//  Left := (Screen.DesktopWidth div 7) * -2;
 end;
 
 end.
