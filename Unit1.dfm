@@ -4171,7 +4171,7 @@ object Form1: TForm1
     end
     object N2: TMenuItem
       object N12: TMenuItem
-        Caption = '1.03'
+        Caption = '1.04b'
         Enabled = False
       end
     end
