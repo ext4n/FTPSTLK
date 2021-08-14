@@ -19,7 +19,7 @@ uses
   Dialogs, FTPSend, StdCtrls, sButton, sEdit, sCheckBox, Mask, sMaskEdit,
   sCustomComboEdit, sToolEdit, sLabel, sSkinManager, sGroupBox, IniFiles,
   sMemo, ComCtrls, httpSend, ExtCtrls, Buttons, sSpeedButton, Menus, CLIPBrd,
-  sDialogs, RegExpr, ShellAPI;
+  sDialogs, RegExpr, ShellAPI, acAlphaHints, sBitBtn;
 
 type
   TForm1 = class(TForm)
@@ -54,27 +54,15 @@ type
     sLabelFX9: TsLabelFX;
     sEdit4: TsEdit;
     sEdit5: TsEdit;
-    sLabelFX10: TsLabelFX;
-    sLabelFX11: TsLabelFX;
-    sLabelFX12: TsLabelFX;
-    sLabelFX13: TsLabelFX;
-    sLabelFX14: TsLabelFX;
-    sLabelFX15: TsLabelFX;
-    sLabelFX16: TsLabelFX;
-    sLabelFX17: TsLabelFX;
-    sLabelFX18: TsLabelFX;
-    sLabelFX19: TsLabelFX;
     PopupMenu1: TPopupMenu;
     N11: TMenuItem;
     N31: TMenuItem;
     sSpeedButton1: TsSpeedButton;
-    sLabelFX20: TsLabelFX;
     N1: TMenuItem;
     sGroupBox4: TsGroupBox;
     sGroupBox5: TsGroupBox;
     importall: TsMemo;
     sLabelFX21: TsLabelFX;
-    sLabelFX22: TsLabelFX;
     sButton10: TsButton;
     sLabelFX23: TsLabelFX;
     exportall: TsMemo;
@@ -105,6 +93,19 @@ type
     N7: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
+    sAlphaHints1: TsAlphaHints;
+    sLabelFX18: TsBitBtn;
+    sLabelFX19: TsBitBtn;
+    sLabelFX15: TsBitBtn;
+    sLabelFX16: TsBitBtn;
+    sLabelFX17: TsBitBtn;
+    sLabelFX22: TsBitBtn;
+    sLabelFX13: TsBitBtn;
+    sLabelFX12: TsBitBtn;
+    sLabelFX11: TsBitBtn;
+    sLabelFX10: TsBitBtn;
+    sLabelFX14: TsBitBtn;
+    sLabelFX20: TsBitBtn;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -148,6 +149,10 @@ type
     procedure N4Click(Sender: TObject);
     procedure E1Click(Sender: TObject);
     procedure languagesClick(Sender: TObject);
+    procedure N8Click(Sender: TObject);
+    procedure N7Click(Sender: TObject);
+    procedure N9Click(Sender: TObject);
+    procedure sLabelFX20Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -285,6 +290,11 @@ sEdit2.Text:=Ini.ReadString('MAIN','U',sEdit2.Text);
 sEdit3.Text:=Ini.ReadString('MAIN','P',sEdit3.Text);
 sDirectoryEdit1.Text:=Ini.ReadString('MAIN','SAVEPATH',sDirectoryEdit1.Text);
 scheckbox1.Checked:=Ini.ReadBool('MAIN','PASSIVE', scheckbox1.checked);
+N4.Checked:=Ini.ReadBool('LANG','RU', N4.Checked);
+E1.Checked:=Ini.ReadBool('LANG','EN', E1.Checked);
+N8.Checked:=Ini.ReadBool('HINT','CLICK', N8.Checked);
+N7.Checked:=Ini.ReadBool('HINT','HOVER', N7.Checked);
+N9.Checked:=Ini.ReadBool('HINT','DISABLE', N9.Checked);
 sEdit4.Text:=Ini.ReadString('SITE','URL',sEdit4.Text);
 sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
 tap:=Ini.ReadString('TAP','NUM',tap);
@@ -292,6 +302,11 @@ Ini.Free;
 lang.Text:=rulang.Text;
 ////////////////////////////////////////////
 languages.Click;
+if N4.Checked=true then N4.Click;
+if E1.Checked=true then E1.Click;
+if N8.Checked=true then N8.Click;
+if N7.Checked=true then N7.Click;
+if N9.Checked=true then N9.Click;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -302,6 +317,11 @@ Ini.WriteString('MAIN','U',sEdit2.Text);
 Ini.WriteString('MAIN','P',sEdit3.Text);
 Ini.WriteString('MAIN','SAVEPATH',sDirectoryEdit1.Text);
 Ini.WriteBool('MAIN','PASSIVE', scheckbox1.checked);
+Ini.WriteBool('LANG','RU', N4.Checked);
+Ini.WriteBool('LANG','EN', E1.Checked);
+Ini.WriteBool('HINT','CLICK', N8.Checked);
+Ini.WriteBool('HINT','HOVER', N7.Checked);
+Ini.WriteBool('HINT','DISABLE', N9.Checked);
 Ini.WriteString('SITE','URL',sEdit4.Text);
 Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
@@ -339,41 +359,41 @@ begin
 namess.Clear;
 if (sEdit4.Text = '') and (sEdit5.Text = '') then
 begin
-ShowMessage('Ошибка! Не заполнено поле "Адрес сайта" и "Папка на FTP". Перейдите в настройки и исправьте');
-sEdit4.TextHint :='Не заполнено поле адрес сайта';
-sEdit5.TextHint :='Не заполнено поле папка на FTP';
+ShowMessage(lang.Lines[50]);
+sEdit4.TextHint :=lang.Lines[51];
+sEdit5.TextHint :=lang.Lines[52];
 sButton1.Click;
 end
 else
 begin
 if sEdit4.Text = '' then
 begin
-ShowMessage('Ошибка! Не заполнено поле "Адрес сайта". Перейдите в настройки и исправьте');
-sEdit4.TextHint :='Не заполнено поле адрес сайта';
-sEdit5.TextHint :='Папка на FTP';
+ShowMessage(lang.Lines[55]);
+sEdit4.TextHint :=lang.Lines[51];
+sEdit5.TextHint :=lang.Lines[54];
 sButton1.Click;
 end else
 if sEdit5.Text = '' then
 begin
-ShowMessage('Ошибка! Не заполнено поле "Папка на FTP". Перейдите в настройки и исправьте');
-sEdit4.TextHint :='Адрес сайта';
-sEdit5.TextHint :='Не заполнено поле папка на FTP';
+ShowMessage(lang.Lines[56]);
+sEdit4.TextHint :=lang.Lines[53];
+sEdit5.TextHint :=lang.Lines[52];
 sButton1.Click;
 end else begin
-sEdit4.TextHint :='Адрес сайта';
-sEdit5.TextHint :='Папка на FTP';
+sEdit4.TextHint :=lang.Lines[53];
+sEdit5.TextHint :=lang.Lines[54];
 HttpGetText(sEdit4.Text+'/'+sEdit5.Text+'/'+'name.txt', namess.Lines);
 if namess.Lines[0]= '' then
 begin
-sLabelFX6.Caption:='Ошибка подключения: Проверьте правильные';
-sLabelFX7.Caption:='данные сайта и папки FTP в настройках';
+sLabelFX6.Caption:=lang.Lines[57];
+sLabelFX7.Caption:=lang.Lines[58];
 end else begin
 if namess.Lines[0]= '<!DOCTYPE html>' then
-sLabelFX6.Caption:='Ошибка, не могу продолжить :( Файлы не найдены'
+sLabelFX6.Caption:=lang.Lines[59]
 else
 begin
-sLabelFX6.Caption:='Будет скачан: '+namess.Lines[0]+'.sav';
-sLabelFX7.Caption:='А также: '+namess.Lines[0]+'.dds';
+sLabelFX6.Caption:=lang.Lines[60]+namess.Lines[0]+'.sav';
+sLabelFX7.Caption:=lang.Lines[43]+namess.Lines[0]+'.dds';
 end;
   end;
     end;
@@ -391,37 +411,37 @@ sLabelFX7.Caption:='';
 namess.Clear;
 if (sEdit4.Text = '') and (sEdit5.Text = '') then
 begin
-ShowMessage('Ошибка! Не заполнено поле "Адрес сайта" и "Папка на FTP". Перейдите в настройки и исправьте');
-sEdit4.TextHint :='Не заполнено поле адрес сайта';
-sEdit5.TextHint :='Не заполнено поле папка на FTP';
+ShowMessage(lang.Lines[50]);
+sEdit4.TextHint :=lang.Lines[51];
+sEdit5.TextHint :=lang.Lines[52];
 sButton1.Click;
 end
 else
 begin
 if sEdit4.Text = '' then
 begin
-ShowMessage('Ошибка! Не заполнено поле "Адрес сайта". Перейдите в настройки и исправьте');
-sEdit4.TextHint :='Не заполнено поле адрес сайта';
-sEdit5.TextHint :='Папка на FTP';
+ShowMessage(lang.Lines[55]);
+sEdit4.TextHint :=lang.Lines[51];
+sEdit5.TextHint :=lang.Lines[52];
 sButton1.Click;
 end else
 if sEdit5.Text = '' then
 begin
-ShowMessage('Ошибка! Не заполнено поле "Папка на FTP". Перейдите в настройки и исправьте');
-sEdit4.TextHint :='Адрес сайта';
-sEdit5.TextHint :='Не заполнено поле папка на FTP';
+ShowMessage(lang.Lines[56]);
+sEdit4.TextHint :=lang.Lines[53];
+sEdit5.TextHint :=lang.Lines[52];
 sButton1.Click;
 end else begin
-sEdit4.TextHint :='Адрес сайта';
-sEdit5.TextHint :='Папка на FTP';
+sEdit4.TextHint :=lang.Lines[53];
+sEdit5.TextHint :=lang.Lines[54];
 HttpGetText(sEdit4.Text+'/'+sEdit5.Text+'/'+'name.txt', namess.Lines);
 if namess.Lines[0]= '' then
 begin
-sLabelFX6.Caption:='Ошибка подключения: Проверьте правильные';
-sLabelFX7.Caption:='данные сайта и папки FTP в настройках';
+sLabelFX6.Caption:=lang.Lines[57];
+sLabelFX7.Caption:=lang.Lines[58];
 end else begin
 if namess.Lines[0]= '<!DOCTYPE html>' then
-sLabelFX6.Caption:='Ошибка, не могу продолжить :( Файлы не найдены'
+sLabelFX6.Caption:=lang.Lines[59]
 else
 begin
    if HTTP.HTTPMethod('GET',sEdit4.Text+'/'+sEdit5.Text+'/'+namess.Lines[0]+'.sav') then
@@ -448,32 +468,67 @@ HTTP:=THTTPSend.Create;
     if HTTP.HTTPMethod('GET',sEdit4.Text+'/'+sEdit5.Text+'/'+namess.Lines[0]+'.dds') then
    HTTP.Document.SaveToFile(sDirectoryEdit1.Text+'\'+namess.Lines[0]+'.dds');
     HTTP.Free;
-    sLabelFX6.Caption:='Все файлы были скачаны успешно!';
+    sLabelFX6.Caption:=lang.Lines[61];
 end;
 
 procedure TForm1.sLabelFX13Click(Sender: TObject);
 begin
-ShowMessage ('Хост обычно IP адрес сервера, который предоставил хостер. Если Вы не знаете хост, то рекомендуем узнать у хостера Ваши данные от FTP');
+if N7.Checked=true then
+begin
+sLabelFX13.Hint:=lang.Lines[77];
+end else begin
+ShowMessage (lang.Lines[77]);
+end;
 end;
 
 procedure TForm1.sLabelFX12Click(Sender: TObject);
 begin
-ShowMessage ('Пользователь обычно Ваш хостинг логин. Он состоит из слова и/или букв. Если Вы не знаете логин, то рекомендуем узнать у хостера Ваши данные от FTP');
+if N7.Checked=true then
+begin
+sLabelFX12.Hint:=lang.Lines[78];
+end else begin
+ShowMessage (lang.Lines[78]);
+end;
 end;
 
 procedure TForm1.sLabelFX11Click(Sender: TObject);
 begin
-ShowMessage ('Пароль доступа к Вашему FTP. Если Вы не знаете пароль, то рекомендуем узнать у хостера Ваши данные от FTP');
+if N7.Checked=true then
+begin
+sLabelFX11.Hint:=lang.Lines[79];
+end else begin
+ShowMessage (lang.Lines[79]);
+end;
 end;
 
 procedure TForm1.sLabelFX10Click(Sender: TObject);
 begin
-ShowMessage ('В некоторых случаях, не подключается к FTP. Если Вы испытываете проблему с подключением, то рекомендуем попробовать выставить этот режим');
+if N7.Checked=true then
+begin
+sLabelFX10.Hint:=lang.Lines[80];
+end else begin
+ShowMessage (lang.Lines[80]);
+end;
 end;
 
 procedure TForm1.sLabelFX14Click(Sender: TObject);
 begin
-ShowMessage ('Используйте эту опцию, если хотите поделиться данными со своими друзьями');
+if N7.Checked=true then
+begin
+sLabelFX14.Hint:=lang.Lines[81];
+end else begin
+ShowMessage (lang.Lines[81]);
+end;
+end;
+
+procedure TForm1.sLabelFX20Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX20.Hint:=lang.Lines[82];
+end else begin
+ShowMessage (lang.Lines[82]);
+end;
 end;
 
 procedure TForm1.N11Click(Sender: TObject);
@@ -481,7 +536,7 @@ begin
 impt:='1';
 sGroupBox4.Visible:=true;
 sGroupBox5.Visible:=false;
-sLabelFX21.Caption:='Импортировать все настройки';
+sLabelFX21.Caption:=lang.Lines[62];
 importall.Clear;
 sButton1.Enabled:=true;
 end;
@@ -490,7 +545,7 @@ procedure TForm1.N31Click(Sender: TObject);
 var
   buttonSelected : Integer;
 begin
-sLabelFX23.Caption:='Экспорт всех настроек';
+sLabelFX23.Caption:=lang.Lines[63];
 if sCheckbox1.Checked=true then begin
 pasive:='+'
 end else begin
@@ -499,7 +554,7 @@ end;
 impt:='3';
 exportall.Clear;
 sButton1.Enabled:=true;
-buttonSelected := MessageDlg('Внимание. Дальнейшая информация будет содержать пароли от Вашего FTP и будет показана на экране. Просматривайте эти данные вне записи или трансляции, чтобы никто из посторонних лиц не смог их увидеть',mtError, mbOKCancel, 0);
+buttonSelected := MessageDlg(lang.Lines[68],mtError, mbOKCancel, 0);
   if (buttonSelected = mrOK) and (impt='3') then
   begin
 sGroupBox5.Visible:=true;
@@ -519,7 +574,7 @@ procedure TForm1.N1Click(Sender: TObject);
 var
   buttonSelected : Integer;
 begin
-sLabelFX23.Caption:='Экспорт настроек сайта и папок';
+sLabelFX23.Caption:=lang.Lines[64];
 if sCheckbox1.Checked=true then begin
 pasive:='+'
 end else begin
@@ -528,7 +583,7 @@ end;
 impt:='4';
 exportall.Clear;
 sButton1.Enabled:=true;
-buttonSelected := MessageDlg('Внимание. Дальнейшая информация будет содержать данные сайта и папки. Просматривайте данные вне записи или трансляции, чтобы никто из постороних лиц их не узнал',mtError, mbOKCancel, 0);
+buttonSelected := MessageDlg(lang.Lines[69],mtError, mbOKCancel, 0);
   if (buttonSelected = mrOK) and (impt='4') then
   begin
 sGroupBox5.Visible:=true;
@@ -546,7 +601,12 @@ end;
 
 procedure TForm1.sLabelFX22Click(Sender: TObject);
 begin
-ShowMessage ('Человек с кем Вы должны играть должен предоставить Вам данные, чтобы Вы смогли вместе с ним закачивать и скачивать свои сохранения.');
+if N7.Checked=true then
+begin
+sLabelFX22.Hint:=lang.Lines[76];
+end else begin
+ShowMessage (lang.Lines[76]);
+end;
 end;
 
 procedure TForm1.sEdit4KeyPress(Sender: TObject; var Key: Char);
@@ -568,7 +628,7 @@ end;
 procedure TForm1.sButton10Click(Sender: TObject);
 begin
 Clipboard.AsText:=exportall.Text;
-ShowMessage ('Успешно, теперь Вы можете прислать эти данные Вашим друзьям и знакомым:)');
+ShowMessage (lang.Lines[67]);
 end;
 
 procedure TForm1.sButton11Click(Sender: TObject);
@@ -593,27 +653,52 @@ end;
 
 procedure TForm1.sLabelFX15Click(Sender: TObject);
 begin
-ShowMessage ('Необходимо выбрать папку с сохранениями для сталкера, куда будут закачиваться сохранения');
+if N7.Checked=true then
+begin
+sLabelFX15.Hint:=lang.Lines[73];
+end else begin
+ShowMessage (lang.Lines[73]);
+end;
 end;
 
 procedure TForm1.sLabelFX16Click(Sender: TObject);
 begin
-ShowMessage ('После нажатия этой клавиши, если все данные заполнены правильно, начнется скачивание сохранений');
+if N7.Checked=true then
+begin
+sLabelFX16.Hint:=lang.Lines[74];
+end else begin
+ShowMessage (lang.Lines[74]);
+end;
 end;
 
 procedure TForm1.sLabelFX17Click(Sender: TObject);
 begin
-ShowMessage ('Перед скачиванием, Вы можете проверить, то что будет скачиваться');
+if N7.Checked=true then
+begin
+sLabelFX17.Hint:=lang.Lines[75];
+end else begin
+ShowMessage (lang.Lines[75]);
+end;
 end;
 
 procedure TForm1.sLabelFX18Click(Sender: TObject);
 begin
-ShowMessage ('Выберите то сохранение которым хотите поделиться. После Выбора Вы сможете посмотреть, то что будет закачено');
+if N7.Checked=true then
+begin
+sLabelFX18.Hint:=lang.Lines[71];
+end else begin
+ShowMessage (lang.Lines[71]);
+end;
 end;
 
 procedure TForm1.sLabelFX19Click(Sender: TObject);
 begin
-ShowMessage ('После проверки можно нажимать загрузить. По завершению загрузки, ниже Вы увидите статус загрузки');
+if N7.Checked=true then
+begin
+sLabelFX19.Hint:=lang.Lines[72];
+end else begin
+ShowMessage (lang.Lines[72]);
+end;
 end;
 
 procedure TForm1.regimportClick(Sender: TObject);
@@ -765,13 +850,13 @@ six := StringReplace(six, 'M:=', '', [rfReplaceAll]);
 namesav.Clear;
 if (one= '') and (two='') and (free='') and (four='') and (five='') and (six='')then
 begin
-ShowMessage ('Упс, ошибка!!!');
+ShowMessage (lang.Lines[70]);
 end else begin
 if one = '' then
 begin
 sEdit4.Text:=four;
 sEdit5.Text:=five;
-ShowMessage ('Успешно импортировали настройки сайта и папок!:)');
+ShowMessage (lang.Lines[65]);
 end;
 if one <> '' then
 begin
@@ -780,7 +865,7 @@ sEdit2.Text:=two;
 sEdit3.Text:=free;
 sEdit4.Text:=four;
 sEdit5.Text:=five;
-ShowMessage ('Успешно импортировали все настройки!:)');
+ShowMessage (lang.Lines[66]);
 end;
 if six='+' then
 begin
@@ -842,6 +927,20 @@ N4.Checked:=true;
 E1.Checked:=false;
 lang.Text:=rulang.Text;
 languages.Click;
+if N7.Checked=true then
+begin
+sLabelFX18.Click;
+sLabelFX19.Click;
+sLabelFX15.Click;
+sLabelFX16.Click;
+sLabelFX17.Click;
+sLabelFX13.Click;
+sLabelFX12.Click;
+sLabelFX11.Click;
+sLabelFX10.Click;
+sLabelFX14.Click;
+sLabelFX20.Click;
+end;
 end;
 
 procedure TForm1.E1Click(Sender: TObject);
@@ -850,6 +949,20 @@ N4.Checked:=false;
 E1.Checked:=true;
 lang.Text:=enlang.Text;
 languages.Click;
+if N7.Checked=true then
+begin
+sLabelFX18.Click;
+sLabelFX19.Click;
+sLabelFX15.Click;
+sLabelFX16.Click;
+sLabelFX17.Click;
+sLabelFX13.Click;
+sLabelFX12.Click;
+sLabelFX11.Click;
+sLabelFX10.Click;
+sLabelFX14.Click;
+sLabelFX20.Click;
+end;
 end;
 
 procedure TForm1.languagesClick(Sender: TObject);
@@ -911,6 +1024,122 @@ N7.Caption:=lang.Lines[38];
 //отключены
 N9.Caption:=lang.Lines[39];
 sLabelFX5.Caption:=lang.Lines[40];
+end;
+
+procedure TForm1.N8Click(Sender: TObject);
+begin
+///////////////при нажатии
+N8.Checked:=true;
+N7.Checked:=false;
+N9.Checked:=false;
+sLabelFX18.Visible:=true;
+sLabelFX19.Visible:=true;
+sLabelFX15.Visible:=true;
+sLabelFX16.Visible:=true;
+sLabelFX17.Visible:=true;
+sLabelFX22.Visible:=true;
+sLabelFX13.Visible:=true;
+sLabelFX12.Visible:=true;
+sLabelFX11.Visible:=true;
+sLabelFX10.Visible:=true;
+sLabelFX14.Visible:=true;
+sLabelFX20.Visible:=true;
+sLabelFX18.ShowHint:=false;
+sLabelFX19.ShowHint:=false;
+sLabelFX15.ShowHint:=false;
+sLabelFX16.ShowHint:=false;
+sLabelFX17.ShowHint:=false;
+sLabelFX13.ShowHint:=false;
+sLabelFX12.ShowHint:=false;
+sLabelFX11.ShowHint:=false;
+sLabelFX10.ShowHint:=false;
+sLabelFX14.ShowHint:=false;
+sLabelFX20.ShowHint:=false;
+sLabelFX18.Hint:='';
+sLabelFX19.Hint:='';
+sLabelFX15.Hint:='';
+sLabelFX16.Hint:='';
+sLabelFX17.Hint:='';
+sLabelFX13.Hint:='';
+sLabelFX12.Hint:='';
+sLabelFX11.Hint:='';
+sLabelFX10.Hint:='';
+sLabelFX14.Hint:='';
+sLabelFX20.Hint:='';
+end;
+
+procedure TForm1.N7Click(Sender: TObject);
+begin
+/////////////////при наведении
+N8.Checked:=false;
+N7.Checked:=true;
+N9.Checked:=false;
+sLabelFX18.Visible:=true;
+sLabelFX19.Visible:=true;
+sLabelFX15.Visible:=true;
+sLabelFX16.Visible:=true;
+sLabelFX17.Visible:=true;
+sLabelFX22.Visible:=true;
+sLabelFX13.Visible:=true;
+sLabelFX12.Visible:=true;
+sLabelFX11.Visible:=true;
+sLabelFX10.Visible:=true;
+sLabelFX14.Visible:=true;
+sLabelFX20.Visible:=true;
+sLabelFX18.ShowHint:=true;
+sLabelFX19.ShowHint:=true;
+sLabelFX15.ShowHint:=true;
+sLabelFX16.ShowHint:=true;
+sLabelFX17.ShowHint:=true;
+sLabelFX13.ShowHint:=true;
+sLabelFX12.ShowHint:=true;
+sLabelFX11.ShowHint:=true;
+sLabelFX10.ShowHint:=true;
+sLabelFX14.ShowHint:=true;
+sLabelFX20.ShowHint:=true;
+sLabelFX18.Hint:='';
+sLabelFX19.Hint:='';
+sLabelFX15.Hint:='';
+sLabelFX16.Hint:='';
+sLabelFX17.Hint:='';
+sLabelFX13.Hint:='';
+sLabelFX12.Hint:='';
+sLabelFX11.Hint:='';
+sLabelFX10.Hint:='';
+sLabelFX14.Hint:='';
+sLabelFX20.Hint:='';
+sLabelFX18.Click;
+sLabelFX19.Click;
+sLabelFX15.Click;
+sLabelFX16.Click;
+sLabelFX17.Click;
+sLabelFX13.Click;
+sLabelFX12.Click;
+sLabelFX11.Click;
+sLabelFX10.Click;
+sLabelFX14.Click;
+sLabelFX20.Click;
+
+end;
+
+procedure TForm1.N9Click(Sender: TObject);
+begin
+N8.Checked:=false;
+N7.Checked:=false;
+N9.Checked:=true;
+sLabelFX18.Visible:=false;
+sLabelFX19.Visible:=false;
+sLabelFX15.Visible:=false;
+sLabelFX16.Visible:=false;
+sLabelFX17.Visible:=false;
+sLabelFX22.Visible:=false;
+sLabelFX13.Visible:=false;
+sLabelFX12.Visible:=false;
+sLabelFX11.Visible:=false;
+sLabelFX10.Visible:=false;
+sLabelFX14.Visible:=false;
+sLabelFX20.Visible:=false;
+
 end;
 
 end.
