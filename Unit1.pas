@@ -96,6 +96,15 @@ type
     t1: TMenuItem;
     M1: TMenuItem;
     extasyes1: TMenuItem;
+    lang: TsMemo;
+    E1: TMenuItem;
+    enlang: TsMemo;
+    rulang: TsMemo;
+    languages: TsButton;
+    G1: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    N9: TMenuItem;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -136,6 +145,9 @@ type
     procedure extasyes1Click(Sender: TObject);
     procedure M1Click(Sender: TObject);
     procedure sLabelFX5Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure E1Click(Sender: TObject);
+    procedure languagesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -163,12 +175,12 @@ dds:=ExtractFileName(sFilenameEdit1.Dialog.FileName);
 dds := StringReplace(dds, '.sav', '.dds', [rfReplaceAll]);
 path := StringReplace(sFilenameEdit1.Dialog.FileName, save, '', [rfReplaceAll]);
 //namesav.Text:=path;
-sLabelFX1.Caption:='Будет загружен: '+save;
+sLabelFX1.Caption:=lang.Lines[41]+save;
   if not FileExists(path+dds) then
-sLabelFX2.Caption:='*.dds не найден, и он не будет закачан :('
+sLabelFX2.Caption:=lang.Lines[42]
   else
-sLabelFX2.Caption:='А также: '+dds;
-sLabelFX3.Caption:='И конечно же: name.txt с названием сохранения';
+sLabelFX2.Caption:=lang.Lines[43]+dds;
+sLabelFX3.Caption:=lang.Lines[44];
 end;
 sButton3.Enabled:=true;
 end;
@@ -183,7 +195,7 @@ namesav.Lines.SaveToFile(ExtractFilePath(ParamStr(0))+'name.txt');
 if namesav.Text <> '' then
 begin
 sButton3.Enabled:=false;
-sButton3.Caption:='Загружаю...Наберитесь терпения:)';
+sButton3.Caption:=lang.Lines[45];
 Application.ProcessMessages;
 FTP:=TFTPSend.Create;
 FTP.TargetHost:=sEdit1.Text;
@@ -193,7 +205,7 @@ FTP.Password:=sEdit3.Text;
 FTP.PassiveMode:=sCheckBox1.Checked;
  if FTP.Login then
  begin
-  sLabelFX5.Caption:='Статус подключения: Успешное подключение :)';
+  sLabelFX5.Caption:=lang.Lines[46];
   FTP.DataStream.LoadFromFile(path+save);
   FTP.StoreFile('/'+sEdit5.Text+'/'+save,false);
   if FileExists(path+dds) then
@@ -203,16 +215,16 @@ FTP.PassiveMode:=sCheckBox1.Checked;
   end;
   FTP.DataStream.LoadFromFile(ExtractFilePath(ParamStr(0))+'name.txt');
   FTP.StoreFile('/'+sEdit5.Text+'/'+'name.txt',false);
-  sLabelFX5.Caption:='Статус подключения: Успешная загрузка :)';
+  sLabelFX5.Caption:=lang.Lines[47];
   DeleteFile(ExtractFilePath(ParamStr(0))+'name.txt');
   end
   else
   begin
-  sLabelFX5.Caption:='Статус подключения: Что-то пошло не так :(';
+  sLabelFX5.Caption:=lang.Lines[48];
 end;
 end;
 sButton3.Enabled:=true;
-sButton3.Caption:='Загрузить';
+sButton3.Caption:=lang.Lines[49];
 DeleteFile(ExtractFilePath(ParamStr(0))+'name.txt');
 end;
 
@@ -267,8 +279,6 @@ sGroupBox4.Left:=8;
 sGroupBox4.Top:=48;
 sGroupBox5.Left:=8;
 sGroupBox5.Top:=48;
-
-
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 sEdit1.Text:=Ini.ReadString('MAIN','H',sEdit1.Text);
 sEdit2.Text:=Ini.ReadString('MAIN','U',sEdit2.Text);
@@ -279,6 +289,9 @@ sEdit4.Text:=Ini.ReadString('SITE','URL',sEdit4.Text);
 sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
 tap:=Ini.ReadString('TAP','NUM',tap);
 Ini.Free;
+lang.Text:=rulang.Text;
+////////////////////////////////////////////
+languages.Click;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -821,6 +834,83 @@ procedure TForm1.sLabelFX5Click(Sender: TObject);
 begin
 //Вывести форму на второй монитор. Разрешением 3840x2160
 //  Left := (Screen.DesktopWidth div 7) * -2;
+end;
+
+procedure TForm1.N4Click(Sender: TObject);
+begin
+N4.Checked:=true;
+E1.Checked:=false;
+lang.Text:=rulang.Text;
+languages.Click;
+end;
+
+procedure TForm1.E1Click(Sender: TObject);
+begin
+N4.Checked:=false;
+E1.Checked:=true;
+lang.Text:=enlang.Text;
+languages.Click;
+end;
+
+procedure TForm1.languagesClick(Sender: TObject);
+begin
+sButton5.Caption:=lang.Lines[0];
+sButton6.Caption:=lang.Lines[1];
+sButton1.Caption:=lang.Lines[2];
+sGroupBox2.Caption:=lang.Lines[0];
+sGroupBox3.Caption:=lang.Lines[1];
+sGroupBox1.Caption:=lang.Lines[2];
+sGroupBox4.Caption:=lang.Lines[25];
+sGroupBox5.Caption:=lang.Lines[31];
+sButton2.Caption:=lang.Lines[3];
+sButton3.Caption:=lang.Lines[4];
+sLabelFx4.Caption:=lang.Lines[5];
+sButton4.Caption:=lang.Lines[6];
+sButton7.Caption:=lang.Lines[7];
+sLabelFx8.Caption:=lang.Lines[8];
+sCheckbox1.Caption:=lang.Lines[9];
+sLabelFx9.Caption:=lang.Lines[10];
+sSpeedButton1.Caption:=lang.Lines[11];
+sSpeedButton2.Caption:=lang.Lines[15];
+n11.Caption:=lang.Lines[12];
+n31.Caption:=lang.Lines[13];
+n1.Caption:=lang.Lines[14];
+n5.Caption:=lang.Lines[16];
+n6.Caption:=lang.Lines[17];
+t1.Caption:=lang.Lines[18];
+M1.Caption:=lang.Lines[19];
+extasyes1.Caption:=lang.Lines[20];
+N3.Caption:=lang.Lines[21];
+/////////////////////
+//ru lang
+N4.Caption:=lang.Lines[22];
+//ru lang
+////////////////////
+//en lang
+E1.Caption:=lang.Lines[23];
+//en lang
+///////////////////
+N2.Caption:=lang.Lines[24];
+sLabelFx21.Caption:=lang.Lines[26];
+sButton11.Caption:=lang.Lines[27];
+sButton9.Caption:=lang.Lines[28];
+sLabelFx24.Caption:=lang.Lines[29];
+regimport.Caption:=lang.Lines[30];
+sLabelFx23.Caption:=lang.Lines[32];
+sButton10.Caption:=lang.Lines[33];
+sButton12.Caption:=lang.Lines[34];
+sEdit4.TextHint:=lang.Lines[35];
+//подсказки
+G1.Caption:=lang.Lines[36];
+//при нажатии
+N8.Caption:=lang.Lines[37];
+
+//при наведении
+N7.Caption:=lang.Lines[38];
+
+//отключены
+N9.Caption:=lang.Lines[39];
+sLabelFX5.Caption:=lang.Lines[40];
 end;
 
 end.
