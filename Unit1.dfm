@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 740
-  Top = 705
+  Left = 1335
+  Top = 895
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'FTPSTLK by EXT4N#8417'
-  ClientHeight = 732
+  ClientHeight = 730
   ClientWidth = 1737
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -108,6 +108,72 @@ object Form1: TForm1
       ImageIndex = 7
       Reflected = True
     end
+    object sLabelFX30: TsLabelFX
+      Left = 312
+      Top = 40
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX30Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX31: TsLabelFX
+      Left = 312
+      Top = 64
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX31Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX32: TsLabelFX
+      Left = 312
+      Top = 88
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX32Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX33: TsLabelFX
+      Left = 312
+      Top = 120
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX33Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX34: TsLabelFX
+      Left = 312
+      Top = 168
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX34Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX35: TsLabelFX
+      Left = 176
+      Top = 216
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX35Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
     object sEdit1: TsEdit
       Left = 16
       Top = 40
@@ -170,6 +236,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 6
+      Visible = False
       OnClick = sLabelFX13Click
       Grayed = True
     end
@@ -180,6 +247,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 7
+      Visible = False
       OnClick = sLabelFX12Click
       Grayed = True
     end
@@ -190,6 +258,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 8
+      Visible = False
       OnClick = sLabelFX11Click
       Grayed = True
     end
@@ -200,6 +269,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 9
+      Visible = False
       OnClick = sLabelFX10Click
       Grayed = True
     end
@@ -210,6 +280,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 10
+      Visible = False
       OnClick = sLabelFX14Click
       Grayed = True
     end
@@ -220,6 +291,7 @@ object Form1: TForm1
       Height = 17
       Caption = '?'
       TabOrder = 11
+      Visible = False
       OnClick = sLabelFX20Click
       Grayed = True
     end
@@ -319,6 +391,28 @@ object Form1: TForm1
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
     end
+    object sLabelFX25: TsLabelFX
+      Left = 320
+      Top = 32
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX25Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX26: TsLabelFX
+      Left = 320
+      Top = 144
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX26Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
     object sButton2: TsButton
       Left = 8
       Top = 32
@@ -338,21 +432,23 @@ object Form1: TForm1
     end
     object sLabelFX18: TsBitBtn
       Left = 320
-      Top = 32
+      Top = 64
       Width = 17
       Height = 25
       Caption = '?'
       TabOrder = 2
+      Visible = False
       OnClick = sLabelFX18Click
       Grayed = True
     end
     object sLabelFX19: TsBitBtn
       Left = 320
-      Top = 144
+      Top = 160
       Width = 17
       Height = 25
       Caption = '?'
       TabOrder = 3
+      Visible = False
       OnClick = sLabelFX19Click
       Grayed = True
     end
@@ -397,6 +493,39 @@ object Form1: TForm1
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
     end
+    object sLabelFX27: TsLabelFX
+      Left = 320
+      Top = 40
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX27Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX28: TsLabelFX
+      Left = 320
+      Top = 72
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX28Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX29: TsLabelFX
+      Left = 320
+      Top = 120
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX29Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
     object sDirectoryEdit1: TsDirectoryEdit
       Left = 16
       Top = 41
@@ -431,6 +560,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 3
+      Visible = False
       OnClick = sLabelFX15Click
       Grayed = True
     end
@@ -441,6 +571,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 4
+      Visible = False
       OnClick = sLabelFX16Click
       Grayed = True
     end
@@ -451,6 +582,7 @@ object Form1: TForm1
       Height = 25
       Caption = '?'
       TabOrder = 5
+      Visible = False
       OnClick = sLabelFX17Click
       Grayed = True
     end
@@ -519,6 +651,17 @@ object Form1: TForm1
       Shadow.OffsetKeeper.LeftTop = -2
       Shadow.OffsetKeeper.RightBottom = 4
     end
+    object sLabelFX36: TsLabelFX
+      Left = 336
+      Top = 16
+      Width = 13
+      Height = 24
+      Caption = '?'
+      OnClick = sLabelFX36Click
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
     object importall: TsMemo
       Left = 16
       Top = 96
@@ -558,6 +701,7 @@ object Form1: TForm1
       Height = 17
       Caption = '?'
       TabOrder = 4
+      Visible = False
       OnClick = sLabelFX22Click
       Grayed = True
     end
@@ -756,7 +900,10 @@ object Form1: TForm1
       'Use this option if you want to share the data with your friends'
       
         'You can share the settings with your friends, or automatically a' +
-        'dd the settings to the program if they have been shared with you')
+        'dd the settings to the program if they have been shared with you'
+      'Type of hints'
+      'In the form of text'
+      'In the form of buttons')
     ParentFont = False
     TabOrder = 13
     Text = 
@@ -816,7 +963,8 @@ object Form1: TForm1
       ' you try to set this mode'#13#10'Use this option if you want to share ' +
       'the data with your friends'#13#10'You can share the settings with your' +
       ' friends, or automatically add the settings to the program if th' +
-      'ey have been shared with you'#13#10
+      'ey have been shared with you'#13#10'Type of hints'#13#10'In the form of text' +
+      #13#10'In the form of buttons'#13#10
   end
   object rulang: TsMemo
     Left = 16
@@ -952,7 +1100,10 @@ object Form1: TForm1
         #1076#1088#1091#1079#1100#1103#1084#1080
       
         #1042#1099' '#1084#1086#1078#1077#1090#1077' '#1087#1086#1076#1077#1083#1080#1090#1100#1089#1103' '#1085#1072#1089#1090#1088#1086#1081#1082#1072#1084#1080' '#1089' '#1076#1088#1091#1079#1100#1103#1084#1080', '#1080#1083#1080' '#1076#1086#1073#1072#1074#1080#1090#1100' '#1072#1074#1090#1086#1084#1072 +
-        #1090#1080#1095#1077#1089#1082#1080' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1074' '#1087#1088#1086#1075#1088#1072#1084#1084#1091', '#1077#1089#1083#1080' '#1080#1084#1080' '#1089' '#1042#1072#1084#1080' '#1087#1086#1076#1077#1083#1080#1083#1080#1089#1100)
+        #1090#1080#1095#1077#1089#1082#1080' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1074' '#1087#1088#1086#1075#1088#1072#1084#1084#1091', '#1077#1089#1083#1080' '#1080#1084#1080' '#1089' '#1042#1072#1084#1080' '#1087#1086#1076#1077#1083#1080#1083#1080#1089#1100
+      #1042#1080#1076' '#1087#1086#1076#1089#1082#1072#1079#1086#1082
+      #1042' '#1074#1080#1076#1077' '#1090#1077#1082#1089#1090#1072
+      #1042' '#1074#1080#1076#1077' '#1082#1085#1086#1087#1086#1082)
     ParentFont = False
     TabOrder = 14
     Text = 
@@ -1011,7 +1162,7 @@ object Form1: TForm1
       #13#10#1048#1089#1087#1086#1083#1100#1079#1091#1081#1090#1077' '#1101#1090#1091' '#1086#1087#1094#1080#1102', '#1077#1089#1083#1080' '#1093#1086#1090#1080#1090#1077' '#1087#1086#1076#1077#1083#1080#1090#1100#1089#1103' '#1076#1072#1085#1085#1099#1084#1080' '#1089#1086' '#1089#1074#1086#1080#1084 +
       #1080' '#1076#1088#1091#1079#1100#1103#1084#1080#13#10#1042#1099' '#1084#1086#1078#1077#1090#1077' '#1087#1086#1076#1077#1083#1080#1090#1100#1089#1103' '#1085#1072#1089#1090#1088#1086#1081#1082#1072#1084#1080' '#1089' '#1076#1088#1091#1079#1100#1103#1084#1080', '#1080#1083#1080' '#1076#1086#1073 +
       #1072#1074#1080#1090#1100' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1074' '#1087#1088#1086#1075#1088#1072#1084#1084#1091', '#1077#1089#1083#1080' '#1080#1084#1080' '#1089' '#1042#1072#1084#1080' '#1087#1086#1076#1077#1083 +
-      #1080#1083#1080#1089#1100#13#10
+      #1080#1083#1080#1089#1100#13#10#1042#1080#1076' '#1087#1086#1076#1089#1082#1072#1079#1086#1082#13#10#1042' '#1074#1080#1076#1077' '#1090#1077#1082#1089#1090#1072#13#10#1042' '#1074#1080#1076#1077' '#1082#1085#1086#1087#1086#1082#13#10
   end
   object languages: TsButton
     Left = 1128
@@ -4362,29 +4513,48 @@ object Form1: TForm1
     Left = 520
     Top = 8
     object N3: TMenuItem
+      Caption = #1103#1079#1099#1082
       object N4: TMenuItem
+        Caption = #1088#1091
         Checked = True
         OnClick = N4Click
       end
       object E1: TMenuItem
+        Caption = #1077#1085
         OnClick = E1Click
       end
     end
     object G1: TMenuItem
-      object N8: TMenuItem
-        Checked = True
-        OnClick = N8Click
-      end
+      Caption = #1087#1086#1076#1089#1082#1072#1079#1082#1080
       object N7: TMenuItem
+        Caption = #1087#1088#1080' '#1085#1072#1074#1077#1076#1077#1085#1080#1080
+        Checked = True
         OnClick = N7Click
       end
+      object N8: TMenuItem
+        Caption = #1087#1088#1080' '#1085#1072#1078#1072#1090#1080#1080
+        OnClick = N8Click
+      end
       object N9: TMenuItem
+        Caption = #1086#1090#1082#1083#1102#1095#1077#1085#1086
         OnClick = N9Click
+      end
+    end
+    object N10: TMenuItem
+      Caption = #1074#1080#1076' '#1087#1086#1076#1089#1082#1072#1079#1086#1082
+      object N14: TMenuItem
+        Caption = #1074' '#1074#1080#1076#1077' '#1090#1077#1082#1089#1090#1072
+        Checked = True
+        OnClick = N14Click
+      end
+      object N13: TMenuItem
+        Caption = #1074' '#1074#1080#1076#1077' '#1082#1085#1086#1087#1086#1082
+        OnClick = N13Click
       end
     end
     object N2: TMenuItem
       object N12: TMenuItem
-        Caption = '1.05'
+        Caption = '1.06'
         Enabled = False
       end
     end

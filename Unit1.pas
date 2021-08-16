@@ -106,6 +106,21 @@ type
     sLabelFX10: TsBitBtn;
     sLabelFX14: TsBitBtn;
     sLabelFX20: TsBitBtn;
+    N10: TMenuItem;
+    N13: TMenuItem;
+    N14: TMenuItem;
+    sLabelFX25: TsLabelFX;
+    sLabelFX26: TsLabelFX;
+    sLabelFX27: TsLabelFX;
+    sLabelFX28: TsLabelFX;
+    sLabelFX29: TsLabelFX;
+    sLabelFX30: TsLabelFX;
+    sLabelFX31: TsLabelFX;
+    sLabelFX32: TsLabelFX;
+    sLabelFX33: TsLabelFX;
+    sLabelFX34: TsLabelFX;
+    sLabelFX35: TsLabelFX;
+    sLabelFX36: TsLabelFX;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -153,6 +168,20 @@ type
     procedure N7Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
     procedure sLabelFX20Click(Sender: TObject);
+    procedure sLabelFX25Click(Sender: TObject);
+    procedure sLabelFX26Click(Sender: TObject);
+    procedure sLabelFX27Click(Sender: TObject);
+    procedure sLabelFX28Click(Sender: TObject);
+    procedure sLabelFX29Click(Sender: TObject);
+    procedure sLabelFX30Click(Sender: TObject);
+    procedure sLabelFX31Click(Sender: TObject);
+    procedure sLabelFX32Click(Sender: TObject);
+    procedure sLabelFX33Click(Sender: TObject);
+    procedure sLabelFX34Click(Sender: TObject);
+    procedure sLabelFX35Click(Sender: TObject);
+    procedure sLabelFX36Click(Sender: TObject);
+    procedure N14Click(Sender: TObject);
+    procedure N13Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -295,6 +324,8 @@ E1.Checked:=Ini.ReadBool('LANG','EN', E1.Checked);
 N8.Checked:=Ini.ReadBool('HINT','CLICK', N8.Checked);
 N7.Checked:=Ini.ReadBool('HINT','HOVER', N7.Checked);
 N9.Checked:=Ini.ReadBool('HINT','DISABLE', N9.Checked);
+N14.Checked:=Ini.ReadBool('HINT','TYPE_TEXT', N14.Checked);
+N13.Checked:=Ini.ReadBool('HINT','TYPE_BUTTON', N13.Checked);
 sEdit4.Text:=Ini.ReadString('SITE','URL',sEdit4.Text);
 sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
 tap:=Ini.ReadString('TAP','NUM',tap);
@@ -307,6 +338,8 @@ if E1.Checked=true then E1.Click;
 if N8.Checked=true then N8.Click;
 if N7.Checked=true then N7.Click;
 if N9.Checked=true then N9.Click;
+if N13.Checked=true then N13.Click;
+if N14.Checked=true then N14.Click;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -322,6 +355,8 @@ Ini.WriteBool('LANG','EN', E1.Checked);
 Ini.WriteBool('HINT','CLICK', N8.Checked);
 Ini.WriteBool('HINT','HOVER', N7.Checked);
 Ini.WriteBool('HINT','DISABLE', N9.Checked);
+Ini.WriteBool('HINT','TYPE_TEXT', N14.Checked);
+Ini.WriteBool('HINT','TYPE_BUTTON', N13.Checked);
 Ini.WriteString('SITE','URL',sEdit4.Text);
 Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
@@ -481,11 +516,31 @@ ShowMessage (lang.Lines[77]);
 end;
 end;
 
+procedure TForm1.sLabelFX30Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX30.Hint:=lang.Lines[77];
+end else begin
+ShowMessage (lang.Lines[77]);
+end;
+end;
+
 procedure TForm1.sLabelFX12Click(Sender: TObject);
 begin
 if N7.Checked=true then
 begin
 sLabelFX12.Hint:=lang.Lines[78];
+end else begin
+ShowMessage (lang.Lines[78]);
+end;
+end;
+
+procedure TForm1.sLabelFX31Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX31.Hint:=lang.Lines[78];
 end else begin
 ShowMessage (lang.Lines[78]);
 end;
@@ -501,11 +556,31 @@ ShowMessage (lang.Lines[79]);
 end;
 end;
 
+procedure TForm1.sLabelFX32Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX32.Hint:=lang.Lines[79];
+end else begin
+ShowMessage (lang.Lines[79]);
+end;
+end;
+
 procedure TForm1.sLabelFX10Click(Sender: TObject);
 begin
 if N7.Checked=true then
 begin
 sLabelFX10.Hint:=lang.Lines[80];
+end else begin
+ShowMessage (lang.Lines[80]);
+end;
+end;
+
+procedure TForm1.sLabelFX33Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX33.Hint:=lang.Lines[80];
 end else begin
 ShowMessage (lang.Lines[80]);
 end;
@@ -521,11 +596,31 @@ ShowMessage (lang.Lines[81]);
 end;
 end;
 
+procedure TForm1.sLabelFX34Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX34.Hint:=lang.Lines[81];
+end else begin
+ShowMessage (lang.Lines[81]);
+end;
+end;
+
 procedure TForm1.sLabelFX20Click(Sender: TObject);
 begin
 if N7.Checked=true then
 begin
 sLabelFX20.Hint:=lang.Lines[82];
+end else begin
+ShowMessage (lang.Lines[82]);
+end;
+end;
+
+procedure TForm1.sLabelFX35Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX35.Hint:=lang.Lines[82];
 end else begin
 ShowMessage (lang.Lines[82]);
 end;
@@ -609,6 +704,16 @@ ShowMessage (lang.Lines[76]);
 end;
 end;
 
+procedure TForm1.sLabelFX36Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX36.Hint:=lang.Lines[76];
+end else begin
+ShowMessage (lang.Lines[76]);
+end;
+end;
+
 procedure TForm1.sEdit4KeyPress(Sender: TObject; var Key: Char);
 begin
 if Key=#13 then begin
@@ -661,11 +766,31 @@ ShowMessage (lang.Lines[73]);
 end;
 end;
 
+procedure TForm1.sLabelFX27Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX27.Hint:=lang.Lines[73];
+end else begin
+ShowMessage (lang.Lines[73]);
+end;
+end;
+
 procedure TForm1.sLabelFX16Click(Sender: TObject);
 begin
 if N7.Checked=true then
 begin
 sLabelFX16.Hint:=lang.Lines[74];
+end else begin
+ShowMessage (lang.Lines[74]);
+end;
+end;
+
+procedure TForm1.sLabelFX28Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX28.Hint:=lang.Lines[74];
 end else begin
 ShowMessage (lang.Lines[74]);
 end;
@@ -681,6 +806,16 @@ ShowMessage (lang.Lines[75]);
 end;
 end;
 
+procedure TForm1.sLabelFX29Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX29.Hint:=lang.Lines[75];
+end else begin
+ShowMessage (lang.Lines[75]);
+end;
+end;
+
 procedure TForm1.sLabelFX18Click(Sender: TObject);
 begin
 if N7.Checked=true then
@@ -691,11 +826,31 @@ ShowMessage (lang.Lines[71]);
 end;
 end;
 
+procedure TForm1.sLabelFX25Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX25.Hint:=lang.Lines[71];
+end else begin
+ShowMessage (lang.Lines[71]);
+end;
+end;
+
 procedure TForm1.sLabelFX19Click(Sender: TObject);
 begin
 if N7.Checked=true then
 begin
 sLabelFX19.Hint:=lang.Lines[72];
+end else begin
+ShowMessage (lang.Lines[72]);
+end;
+end;
+
+procedure TForm1.sLabelFX26Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX26.Hint:=lang.Lines[72];
 end else begin
 ShowMessage (lang.Lines[72]);
 end;
@@ -927,7 +1082,7 @@ N4.Checked:=true;
 E1.Checked:=false;
 lang.Text:=rulang.Text;
 languages.Click;
-if N7.Checked=true then
+if ((N7.Checked=true) and (N14.Checked=true)) or ((N7.Checked=true) and (N13.Checked=true)) then
 begin
 sLabelFX18.Click;
 sLabelFX19.Click;
@@ -940,6 +1095,18 @@ sLabelFX11.Click;
 sLabelFX10.Click;
 sLabelFX14.Click;
 sLabelFX20.Click;
+sLabelFX25.OnClick(sLabelFX25);
+sLabelFX26.OnClick(sLabelFX26);
+sLabelFX27.OnClick(sLabelFX27);
+sLabelFX28.OnClick(sLabelFX28);
+sLabelFX29.OnClick(sLabelFX29);
+sLabelFX30.OnClick(sLabelFX30);
+sLabelFX31.OnClick(sLabelFX31);
+sLabelFX32.OnClick(sLabelFX32);
+sLabelFX33.OnClick(sLabelFX33);
+sLabelFX34.OnClick(sLabelFX34);
+sLabelFX35.OnClick(sLabelFX35);
+sLabelFX36.OnClick(sLabelFX36);
 end;
 end;
 
@@ -949,7 +1116,7 @@ N4.Checked:=false;
 E1.Checked:=true;
 lang.Text:=enlang.Text;
 languages.Click;
-if N7.Checked=true then
+if ((N7.Checked=true) and (N14.Checked=true)) or ((N7.Checked=true) and (N13.Checked=true)) then
 begin
 sLabelFX18.Click;
 sLabelFX19.Click;
@@ -962,6 +1129,18 @@ sLabelFX11.Click;
 sLabelFX10.Click;
 sLabelFX14.Click;
 sLabelFX20.Click;
+sLabelFX25.OnClick(sLabelFX25);
+sLabelFX26.OnClick(sLabelFX26);
+sLabelFX27.OnClick(sLabelFX27);
+sLabelFX28.OnClick(sLabelFX28);
+sLabelFX29.OnClick(sLabelFX29);
+sLabelFX30.OnClick(sLabelFX30);
+sLabelFX31.OnClick(sLabelFX31);
+sLabelFX32.OnClick(sLabelFX32);
+sLabelFX33.OnClick(sLabelFX33);
+sLabelFX34.OnClick(sLabelFX34);
+sLabelFX35.OnClick(sLabelFX35);
+sLabelFX36.OnClick(sLabelFX36);
 end;
 end;
 
@@ -1024,14 +1203,21 @@ N7.Caption:=lang.Lines[38];
 //отключены
 N9.Caption:=lang.Lines[39];
 sLabelFX5.Caption:=lang.Lines[40];
+//подсказки
+N10.Caption:=lang.Lines[83];
+N14.Caption:=lang.Lines[84];
+N13.Caption:=lang.Lines[85];
 end;
 
 procedure TForm1.N8Click(Sender: TObject);
 begin
 ///////////////при нажатии
+N10.Visible:=true;
 N8.Checked:=true;
 N7.Checked:=false;
 N9.Checked:=false;
+if (N13.Checked=true) and (N8.Checked=true) then
+begin
 sLabelFX18.Visible:=true;
 sLabelFX19.Visible:=true;
 sLabelFX15.Visible:=true;
@@ -1067,13 +1253,56 @@ sLabelFX10.Hint:='';
 sLabelFX14.Hint:='';
 sLabelFX20.Hint:='';
 end;
+if (N14.Checked=true) and (N8.Checked=true) then
+begin
+sLabelFX25.Visible:=true;
+sLabelFX26.Visible:=true;
+sLabelFX27.Visible:=true;
+sLabelFX28.Visible:=true;
+sLabelFX29.Visible:=true;
+sLabelFX30.Visible:=true;
+sLabelFX31.Visible:=true;
+sLabelFX32.Visible:=true;
+sLabelFX33.Visible:=true;
+sLabelFX34.Visible:=true;
+sLabelFX35.Visible:=true;
+sLabelFX36.Visible:=true;
+sLabelFX25.ShowHint:=false;
+sLabelFX26.ShowHint:=false;
+sLabelFX27.ShowHint:=false;
+sLabelFX28.ShowHint:=false;
+sLabelFX29.ShowHint:=false;
+sLabelFX30.ShowHint:=false;
+sLabelFX31.ShowHint:=false;
+sLabelFX32.ShowHint:=false;
+sLabelFX33.ShowHint:=false;
+sLabelFX34.ShowHint:=false;
+sLabelFX35.ShowHint:=false;
+sLabelFX36.ShowHint:=false;
+sLabelFX25.Hint:='';
+sLabelFX26.Hint:='';
+sLabelFX27.Hint:='';
+sLabelFX28.Hint:='';
+sLabelFX29.Hint:='';
+sLabelFX30.Hint:='';
+sLabelFX31.Hint:='';
+sLabelFX32.Hint:='';
+sLabelFX33.Hint:='';
+sLabelFX34.Hint:='';
+sLabelFX35.Hint:='';
+sLabelFX36.Hint:='';
+end;
+end;
 
 procedure TForm1.N7Click(Sender: TObject);
 begin
 /////////////////при наведении
+N10.Visible:=true;
 N8.Checked:=false;
 N7.Checked:=true;
 N9.Checked:=false;
+if (N13.Checked=true) and (N7.Checked=true) then
+begin
 sLabelFX18.Visible:=true;
 sLabelFX19.Visible:=true;
 sLabelFX15.Visible:=true;
@@ -1119,6 +1348,60 @@ sLabelFX11.Click;
 sLabelFX10.Click;
 sLabelFX14.Click;
 sLabelFX20.Click;
+end;
+if (N14.Checked=true) and (N7.Checked=true) then
+begin
+sLabelFX25.Visible:=true;
+sLabelFX26.Visible:=true;
+sLabelFX27.Visible:=true;
+sLabelFX28.Visible:=true;
+sLabelFX29.Visible:=true;
+sLabelFX30.Visible:=true;
+sLabelFX31.Visible:=true;
+sLabelFX32.Visible:=true;
+sLabelFX33.Visible:=true;
+sLabelFX34.Visible:=true;
+sLabelFX35.Visible:=true;
+sLabelFX36.Visible:=true;
+sLabelFX25.ShowHint:=true;
+sLabelFX26.ShowHint:=true;
+sLabelFX27.ShowHint:=true;
+sLabelFX28.ShowHint:=true;
+sLabelFX29.ShowHint:=true;
+sLabelFX30.ShowHint:=true;
+sLabelFX31.ShowHint:=true;
+sLabelFX32.ShowHint:=true;
+sLabelFX33.ShowHint:=true;
+sLabelFX34.ShowHint:=true;
+sLabelFX35.ShowHint:=true;
+sLabelFX36.ShowHint:=true;
+sLabelFX25.Hint:='';
+sLabelFX26.Hint:='';
+sLabelFX27.Hint:='';
+sLabelFX28.Hint:='';
+sLabelFX29.Hint:='';
+sLabelFX30.Hint:='';
+sLabelFX31.Hint:='';
+sLabelFX32.Hint:='';
+sLabelFX33.Hint:='';
+sLabelFX34.Hint:='';
+sLabelFX35.Hint:='';
+sLabelFX36.Hint:='';
+sLabelFX25.OnClick(sLabelFX25);
+sLabelFX26.OnClick(sLabelFX26);
+sLabelFX27.OnClick(sLabelFX27);
+sLabelFX28.OnClick(sLabelFX28);
+sLabelFX29.OnClick(sLabelFX29);
+sLabelFX30.OnClick(sLabelFX30);
+sLabelFX31.OnClick(sLabelFX31);
+sLabelFX32.OnClick(sLabelFX32);
+sLabelFX33.OnClick(sLabelFX33);
+sLabelFX34.OnClick(sLabelFX34);
+sLabelFX35.OnClick(sLabelFX35);
+sLabelFX36.OnClick(sLabelFX36);
+end;
+
+
 
 end;
 
@@ -1139,6 +1422,181 @@ sLabelFX11.Visible:=false;
 sLabelFX10.Visible:=false;
 sLabelFX14.Visible:=false;
 sLabelFX20.Visible:=false;
+sLabelFX25.Visible:=false;
+sLabelFX26.Visible:=false;
+sLabelFX27.Visible:=false;
+sLabelFX28.Visible:=false;
+sLabelFX29.Visible:=false;
+sLabelFX30.Visible:=false;
+sLabelFX31.Visible:=false;
+sLabelFX32.Visible:=false;
+sLabelFX33.Visible:=false;
+sLabelFX34.Visible:=false;
+sLabelFX35.Visible:=false;
+sLabelFX36.Visible:=false;
+N10.Visible:=false;
+end;
+
+procedure TForm1.N14Click(Sender: TObject);
+begin
+N14.Checked:=true;
+N13.Checked:=false;
+sLabelFX25.Visible:=true;
+sLabelFX26.Visible:=true;
+sLabelFX27.Visible:=true;
+sLabelFX28.Visible:=true;
+sLabelFX29.Visible:=true;
+sLabelFX30.Visible:=true;
+sLabelFX31.Visible:=true;
+sLabelFX32.Visible:=true;
+sLabelFX33.Visible:=true;
+sLabelFX34.Visible:=true;
+sLabelFX35.Visible:=true;
+sLabelFX36.Visible:=true;
+sLabelFX18.Visible:=false;
+sLabelFX19.Visible:=false;
+sLabelFX15.Visible:=false;
+sLabelFX16.Visible:=false;
+sLabelFX17.Visible:=false;
+sLabelFX13.Visible:=false;
+sLabelFX12.Visible:=false;
+sLabelFX11.Visible:=false;
+sLabelFX10.Visible:=false;
+sLabelFX14.Visible:=false;
+sLabelFX20.Visible:=false;
+sLabelFX22.Visible:=false;
+
+if (N14.Checked=true) and (N7.Checked=true) then
+begin
+sLabelFX25.Visible:=true;
+sLabelFX26.Visible:=true;
+sLabelFX27.Visible:=true;
+sLabelFX28.Visible:=true;
+sLabelFX29.Visible:=true;
+sLabelFX30.Visible:=true;
+sLabelFX31.Visible:=true;
+sLabelFX32.Visible:=true;
+sLabelFX33.Visible:=true;
+sLabelFX34.Visible:=true;
+sLabelFX35.Visible:=true;
+sLabelFX36.Visible:=true;
+sLabelFX25.ShowHint:=true;
+sLabelFX26.ShowHint:=true;
+sLabelFX27.ShowHint:=true;
+sLabelFX28.ShowHint:=true;
+sLabelFX29.ShowHint:=true;
+sLabelFX30.ShowHint:=true;
+sLabelFX31.ShowHint:=true;
+sLabelFX32.ShowHint:=true;
+sLabelFX33.ShowHint:=true;
+sLabelFX34.ShowHint:=true;
+sLabelFX35.ShowHint:=true;
+sLabelFX36.ShowHint:=true;
+sLabelFX25.Hint:='';
+sLabelFX26.Hint:='';
+sLabelFX27.Hint:='';
+sLabelFX28.Hint:='';
+sLabelFX29.Hint:='';
+sLabelFX30.Hint:='';
+sLabelFX31.Hint:='';
+sLabelFX32.Hint:='';
+sLabelFX33.Hint:='';
+sLabelFX34.Hint:='';
+sLabelFX35.Hint:='';
+sLabelFX36.Hint:='';
+sLabelFX25.OnClick(sLabelFX25);
+sLabelFX26.OnClick(sLabelFX26);
+sLabelFX27.OnClick(sLabelFX27);
+sLabelFX28.OnClick(sLabelFX28);
+sLabelFX29.OnClick(sLabelFX29);
+sLabelFX30.OnClick(sLabelFX30);
+sLabelFX31.OnClick(sLabelFX31);
+sLabelFX32.OnClick(sLabelFX32);
+sLabelFX33.OnClick(sLabelFX33);
+sLabelFX34.OnClick(sLabelFX34);
+sLabelFX35.OnClick(sLabelFX35);
+sLabelFX36.OnClick(sLabelFX36);
+end;
+
+end;
+
+procedure TForm1.N13Click(Sender: TObject);
+begin
+N14.Checked:=false;
+N13.Checked:=true;
+sLabelFX25.Visible:=false;
+sLabelFX26.Visible:=false;
+sLabelFX27.Visible:=false;
+sLabelFX28.Visible:=false;
+sLabelFX29.Visible:=false;
+sLabelFX30.Visible:=false;
+sLabelFX31.Visible:=false;
+sLabelFX32.Visible:=false;
+sLabelFX33.Visible:=false;
+sLabelFX34.Visible:=false;
+sLabelFX35.Visible:=false;
+sLabelFX36.Visible:=false;
+sLabelFX18.Visible:=true;
+sLabelFX19.Visible:=true;
+sLabelFX15.Visible:=true;
+sLabelFX16.Visible:=true;
+sLabelFX17.Visible:=true;
+sLabelFX13.Visible:=true;
+sLabelFX12.Visible:=true;
+sLabelFX11.Visible:=true;
+sLabelFX10.Visible:=true;
+sLabelFX14.Visible:=true;
+sLabelFX20.Visible:=true;
+sLabelFX22.Visible:=true;
+
+if (N13.Checked=true) and (N7.Checked=true) then
+begin
+sLabelFX18.Visible:=true;
+sLabelFX19.Visible:=true;
+sLabelFX15.Visible:=true;
+sLabelFX16.Visible:=true;
+sLabelFX17.Visible:=true;
+sLabelFX22.Visible:=true;
+sLabelFX13.Visible:=true;
+sLabelFX12.Visible:=true;
+sLabelFX11.Visible:=true;
+sLabelFX10.Visible:=true;
+sLabelFX14.Visible:=true;
+sLabelFX20.Visible:=true;
+sLabelFX18.ShowHint:=true;
+sLabelFX19.ShowHint:=true;
+sLabelFX15.ShowHint:=true;
+sLabelFX16.ShowHint:=true;
+sLabelFX17.ShowHint:=true;
+sLabelFX13.ShowHint:=true;
+sLabelFX12.ShowHint:=true;
+sLabelFX11.ShowHint:=true;
+sLabelFX10.ShowHint:=true;
+sLabelFX14.ShowHint:=true;
+sLabelFX20.ShowHint:=true;
+sLabelFX18.Hint:='';
+sLabelFX19.Hint:='';
+sLabelFX15.Hint:='';
+sLabelFX16.Hint:='';
+sLabelFX17.Hint:='';
+sLabelFX13.Hint:='';
+sLabelFX12.Hint:='';
+sLabelFX11.Hint:='';
+sLabelFX10.Hint:='';
+sLabelFX14.Hint:='';
+sLabelFX20.Hint:='';
+sLabelFX18.Click;
+sLabelFX19.Click;
+sLabelFX15.Click;
+sLabelFX16.Click;
+sLabelFX17.Click;
+sLabelFX13.Click;
+sLabelFX12.Click;
+sLabelFX11.Click;
+sLabelFX10.Click;
+sLabelFX14.Click;
+sLabelFX20.Click;
+end;
 
 end;
 
