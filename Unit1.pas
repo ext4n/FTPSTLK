@@ -121,6 +121,9 @@ type
     sLabelFX34: TsLabelFX;
     sLabelFX35: TsLabelFX;
     sLabelFX36: TsLabelFX;
+    N15: TMenuItem;
+    N16: TMenuItem;
+    N17: TMenuItem;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -182,6 +185,8 @@ type
     procedure sLabelFX36Click(Sender: TObject);
     procedure N14Click(Sender: TObject);
     procedure N13Click(Sender: TObject);
+    procedure N16Click(Sender: TObject);
+    procedure N17Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -326,6 +331,8 @@ N7.Checked:=Ini.ReadBool('HINT','HOVER', N7.Checked);
 N9.Checked:=Ini.ReadBool('HINT','DISABLE', N9.Checked);
 N14.Checked:=Ini.ReadBool('HINT','TYPE_TEXT', N14.Checked);
 N13.Checked:=Ini.ReadBool('HINT','TYPE_BUTTON', N13.Checked);
+N16.Checked:=Ini.ReadBool('THEME','THEME1', N16.Checked);
+N17.Checked:=Ini.ReadBool('THEME','THEME2', N17.Checked);
 sEdit4.Text:=Ini.ReadString('SITE','URL',sEdit4.Text);
 sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
 tap:=Ini.ReadString('TAP','NUM',tap);
@@ -340,6 +347,20 @@ if N7.Checked=true then N7.Click;
 if N9.Checked=true then N9.Click;
 if N13.Checked=true then N13.Click;
 if N14.Checked=true then N14.Click;
+if N16.Checked=true then begin
+N16.Click;
+N16.Checked:=true;
+N17.Checked:=false;
+N16.Enabled:=false;
+N17.Enabled:=true;
+end;
+if N17.Checked=true then begin
+N17.Click;
+N17.Checked:=true;
+N16.Checked:=false;
+N16.Enabled:=true;
+N17.Enabled:=false;
+end;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -357,6 +378,8 @@ Ini.WriteBool('HINT','HOVER', N7.Checked);
 Ini.WriteBool('HINT','DISABLE', N9.Checked);
 Ini.WriteBool('HINT','TYPE_TEXT', N14.Checked);
 Ini.WriteBool('HINT','TYPE_BUTTON', N13.Checked);
+Ini.WriteBool('THEME','THEME1', N16.Checked);
+Ini.WriteBool('THEME','THEME2', N17.Checked);
 Ini.WriteString('SITE','URL',sEdit4.Text);
 Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
@@ -1207,6 +1230,10 @@ sLabelFX5.Caption:=lang.Lines[40];
 N10.Caption:=lang.Lines[83];
 N14.Caption:=lang.Lines[84];
 N13.Caption:=lang.Lines[85];
+//theme
+N15.Caption:=lang.Lines[86];
+N16.Caption:=lang.Lines[87];
+N17.Caption:=lang.Lines[88];
 end;
 
 procedure TForm1.N8Click(Sender: TObject);
@@ -1598,6 +1625,24 @@ sLabelFX14.Click;
 sLabelFX20.Click;
 end;
 
+end;
+
+procedure TForm1.N16Click(Sender: TObject);
+begin
+N16.Checked:=true;
+N17.Checked:=false;
+N16.Enabled:=false;
+N17.Enabled:=true;
+sSkinmanager1.SkinName:='Windows 8 (internal)';
+end;
+
+procedure TForm1.N17Click(Sender: TObject);
+begin
+N17.Checked:=true;
+N16.Checked:=false;
+N16.Enabled:=true;
+N17.Enabled:=false;
+sSkinmanager1.SkinName:='TV-b (internal)';
 end;
 
 end.
