@@ -1,4 +1,4 @@
-# FTPSTLK 1.05
+# FTPSTLK 1.06
 
 # 🇷🇺 RUSSIAN
 
@@ -31,6 +31,18 @@
 Отключено<br><br>
 - Настройки языка и подсказок, умеют запоминать состояние, и при последующем включении программы загрузится последний выбранный вариант.
 - Много мелких улучшения и баг фиксы.
+        
+      v. 1.06 от 16.08.21
+- Добавлены опции подсказок в виде текста или кнопок, на выбор.
+- Доработан перевод.
+- Незначительные улучшения и баг фиксы.
+        
+        
+## В планах... <h2>
+- ДОБАВИТЬ ВОЗМОЖНОСТЬ ОТПРАВКИ НА FTP ФАЙЛОВ СРАЗУ ПОСЛЕ СЕЙВА.
+- АВТОМАТИЧЕСКОЕ ОТСЛЕЖИВАНИЕ ДОБАВЛЕНИЯ НА FTP И ПОСЛЕДУЮЩЕЕ СКАЧИВАНИЕ.
+- АВТОМАТИЧЕСКОЕ СОЗДАНИЕ ПАПКИ НА FTP.
+- ФАЙЛОВЫЙ МЕНЕДЖЕР ФАЙЛОВ НА ХОСТИНГЕ И ВЫКАЧКА ЛЮБОГО ИЗ ФАЙЛОВ.
       
 ## Приемущества <h2>
     
@@ -82,6 +94,18 @@ Hover hint<br>
 Disabled<br><br>
 - Language settings and hints, they are able to remember the state, and the next time the program is turned on, the last selected option will load.
 - Many small improvements and bug fixes.
+        
+      v. 1.06 from 16.08.21
+- Added options for suggestions in the form of text or buttons to choose from.
+- The translation has been finalized.
+- Minor improvements and bug fixes.
+ 
+ 
+## In the plans... <h2>
+- ADD THE ABILITY TO SEND FILES TO FTP IMMEDIATELY AFTER THE SAVE.
+- AUTOMATIC TRACKING OF ADDING TO FTP AND SUBSEQUENT DOWNLOADING.
+- AUTOMATIC CREATION OF A FOLDER ON FTP.
+- FILE MANAGER OF FILES ON THE HOSTING AND DOWNLOADING ANY OF THE FILES.
 
 ## Advantages <h2>
 
