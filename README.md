@@ -1,4 +1,4 @@
-# FTPSTLK 1.06
+# FTPSTLK 1.07
 
 # 🇷🇺 RUSSIAN
 
@@ -36,6 +36,11 @@
 - Добавлены опции подсказок в виде текста или кнопок, на выбор.
 - Доработан перевод.
 - Незначительные улучшения и баг фиксы.
+
+      v. 1.07 от 16.08.21
+- Добавлена тёмная тема. Возможность выбора между светлой и тёмной темной.
+- Поправлен перевод в некоторых местах
+- Незначительные улучшения и баг фиксы.
         
         
 ## В планах... <h2>
@@ -72,21 +77,21 @@ The program is designed so that you can share your save with a friend who is goi
         v. 1.00 from 27.07.21
 - Added basic functionality and functions.
 
-      v. 1.02 of 30.07.21
+      v. 1.02 from 30.07.21
 - The mechanism of spoiling settings in the program has been redesigned. Now the RegExpr module is responsible for this. Settings can be added to the program as a whole line, or several lines.
 - The settings page has been slightly changed. Now everything is more compact. In the settings, you can view the version of the program. Additional links were also hidden.
 - Minor improvements and bug fixes.
 
-      v. 1.03 of 01.08.21
+      v. 1.03 from 01.08.21
 - Fixed bugs in hint texts.
 - Minor improvements and bug fixes.
 
-      v. 1.04 b of 14.08.21
+      v. 1.04 b from 14.08.21
 - Added a partial translation into English.
 - The mechanics of selecting and loading a language into the program have been redesigned.
 - Minor improvements and bug fixes.
 
-      v. 1.05 of 14.08.21
+      v. 1.05 from 14.08.21
 - The program is fully translated into English.
 - Added and improved options for selecting hints. Now there are 3 states of hints in the program:<br>
 Pop-up message<br>
@@ -98,6 +103,11 @@ Disabled<br><br>
       v. 1.06 from 16.08.21
 - Added options for suggestions in the form of text or buttons to choose from.
 - The translation has been finalized.
+- Minor improvements and bug fixes.
+        
+     v. 1.07 from 16.08.21
+- Added a dark theme. The ability to choose between light and dark dark.
+- Corrected translation in some places
 - Minor improvements and bug fixes.
  
  
