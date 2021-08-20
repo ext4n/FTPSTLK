@@ -82,24 +82,29 @@ The program is designed so that you can share your save with a friend who is goi
 
 
 ## Changelog <h2>
-        v. 1.00 from 27.07.21
+## v. 1.00-en <h4>
+   from 27.07.21   
 - Added basic functionality and functions.
 
-      v. 1.02 from 30.07.21
+## v. 1.02-en <h4>
+   from 30.07.21 
 - The mechanism of spoiling settings in the program has been redesigned. Now the RegExpr module is responsible for this. Settings can be added to the program as a whole line, or several lines.
 - The settings page has been slightly changed. Now everything is more compact. In the settings, you can view the version of the program. Additional links were also hidden.
 - Minor improvements and bug fixes.
 
-      v. 1.03 from 01.08.21
+## v. 1.03-en <h4>
+   from 01.08.21
 - Fixed bugs in hint texts.
 - Minor improvements and bug fixes.
 
-      v. 1.04 b from 14.08.21
+## v. 1.04b-en <h4>
+   from 14.08.21
 - Added a partial translation into English.
 - The mechanics of selecting and loading a language into the program have been redesigned.
 - Minor improvements and bug fixes.
 
-      v. 1.05 from 14.08.21
+   ## v. 1.05-en <h4>
+   from 14.08.21
 - The program is fully translated into English.
 - Added and improved options for selecting hints. Now there are 3 states of hints in the program:<br>
 Pop-up message<br>
@@ -108,12 +113,14 @@ Disabled<br><br>
 - Language settings and hints, they are able to remember the state, and the next time the program is turned on, the last selected option will load.
 - Many small improvements and bug fixes.
         
-      v. 1.06 from 16.08.21
+      ## v. 1.06-en <h4>
+   from 16.08.21
 - Added options for suggestions in the form of text or buttons to choose from.
 - The translation has been finalized.
 - Minor improvements and bug fixes.
         
-     v. 1.07 from 16.08.21
+      ## v. 1.07-en <h4>
+   from 16.08.21
 - Added a dark theme. The ability to choose between light and dark dark.
 - Corrected translation in some places
 - Minor improvements and bug fixes.
