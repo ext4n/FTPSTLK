@@ -113,13 +113,13 @@ Disabled<br><br>
 - Language settings and hints, they are able to remember the state, and the next time the program is turned on, the last selected option will load.
 - Many small improvements and bug fixes.
         
-      ## v. 1.06-en <h4>
+   ## v. 1.06-en <h4>
    from 16.08.21
 - Added options for suggestions in the form of text or buttons to choose from.
 - The translation has been finalized.
 - Minor improvements and bug fixes.
         
-      ## v. 1.07-en <h4>
+   ## v. 1.07-en <h4>
    from 16.08.21
 - Added a dark theme. The ability to choose between light and dark dark.
 - Corrected translation in some places
