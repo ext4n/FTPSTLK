@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 1147
-  Top = 853
+  Left = 1087
+  Top = 1063
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'FTPSTLK by EXT4N#8417'
-  ClientHeight = 730
-  ClientWidth = 1737
+  ClientHeight = 737
+  ClientWidth = 1732
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,6 +19,17 @@ object Form1: TForm1
   OnShow = FormShow
   PixelsPerInch = 120
   TextHeight = 16
+  object versionprogs: TsLabelFX
+    Left = 1688
+    Top = 16
+    Width = 30
+    Height = 22
+    Caption = '1.10'
+    Visible = False
+    Angle = 0
+    Shadow.OffsetKeeper.LeftTop = -2
+    Shadow.OffsetKeeper.RightBottom = 4
+  end
   object sButton1: TsButton
     Left = 256
     Top = 8
@@ -591,7 +602,7 @@ object Form1: TForm1
     Left = 1128
     Top = 128
     Width = 593
-    Height = 81
+    Height = 41
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -602,7 +613,7 @@ object Form1: TForm1
   end
   object sButton8: TsButton
     Left = 1128
-    Top = 256
+    Top = 240
     Width = 593
     Height = 25
     Caption = 'dds download'
@@ -617,7 +628,7 @@ object Form1: TForm1
     OnClick = sButton8Click
   end
   object sGroupBox4: TsGroupBox
-    Left = 176
+    Left = 8
     Top = 304
     Width = 361
     Height = 241
@@ -707,7 +718,7 @@ object Form1: TForm1
     end
   end
   object sGroupBox5: TsGroupBox
-    Left = 648
+    Left = 392
     Top = 304
     Width = 345
     Height = 241
@@ -906,7 +917,27 @@ object Form1: TForm1
       'In the form of buttons'
       'Theme'
       'Light'
-      'Dark')
+      'Dark'
+      
+        'Attention! Libraries libeay32.dll and ssleay32.dll are required ' +
+        'to check the update and then update the program. If you continue' +
+        ', they will be unpacked into the program folder.After unpacking,' +
+        ' the program will restart!'
+      'Update'
+      '[Check for update]'
+      'Current version: '
+      'Check for update'
+      'Check for updates automatically'
+      'New version available: '
+      'Whats new?'
+      'There is no update. You have the latest version.'
+      'Update program'
+      'New version '
+      'Click to update...'
+      'Updating. Please Wait...'
+      
+        'Update process will start. After the update, the program will be' +
+        ' restarted! Proceed?')
     ParentFont = False
     TabOrder = 13
     Text = 
@@ -967,7 +998,16 @@ object Form1: TForm1
       'e data with your friends'#13#10'You can share the settings with your f' +
       'riends, or automatically add the settings to the program if they' +
       ' have been shared with you'#13#10'Type of hints'#13#10'In the form of text'#13#10 +
-      'In the form of buttons'#13#10'Theme'#13#10'Light'#13#10'Dark'#13#10
+      'In the form of buttons'#13#10'Theme'#13#10'Light'#13#10'Dark'#13#10'Attention! Libraries' +
+      ' libeay32.dll and ssleay32.dll are required to check the update ' +
+      'and then update the program. If you continue, they will be unpac' +
+      'ked into the program folder.After unpacking, the program will re' +
+      'start!'#13#10'Update'#13#10'[Check for update]'#13#10'Current version: '#13#10'Check for' +
+      ' update'#13#10'Check for updates automatically'#13#10'New version available:' +
+      ' '#13#10'Whats new?'#13#10'There is no update. You have the latest version.'#13 +
+      #10'Update program'#13#10'New version '#13#10'Click to update...'#13#10'Updating. Ple' +
+      'ase Wait...'#13#10'Update process will start. After the update, the pr' +
+      'ogram will be restarted! Proceed?'#13#10
   end
   object rulang: TsMemo
     Left = 16
@@ -1109,7 +1149,27 @@ object Form1: TForm1
       #1042' '#1074#1080#1076#1077' '#1082#1085#1086#1087#1086#1082
       #1058#1077#1084#1072
       #1057#1074#1077#1090#1083#1072#1103
-      #1058#1105#1084#1085#1072#1103)
+      #1058#1105#1084#1085#1072#1103
+      
+        #1042#1085#1080#1084#1072#1085#1080#1077'! '#1044#1083#1103' '#1087#1088#1086#1074#1077#1088#1082#1080' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103' '#1080' '#1087#1086#1089#1083#1077#1076#1091#1102#1097#1077#1075#1086' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103' '#1087#1088#1086#1075 +
+        #1088#1072#1084#1084#1099' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1099' '#1073#1080#1073#1083#1080#1086#1090#1077#1082#1080' libeay32.dll '#1080' ssleay32.dll. '#1045#1089#1083#1080' '#1087#1088 +
+        #1086#1076#1086#1083#1078#1080#1090#1100', '#1086#1085#1080' '#1088#1072#1089#1087#1072#1082#1091#1102#1090#1089#1103' '#1074' '#1087#1072#1087#1082#1091' '#1089' '#1087#1088#1086#1075#1088#1072#1084#1084#1086#1081'.'#1055#1086#1089#1083#1077' '#1088#1072#1089#1089#1087#1072#1082#1086#1074#1082#1080 +
+        ' '#1087#1088#1086#1075#1088#1072#1084#1084#1072' '#1087#1077#1088#1077#1079#1072#1087#1091#1089#1090#1080#1090#1089#1103'!'
+      #1054#1073#1085#1086#1074#1083#1077#1085#1080#1077
+      '['#1055#1088#1086#1074#1077#1088#1080#1090#1100' '#1085#1072' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1077']'
+      #1058#1077#1082#1091#1097#1072#1103' '#1074#1077#1088#1089#1080#1103': '
+      #1055#1088#1086#1074#1077#1088#1080#1090#1100' '#1085#1072' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1077
+      #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080' '#1087#1088#1086#1074#1077#1088#1103#1090#1100' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103
+      #1044#1086#1089#1090#1091#1087#1085#1072' '#1085#1086#1074#1072#1103' '#1074#1077#1088#1089#1080#1103': '
+      #1063#1090#1086' '#1085#1086#1074#1086#1075#1086'?'
+      #1054#1073#1085#1086#1074#1083#1077#1085#1080#1077' '#1086#1090#1089#1091#1090#1074#1091#1077#1090'. '#1040#1082#1090#1091#1072#1083#1100#1085#1072#1103' '#1074#1077#1088#1089#1080#1103'.'
+      #1054#1073#1085#1086#1074#1080#1090#1100
+      #1053#1086#1074#1072#1103' '#1074#1077#1088#1089#1080#1103' '
+      #1053#1072#1078#1084#1080#1090#1077' '#1095#1090#1086#1073#1099' '#1086#1073#1085#1086#1074#1080#1090#1100'...'
+      #1054#1073#1085#1086#1074#1083#1103#1102'. '#1054#1078#1080#1076#1072#1081#1090#1077'...'
+      
+        #1041#1091#1076#1077#1090' '#1079#1072#1087#1091#1097#1077#1085' '#1087#1088#1086#1094#1077#1089#1089' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103'. '#1055#1086#1089#1083#1077' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1072' '#1073#1091#1076 +
+        #1077#1090' '#1087#1077#1088#1077#1079#1072#1087#1091#1097#1077#1085#1072'! '#1055#1088#1086#1076#1086#1083#1078#1080#1090#1100'?')
     ParentFont = False
     TabOrder = 14
     Text = 
@@ -1169,11 +1229,20 @@ object Form1: TForm1
       #1080' '#1076#1088#1091#1079#1100#1103#1084#1080#13#10#1042#1099' '#1084#1086#1078#1077#1090#1077' '#1087#1086#1076#1077#1083#1080#1090#1100#1089#1103' '#1085#1072#1089#1090#1088#1086#1081#1082#1072#1084#1080' '#1089' '#1076#1088#1091#1079#1100#1103#1084#1080', '#1080#1083#1080' '#1076#1086#1073 +
       #1072#1074#1080#1090#1100' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1074' '#1087#1088#1086#1075#1088#1072#1084#1084#1091', '#1077#1089#1083#1080' '#1080#1084#1080' '#1089' '#1042#1072#1084#1080' '#1087#1086#1076#1077#1083 +
       #1080#1083#1080#1089#1100#13#10#1042#1080#1076' '#1087#1086#1076#1089#1082#1072#1079#1086#1082#13#10#1042' '#1074#1080#1076#1077' '#1090#1077#1082#1089#1090#1072#13#10#1042' '#1074#1080#1076#1077' '#1082#1085#1086#1087#1086#1082#13#10#1058#1077#1084#1072#13#10#1057#1074#1077#1090#1083#1072 +
-      #1103#13#10#1058#1105#1084#1085#1072#1103#13#10
+      #1103#13#10#1058#1105#1084#1085#1072#1103#13#10#1042#1085#1080#1084#1072#1085#1080#1077'! '#1044#1083#1103' '#1087#1088#1086#1074#1077#1088#1082#1080' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103' '#1080' '#1087#1086#1089#1083#1077#1076#1091#1102#1097#1077#1075#1086' '#1086#1073#1085#1086 +
+      #1074#1083#1077#1085#1080#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1099' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1099' '#1073#1080#1073#1083#1080#1086#1090#1077#1082#1080' libeay32.dll '#1080' ssleay32.d' +
+      'll. '#1045#1089#1083#1080' '#1087#1088#1086#1076#1086#1083#1078#1080#1090#1100', '#1086#1085#1080' '#1088#1072#1089#1087#1072#1082#1091#1102#1090#1089#1103' '#1074' '#1087#1072#1087#1082#1091' '#1089' '#1087#1088#1086#1075#1088#1072#1084#1084#1086#1081'.'#1055#1086#1089#1083#1077' ' +
+      #1088#1072#1089#1089#1087#1072#1082#1086#1074#1082#1080' '#1087#1088#1086#1075#1088#1072#1084#1084#1072' '#1087#1077#1088#1077#1079#1072#1087#1091#1089#1090#1080#1090#1089#1103'!'#13#10#1054#1073#1085#1086#1074#1083#1077#1085#1080#1077#13#10'['#1055#1088#1086#1074#1077#1088#1080#1090#1100' '#1085#1072 +
+      ' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1077']'#13#10#1058#1077#1082#1091#1097#1072#1103' '#1074#1077#1088#1089#1080#1103': '#13#10#1055#1088#1086#1074#1077#1088#1080#1090#1100' '#1085#1072' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1077#13#10#1040#1074#1090#1086#1084#1072#1090 +
+      #1080#1095#1077#1089#1082#1080' '#1087#1088#1086#1074#1077#1088#1103#1090#1100' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103#13#10#1044#1086#1089#1090#1091#1087#1085#1072' '#1085#1086#1074#1072#1103' '#1074#1077#1088#1089#1080#1103': '#13#10#1063#1090#1086' '#1085#1086#1074#1086#1075#1086 +
+      '?'#13#10#1054#1073#1085#1086#1074#1083#1077#1085#1080#1077' '#1086#1090#1089#1091#1090#1074#1091#1077#1090'. '#1040#1082#1090#1091#1072#1083#1100#1085#1072#1103' '#1074#1077#1088#1089#1080#1103'.'#13#10#1054#1073#1085#1086#1074#1080#1090#1100#13#10#1053#1086#1074#1072#1103' '#1074#1077#1088 +
+      #1089#1080#1103' '#13#10#1053#1072#1078#1084#1080#1090#1077' '#1095#1090#1086#1073#1099' '#1086#1073#1085#1086#1074#1080#1090#1100'...'#13#10#1054#1073#1085#1086#1074#1083#1103#1102'. '#1054#1078#1080#1076#1072#1081#1090#1077'...'#13#10#1041#1091#1076#1077#1090' '#1079#1072 +
+      #1087#1091#1097#1077#1085' '#1087#1088#1086#1094#1077#1089#1089' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103'. '#1055#1086#1089#1083#1077' '#1086#1073#1085#1086#1074#1083#1077#1085#1080#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1072' '#1073#1091#1076#1077#1090' '#1087#1077#1088#1077#1079 +
+      #1072#1087#1091#1097#1077#1085#1072'! '#1055#1088#1086#1076#1086#1083#1078#1080#1090#1100'?'#13#10
   end
   object languages: TsButton
     Left = 1128
-    Top = 288
+    Top = 272
     Width = 593
     Height = 25
     Caption = 'languages'
@@ -1186,6 +1255,109 @@ object Form1: TForm1
     TabOrder = 15
     Visible = False
     OnClick = languagesClick
+  end
+  object sGroupBox6: TsGroupBox
+    Left = 752
+    Top = 304
+    Width = 345
+    Height = 241
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Comic Sans MS'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 16
+    Visible = False
+    object sLabelFX37: TsLabelFX
+      Left = 8
+      Top = 24
+      Width = 329
+      Height = 22
+      Alignment = taCenter
+      AutoSize = False
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sLabelFX38: TsLabelFX
+      Left = 8
+      Top = 104
+      Width = 329
+      Height = 22
+      Alignment = taCenter
+      AutoSize = False
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object lbProgress: TsLabelFX
+      Left = 304
+      Top = 208
+      Width = 25
+      Height = 24
+      Caption = '0%'
+      Visible = False
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -2
+      Shadow.OffsetKeeper.RightBottom = 4
+    end
+    object sBitBtn1: TsBitBtn
+      Left = 8
+      Top = 48
+      Width = 329
+      Height = 25
+      TabOrder = 0
+      OnClick = sBitBtn1Click
+      Grayed = True
+    end
+    object sCheckBox2: TsCheckBox
+      Left = 8
+      Top = 80
+      Width = 13
+      Height = 13
+      TabOrder = 1
+    end
+    object updvers: TsButton
+      Left = 8
+      Top = 168
+      Width = 329
+      Height = 25
+      TabOrder = 3
+      Visible = False
+      OnClick = updversClick
+    end
+    object sLabelFX39: TsButton
+      Left = 8
+      Top = 128
+      Width = 329
+      Height = 25
+      TabOrder = 4
+      Visible = False
+      OnClick = sLabelFX39Click
+    end
+    object pbFile: TsProgressBar
+      Left = 8
+      Top = 208
+      Width = 289
+      Height = 21
+      TabOrder = 2
+      Visible = False
+    end
+  end
+  object ngit: TsMemo
+    Left = 1128
+    Top = 176
+    Width = 5000
+    Height = 33
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Comic Sans MS'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 17
+    Visible = False
   end
   object sSkinManager1: TsSkinManager
     Effects.DiscoloredGlyphs = True
@@ -8764,8 +8936,11 @@ object Form1: TForm1
     end
     object N2: TMenuItem
       object N12: TMenuItem
-        Caption = '1.07'
+        AutoLineReduction = maManual
         Enabled = False
+      end
+      object j1: TMenuItem
+        OnClick = j1Click
       end
     end
     object N5: TMenuItem
@@ -9250,5 +9425,30 @@ object Form1: TForm1
     UseSkinData = True
     Left = 393
     Top = 12
+  end
+  object sTitleBar1: TsTitleBar
+    Items = <
+      item
+        FontData.Font.Charset = DEFAULT_CHARSET
+        FontData.Font.Color = clWindowText
+        FontData.Font.Height = -13
+        FontData.Font.Name = 'MS Sans Serif'
+        FontData.Font.Style = []
+        Visible = False
+        Index = 0
+        Name = 'TacTitleBarItem'
+        Style = bsMenu
+        OnClick = sTitleBar1Items0Click
+      end>
+    ShowCaption = True
+    Left = 592
+    Top = 8
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 2500
+    OnTimer = Timer1Timer
+    Left = 624
+    Top = 8
   end
 end

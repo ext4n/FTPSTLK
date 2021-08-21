@@ -18,8 +18,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, FTPSend, StdCtrls, sButton, sEdit, sCheckBox, Mask, sMaskEdit,
   sCustomComboEdit, sToolEdit, sLabel, sSkinManager, sGroupBox, IniFiles,
-  sMemo, ComCtrls, httpSend, ExtCtrls, Buttons, sSpeedButton, Menus, CLIPBrd,
-  sDialogs, RegExpr, ShellAPI, acAlphaHints, sBitBtn;
+  sMemo, ComCtrls, httpSend, ssl_openssl, ExtCtrls, Buttons, sSpeedButton, Menus, CLIPBrd,
+  sDialogs, RegExpr, ShellAPI, acAlphaHints, sBitBtn, acFloatCtrls,
+  acTitleBar, acProgressBar, blcksock, synautil;
 
 type
   TForm1 = class(TForm)
@@ -124,6 +125,20 @@ type
     N15: TMenuItem;
     N16: TMenuItem;
     N17: TMenuItem;
+    j1: TMenuItem;
+    sGroupBox6: TsGroupBox;
+    sLabelFX37: TsLabelFX;
+    sLabelFX38: TsLabelFX;
+    sBitBtn1: TsBitBtn;
+    sCheckBox2: TsCheckBox;
+    ngit: TsMemo;
+    updvers: TsButton;
+    sLabelFX39: TsButton;
+    sTitleBar1: TsTitleBar;
+    versionprogs: TsLabelFX;
+    pbFile: TsProgressBar;
+    lbProgress: TsLabelFX;
+    Timer1: TTimer;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -187,22 +202,166 @@ type
     procedure N13Click(Sender: TObject);
     procedure N16Click(Sender: TObject);
     procedure N17Click(Sender: TObject);
+    procedure j1Click(Sender: TObject);
+    procedure sBitBtn1Click(Sender: TObject);
+    procedure sLabelFX39Click(Sender: TObject);
+    procedure sTitleBar1Items0Click(Sender: TObject);
+    procedure updversClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
+    TURLD = class(TThread)
+    private
+    { Private declarations }
+  protected
+  procedure Execute; override;
+  end;
+
+      TURLF = class(TThread)
+    private
+    Download: int64;
+    procedure SynaProgress(Sender: TObject; Reason: THookSocketReason;
+    const Value: String);
+    function GetSize(URL: string): int64;
+    function GetSize2(URL: string): int64;
+  protected
+  procedure Execute; override;
+  end;
 
 var
   Form1: TForm1;
-  save, dds, path, impt, pasive, tap: string;
+  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd: string;
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
   H: THandle;
+
+
+  URLXD: TURLD;
+  URLXF: TURLF;
+
 implementation
 
 {$R *.dfm}
+{$R ssl.res}
+
+procedure ExtractRes(ResType, ResName, ResNewName : String);
+var Res : TResourceStream;
+ begin Res := TResourceStream.Create(Hinstance, Resname, Pchar(ResType));
+ Res.SavetoFile(ResNewName);
+ Res.Free;
+end;
+
+
+
+
+function TURLF.GetSize(URL: string): int64;
+var i:integer;
+    size:string;
+    ch:char;
+begin
+  Result:=-1;
+  with THTTPSend.Create do
+  if HTTPMethod('HEAD',URL) then
+    begin
+      for I := 0 to Headers.Count - 1 do
+        begin
+          if pos('content-length',lowercase(Headers[i]))>0 then
+            begin
+              size:='';
+//              for ch in Headers[i]do
+                if ch in ['0'..'9'] then
+                   size:=size+ch;
+              Result:=StrToInt(size)+Length(Headers.Text);
+              break;
+            end;
+        end;
+    end
+end;
+
+function TURLF.GetSize2(URL: string): int64;
+var size:string;
+begin
+  Result:=-1;
+  with THTTPSend.Create do
+  if HTTPMethod('HEAD',URL) then
+    begin
+      HeadersToList(Headers);//приводим список заголовков к виду Название=Значение
+      size:=Headers.Values['Content-Length'];
+      Result:=StrToIntDef(size,-1);
+      if Result>-1 then
+         Result:=Result+Length(Headers.Text)
+    end
+end;
+
+
+procedure TURLF.SynaProgress(Sender: TObject; Reason: THookSocketReason;
+  const Value: String);
+begin
+  if Reason=HR_ReadCount then
+    begin
+      Download:=Download+StrToInt(Value);
+      if Form1.pbFile.Max>0 then
+        begin
+          Form1.pbFile.Position:=Download;
+          Form1.lbProgress.Caption:=IntToStr(Trunc((Download/Form1.pbFile.Max)*100))+'%';
+        end
+      else
+      Form1.lbProgress.Caption:=IntToStr(Download)+' b';
+      Application.ProcessMessages;
+    end
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+procedure TURLD.execute;
+begin
+Form1.sBitBtn1.Click;
+end;
+
+procedure TURLF.execute;
+var HTTP: THTTPSend;
+    MaxSize: int64;
+begin
+Form1.pbFile.Visible:=true;
+Form1.lbProgress.Visible:=true;
+  Download:=0;
+  MaxSize:=GetSize2('https://raw.githubusercontent.com/ext4n/FTPSTLK/main/FTPSTLK.exe');
+  if MaxSize>0 then
+    Form1.pbFile.Max:=MaxSize
+  else
+    Form1.pbFile.Max:=0;
+  HTTP:=THTTPSend.Create;
+  HTTP.Sock.OnStatus:=SynaProgress;
+  try
+    if HTTP.HTTPMethod('GET','https://raw.githubusercontent.com/ext4n/FTPSTLK/main/FTPSTLK.exe') then
+       HTTP.Document.SaveToFile(ExtractFilePath(Application.ExeName)+'TEMP-FTPSTLK.bin');
+  finally
+    HTTP.Free;
+  end;
+end;
 
 procedure TForm1.sButton2Click(Sender: TObject);
 begin
@@ -275,9 +434,13 @@ sGroupBox2.Visible:=false;
 sGroupBox3.Visible:=false;
 sGroupBox4.Visible:=false;
 sGroupBox5.Visible:=false;
+sGroupBox6.Visible:=false;
 sButton5.Enabled:=true;
 sButton6.Enabled:=true;
 tap:='3';
+sLabelFX38.Caption:='';
+updvers.Visible:=false;
+sLabelFX39.Visible:=false;
 end;
 
 procedure TForm1.sEdit1KeyPress(Sender: TObject; var Key: Char);
@@ -306,6 +469,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+N12.Caption:=versionprogs.Caption;
 Form1.ClientHeight:=300;
 Form1.ClientWidth:=360;
 sGroupBox1.Left:=8;
@@ -318,6 +482,8 @@ sGroupBox4.Left:=8;
 sGroupBox4.Top:=48;
 sGroupBox5.Left:=8;
 sGroupBox5.Top:=48;
+sGroupBox6.Left:=8;
+sGroupBox6.Top:=48;
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 sEdit1.Text:=Ini.ReadString('MAIN','H',sEdit1.Text);
 sEdit2.Text:=Ini.ReadString('MAIN','U',sEdit2.Text);
@@ -336,12 +502,18 @@ N17.Checked:=Ini.ReadBool('THEME','THEME2', N17.Checked);
 sEdit4.Text:=Ini.ReadString('SITE','URL',sEdit4.Text);
 sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
 tap:=Ini.ReadString('TAP','NUM',tap);
+resr:=Ini.ReadString('TAP','RES',resr);
+Scheckbox2.Checked:=Ini.ReadBool('PROGRAM','UPDATE', Scheckbox2.Checked);
 Ini.Free;
 lang.Text:=rulang.Text;
 ////////////////////////////////////////////
 languages.Click;
-if N4.Checked=true then N4.Click;
-if E1.Checked=true then E1.Click;
+if N4.Checked=true then begin
+N4.Click;
+l:='ru' end;
+if E1.Checked=true then begin
+E1.Click;
+l:='en' end;
 if N8.Checked=true then N8.Click;
 if N7.Checked=true then N7.Click;
 if N9.Checked=true then N9.Click;
@@ -365,6 +537,7 @@ end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+ resr:='n';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('MAIN','H',sEdit1.Text);
 Ini.WriteString('MAIN','U',sEdit2.Text);
@@ -383,6 +556,8 @@ Ini.WriteBool('THEME','THEME2', N17.Checked);
 Ini.WriteString('SITE','URL',sEdit4.Text);
 Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
+Ini.WriteString('TAP','RES',resr);
+Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
 Ini.Free;
 end;
 
@@ -394,9 +569,13 @@ sGroupBox2.Visible:=true;
 sGroupBox3.Visible:=false;
 sGroupBox4.Visible:=false;
 sGroupBox5.Visible:=false;
+sGroupBox5.Visible:=false;
 sButton5.Enabled:=false;
 sButton6.Enabled:=true;
 tap:='1';
+sLabelFX38.Caption:='';
+updvers.Visible:=false;
+sLabelFX39.Visible:=false;
 end;
 
 procedure TForm1.sButton6Click(Sender: TObject);
@@ -407,9 +586,13 @@ sGroupBox2.Visible:=false;
 sGroupBox3.Visible:=true;
 sGroupBox4.Visible:=false;
 sGroupBox5.Visible:=false;
+sGroupBox6.Visible:=false;
 sButton5.Enabled:=true;
 sButton6.Enabled:=false;
 tap:='2';
+sLabelFX38.Caption:='';
+updvers.Visible:=false;
+sLabelFX39.Visible:=false;
 end;
 
 procedure TForm1.sButton7Click(Sender: TObject);
@@ -777,6 +960,27 @@ begin
 if tap='1' then sButton5.Click;
 if tap='2' then sButton6.Click;
 if tap='3' then sButton1.Click;
+if resr='y' then
+begin
+ sGroupBox1.Visible:=false;
+ sGroupBox2.Visible:=false;
+ sGroupBox3.Visible:=false;
+ sGroupBox4.Visible:=false;
+ sGroupBox5.Visible:=false;
+ sGroupBox6.Visible:=true;
+ sButton1.Enabled:=true;
+sLabelFX37.Caption :=sLabelFX37.Caption+N12.Caption;
+end;
+resr:='n';
+enterupd:='0';
+
+if (sCheckbox2.Checked=true) and (FileExists('libeay32.dll')) and (FileExists('ssleay32.dll')) then
+begin
+  URLXD:=TURLD.Create(False);
+  URLXD.Priority:=tpNormal;
+  URLXD.FreeOnTerminate:=true;
+end;
+
 end;
 
 procedure TForm1.sLabelFX15Click(Sender: TObject);
@@ -1103,6 +1307,7 @@ procedure TForm1.N4Click(Sender: TObject);
 begin
 N4.Checked:=true;
 E1.Checked:=false;
+l:='ru';
 lang.Text:=rulang.Text;
 languages.Click;
 if ((N7.Checked=true) and (N14.Checked=true)) or ((N7.Checked=true) and (N13.Checked=true)) then
@@ -1137,6 +1342,7 @@ procedure TForm1.E1Click(Sender: TObject);
 begin
 N4.Checked:=false;
 E1.Checked:=true;
+l:='en';
 lang.Text:=enlang.Text;
 languages.Click;
 if ((N7.Checked=true) and (N14.Checked=true)) or ((N7.Checked=true) and (N13.Checked=true)) then
@@ -1177,6 +1383,7 @@ sGroupBox3.Caption:=lang.Lines[1];
 sGroupBox1.Caption:=lang.Lines[2];
 sGroupBox4.Caption:=lang.Lines[25];
 sGroupBox5.Caption:=lang.Lines[31];
+sGroupBox6.Caption:=lang.Lines[90];
 sButton2.Caption:=lang.Lines[3];
 sButton3.Caption:=lang.Lines[4];
 sLabelFx4.Caption:=lang.Lines[5];
@@ -1234,6 +1441,19 @@ N13.Caption:=lang.Lines[85];
 N15.Caption:=lang.Lines[86];
 N16.Caption:=lang.Lines[87];
 N17.Caption:=lang.Lines[88];
+j1.Caption:=lang.Lines[91];
+sLabelFX37.Caption:=lang.Lines[92];
+sBitBtn1.Caption:=lang.Lines[93];
+sCheckbox2.Caption:=lang.Lines[94];
+sLabelFX38.Caption:=lang.Lines[95];
+sLabelFX39.Caption:=lang.Lines[96];
+updvers.Caption:=lang.Lines[98];
+if enterupd='0' then begin
+sTitleBar1.Items[0].Caption:=lang.Lines[99]+ngit.Lines[0]+'. '+lang.Lines[100];
+end;
+if enterupd='1' then begin
+sTitleBar1.Items[0].Caption:=lang.Lines[101];
+end;
 end;
 
 procedure TForm1.N8Click(Sender: TObject);
@@ -1643,6 +1863,165 @@ N16.Checked:=false;
 N16.Enabled:=true;
 N17.Enabled:=false;
 sSkinmanager1.SkinName:='TV-b (internal)';
+end;
+
+procedure TForm1.j1Click(Sender: TObject);
+var
+  buttonSelected : Integer;
+  FullProgPath: PChar;
+begin
+  If (not FileExists('libeay32.dll')) and (not FileExists('ssleay32.dll')) then
+  begin
+buttonSelected := MessageDlg(lang.Lines[89],mtInformation, mbOKCancel, 0);
+  if (buttonSelected = mrOK) then
+  begin
+ ExtractRes('EXEFILE', 'LIBEAY32', 'libeay32.dll');
+ ExtractRes('EXEFILE', 'SSLEAY32', 'ssleay32.dll');
+ ExtractRes('EXEFILE', 'UPDATE', 'update.exe');
+ resr:='y';
+Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
+Ini.WriteString('MAIN','H',sEdit1.Text);
+Ini.WriteString('MAIN','U',sEdit2.Text);
+Ini.WriteString('MAIN','P',sEdit3.Text);
+Ini.WriteString('MAIN','SAVEPATH',sDirectoryEdit1.Text);
+Ini.WriteBool('MAIN','PASSIVE', scheckbox1.checked);
+Ini.WriteBool('LANG','RU', N4.Checked);
+Ini.WriteBool('LANG','EN', E1.Checked);
+Ini.WriteBool('HINT','CLICK', N8.Checked);
+Ini.WriteBool('HINT','HOVER', N7.Checked);
+Ini.WriteBool('HINT','DISABLE', N9.Checked);
+Ini.WriteBool('HINT','TYPE_TEXT', N14.Checked);
+Ini.WriteBool('HINT','TYPE_BUTTON', N13.Checked);
+Ini.WriteBool('THEME','THEME1', N16.Checked);
+Ini.WriteBool('THEME','THEME2', N17.Checked);
+Ini.WriteString('SITE','URL',sEdit4.Text);
+Ini.WriteString('SITE','FOLDER',sEdit5.Text);
+Ini.WriteString('TAP','NUM',tap);
+Ini.WriteString('TAP','RES',resr);
+Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
+Ini.Free;
+ FullProgPath:=PChar(Application.ExeName);
+ WinExec(FullProgPath,SW_SHOW);
+ Application.Terminate;
+ end;
+end;
+  If (FileExists('libeay32.dll')) and (FileExists('ssleay32.dll')) then
+  begin
+ sGroupBox1.Visible:=false;
+ sGroupBox2.Visible:=false;
+ sGroupBox3.Visible:=false;
+ sGroupBox4.Visible:=false;
+ sGroupBox5.Visible:=false;
+ sGroupBox6.Visible:=true;
+ sButton1.Enabled:=true;
+ end;
+if sLabelFX37.Caption=lang.Lines[92] then
+begin
+sLabelFX37.Caption :=sLabelFX37.Caption+N12.Caption;
+end;
+sLabelFX38.Caption:='';
+updvers.Visible:=false;
+sLabelFX39.Visible:=false;
+end;
+
+procedure TForm1.sBitBtn1Click(Sender: TObject);
+var
+release:tregexpr;
+git:string;
+begin
+sLabelFX38.Caption:='';
+ngit.Clear;
+HttpGetText('https://github.com/ext4n/FTPSTLK/releases.atom', ngit.Lines);
+//////////////////////////////////////////////////////////////////////////
+git:=ngit.Text;
+release:=tregexpr.Create;
+release.Expression:='(href="https://github.com/ext4n/FTPSTLK/releases/tag/)(.*)';
+if release.Exec(git) then
+ begin
+ ngit.Lines.Clear;
+ repeat
+ ngit.Lines.Add(release.Match[0]);
+ until not release.ExecNext;
+ end
+ else
+release.Free;
+ngit.Text := StringReplace(ngit.Text, 'href="https://github.com/ext4n/FTPSTLK/releases/tag/', '', [rfReplaceAll]);
+ngit.Text := StringReplace(ngit.Text, '"/>', '', [rfReplaceAll]);
+if versionprogs.Caption<>ngit.Lines[0] then
+begin
+sLabelFX38.Caption:=lang.Lines[95]+ngit.Lines[0];
+updvers.Visible:=true;
+sLabelFX39.Visible:=true;
+sTitleBar1.Items[0].Visible:=true;
+sTitleBar1.Items[0].Caption:=lang.Lines[99]+ngit.Lines[0]+'. '+lang.Lines[100];
+enterupd:='0';
+end;
+if versionprogs.Caption=ngit.Lines[0] then
+begin
+sLabelFX38.Caption:=lang.Lines[97];
+end;
+end;
+
+procedure TForm1.sLabelFX39Click(Sender: TObject);
+var
+link : string ;
+begin
+if l='ru' then  begin
+ngit.Text := StringReplace(ngit.Text, '.', '', [rfReplaceAll]);
+link:='https://github.com/ext4n/FTPSTLK#v-'+ngit.Lines[0]+'-ru-';
+ShellExecute(0, 'open', PChar(link), nil, nil, SW_SHOW);
+end;
+if l='en' then  begin
+ngit.Text := StringReplace(ngit.Text, '.', '', [rfReplaceAll]);
+link:='https://github.com/ext4n/FTPSTLK#v-'+ngit.Lines[0]+'-en-';
+ShellExecute(0, 'open', PChar(link), nil, nil, SW_SHOW);
+end;
+end;
+
+procedure TForm1.sTitleBar1Items0Click(Sender: TObject);
+var
+  buttonSelected : Integer;
+begin
+buttonSelected := MessageDlg(lang.Lines[102],mtInformation, mbOKCancel, 0);
+  if (buttonSelected = mrOK) then
+  begin
+enterupd:='1';
+sTitleBar1.Items[0].Caption:=lang.Lines[101];
+sTitleBar1.Items[0].Down:=true;
+DeleteFile('TEMP-FTPSTLK.bin');
+Form1.pbFile.Visible:=true;
+Form1.lbProgress.Visible:=true;
+  URLXF:=TURLF.Create(False);
+  URLXF.Priority:=tphigher;
+  URLXF.FreeOnTerminate:=true;
+Timer1.Enabled:=true;
+end;
+end;
+
+procedure TForm1.updversClick(Sender: TObject);
+var
+  buttonSelected : Integer;
+begin
+buttonSelected := MessageDlg(lang.Lines[102],mtInformation, mbOKCancel, 0);
+  if (buttonSelected = mrOK) then
+  begin
+DeleteFile('TEMP-FTPSTLK.bin');
+Form1.pbFile.Visible:=true;
+Form1.lbProgress.Visible:=true;
+  URLXF:=TURLF.Create(False);
+  URLXF.Priority:=tphigher;
+  URLXF.FreeOnTerminate:=true;
+Timer1.Enabled:=true;
+end;
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+    if (Form1.lbProgress.Caption='100%') or (Form1.lbProgress.Caption='99%') then
+    begin
+    ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+'update.exe'), nil, nil, SW_RESTORE);
+    Form1.Close;
+    end;
 end;
 
 end.
