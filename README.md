@@ -1,4 +1,4 @@
-# FTPSTLK 1.07
+# FTPSTLK 1.10
 
 # 🇷🇺 RUSSIAN
 
@@ -49,6 +49,16 @@
 - Добавлена тёмная тема. Возможность выбора между светлой и тёмной темной.
 - Поправлен перевод в некоторых местах
 - Незначительные улучшения и баг фиксы.
+   
+ ## v. 1.10-ru <h4>
+   от 21.08.21
+- Добавлена функция обновления. Обновление программы происходит с гитхаба. В будущем ожидается доработка этой функции.
+- Теперь не обязательно постоянно посещать гитхаб в надежде на новую версию. Установите флажок в настройках обновления, и программа Вас оповестит когда выйдет очередное обновление.
+- Все дополнительные библиотеки хранятся внутри программы. И они будут распаковываться только тогда, когда Вы этого пожелаете:) Плюс ко всему любое действие будет запрашивать Вашего разрешения:)
+- Добавлен update.exe в программу и его исходники.
+- Поправлен перевод и вывод информации.
+- Множество доработок и багов.
+- Улучшения и баг фиксы.
         
         
 ## В планах... <h2>
@@ -124,6 +134,16 @@ Disabled<br><br>
 - Added a dark theme. The ability to choose between light and dark dark.
 - Corrected translation in some places
 - Minor improvements and bug fixes.
+   
+    ## v. 1.10-en <h4>
+    from 21.08.21
+- Added update function. The program is updated from the github. Improvement of this function is expected in the future.
+- Now it is not necessary to constantly visit the github in the hope of a new version. Check the box in the update settings, and the program will notify you when the next update is released.
+- All additional libraries are stored inside the program. And they will be unpacked only when you want it :) + any action will ask for your permission :)
+- Added update.exe to the program and its sources.
+- Fixed translation and output of information.
+- Many improvements and bugs.
+- Improvements and bug fixes.
  
  
 ## In the plans... <h2>
