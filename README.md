@@ -167,7 +167,7 @@ Disabled<br><br>
 ## Advantages <h2>
 
 ▶ Open source code that you can download and view.<br>
-▶ For the correct functionality of the source code, third-party libraries are required: <a href='https://www.alphaskins.com /'>AlphaControls</a>, and <a href='http://synapse.ararat.cz/doku.php/download'>Synapse</a><br><br>
+▶ For the correct functionality of the source code, third-party libraries are required: <a href='https://www.alphaskins.com/'>AlphaControls</a>, and <a href='http://synapse.ararat.cz/doku.php/download'>Synapse</a><br><br>
 ▶ The program does not store or use your passwords. All the safety of your data is on your computer.<br>
 ▶ The program provides import/export of settings. Be careful who you pass your settings to! The responsibility lies only on your shoulders:)<br>
 
