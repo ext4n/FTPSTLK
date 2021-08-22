@@ -86,10 +86,11 @@
 2. Получите данные от FTP, а также через файловый менеджер или посредством программы Filezilla после подключения к FTP в корне сайта создайте папку. Название не принципиально, главное, чтобы было латиницей.
 3. Полученные данные FTP необходимо ввести в настройках программы.
 4. Необходимо указать адрес Вашего сайта в формате "https://site.com" или "http://site.com".
-5. Выберите файл на первой вкладке с сохранением. Под каждой кнопкой или полем для ввода есть подсказка ввиде "?", поэтому если что-то не понятно, можно обратится:)
-6. Для Выкачивания сохранения на второй вкладке Выберите путь куда складывать сохранения
-7. Вы можете проверить всё ли ок, перед тем как скачать. Соответвующая кнопка присутвует.
-8. В добавлении добавлен импорт/экспорт в настройках. Вы сможете импортировать в программу данные Ваших друзей, или самим экспортировать свои и поделиться в любой из соц сетей или дискорде:) Удачи! А будут вопросы или предложения, готов выслушать:)
+5. Перезагрузить программу для применения изменений.
+6. Выберите файл на первой вкладке с сохранением. Под каждой кнопкой или полем для ввода есть подсказка ввиде "?", поэтому если что-то не понятно, можно обратится:)
+7. Для Выкачивания сохранения на второй вкладке Выберите путь куда складывать сохранения
+8. Вы можете проверить всё ли ок, перед тем как скачать. Соответвующая кнопка присутвует.
+9. В добавлении добавлен импорт/экспорт в настройках. Вы сможете импортировать в программу данные Ваших друзей, или самим экспортировать свои и поделиться в любой из соц сетей или дискорде:) Удачи! А будут вопросы или предложения, готов выслушать:)
 <br><br><br><br>
 
 # 🇬🇧 ENGLISH
@@ -177,7 +178,8 @@ Disabled<br><br>
 2. Get the data from FTP, as well as through the file manager or through the Filezilla program after connecting to FTP, create a folder in the root of the site. The name does not matter, the main thing is that it should be in Latin.
 3. The received FTP data must be entered in the program settings.
 4. You must specify the address of your site in the format "https://site.com" or "http://site.com".
-5. Select the file on the first tab with saving. Under each button or input field there is a hint in the form "?", so if something is not clear, you can contact:)
-6. To pump out the save, on the second tab, select the path where to put the saves
-7. You can check if everything is ok before downloading. The corresponding button is present.
-8. The addition added import/export in the settings. You can import the data of your friends into the program, or export your own and share it in any of the social networks or discord:) Good luck! And if there are questions or suggestions, I am ready to listen:)
+5. Restart Program.
+6. Select the file on the first tab with saving. Under each button or input field there is a hint in the form "?", so if something is not clear, you can contact:)
+7. To pump out the save, on the second tab, select the path where to put the saves
+8. You can check if everything is ok before downloading. The corresponding button is present.
+9. The addition added import/export in the settings. You can import the data of your friends into the program, or export your own and share it in any of the social networks or discord:) Good luck! And if there are questions or suggestions, I am ready to listen:)
