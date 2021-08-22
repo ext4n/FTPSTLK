@@ -1,4 +1,4 @@
-# FTPSTLK 1.10
+# FTPSTLK 1.11
 
 # 🇷🇺 RUSSIAN
 
@@ -59,6 +59,12 @@
 - Поправлен перевод и вывод информации.
 - Множество доработок и багов.
 - Улучшения и баг фиксы.
+   
+ ## v. 1.11-ru <h4>
+   от 22.08.21
+- Поправлена ошибка обновления, при которой в момент обновления файл не мог обновится, и запускалась старая версия программы.
+- Обновлена логика update программы. 
+- Незначительные улучшения и баг фиксы.
         
         
 ## В планах... <h2>
@@ -144,6 +150,12 @@ Disabled<br><br>
 - Fixed translation and output of information.
 - Many improvements and bugs.
 - Improvements and bug fixes.
+   
+   ## v. 1.11-en <h4>
+   from 22.08.21
+- Fixed update error, when at the time of update the file could not be updated, and the old version of the program was started.
+- Updated program update logic.
+- Minor improvements and bug fixes.
  
  
 ## In the plans... <h2>
