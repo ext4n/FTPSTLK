@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 1087
-  Top = 1063
+  Left = 1992
+  Top = 978
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'FTPSTLK by EXT4N#8417'
@@ -24,7 +24,7 @@ object Form1: TForm1
     Top = 16
     Width = 30
     Height = 22
-    Caption = '1.10'
+    Caption = '1.11'
     Visible = False
     Angle = 0
     Shadow.OffsetKeeper.LeftTop = -2

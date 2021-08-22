@@ -233,7 +233,7 @@ type
 
 var
   Form1: TForm1;
-  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd: string;
+  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl: string;
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
@@ -973,7 +973,7 @@ sLabelFX37.Caption :=sLabelFX37.Caption+N12.Caption;
 end;
 resr:='n';
 enterupd:='0';
-
+dnl:='0';
 if (sCheckbox2.Checked=true) and (FileExists('libeay32.dll')) and (FileExists('ssleay32.dll')) then
 begin
   URLXD:=TURLD.Create(False);
@@ -2019,6 +2019,10 @@ procedure TForm1.Timer1Timer(Sender: TObject);
 begin
     if (Form1.lbProgress.Caption='100%') or (Form1.lbProgress.Caption='99%') then
     begin
+dnl:='Yeah!';
+Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
+Ini.WriteString('PROGRAM','UPDDWNL',dnl);
+Ini.Free;
     ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+'update.exe'), nil, nil, SW_RESTORE);
     Form1.Close;
     end;
