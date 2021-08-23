@@ -24,7 +24,7 @@ type
 var
   Form1: TForm1;
   Ini:TiniFile;
-  dnl : string;
+  dnl,exefile,nu: string;
 implementation
 
 {$R *.dfm}
@@ -33,13 +33,11 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 dnl:=Ini.ReadString('PROGRAM','UPDDWNL',dnl);
+exefile:=Ini.ReadString('PROGRAM','EXE',exefile);
+nu:=Ini.ReadString('PROGRAM','NEW UPDATE',nu);
 Ini.Free;
-
-//DeleteFile('FTPSTLK.exe');
-//RenameFile('TEMP-FTPSTLK.bin', 'FTPSTLK.exe');
-//ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+'FTPSTLK.exe'), nil, nil, SW_RESTORE);
-//Application.Terminate;
-//Exit;
+exefile := StringReplace(exefile, '.exe', '', [rfReplaceAll]);
+SetWindowPos(Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE or SWP_NOSIZE or SWP_NOACTIVATE);
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
@@ -59,12 +57,14 @@ begin
   begin
     Timer1.Enabled:=False;
 dnl:='0';
+nu:='1';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','UPDDWNL',dnl);
+Ini.WriteString('PROGRAM','NEW UPDATE',nu);
 Ini.Free;
-DeleteFile('FTPSTLK.exe');
-RenameFile('TEMP-FTPSTLK.bin', 'FTPSTLK.exe');
-ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+'FTPSTLK.exe'), nil, nil, SW_RESTORE);
+DeleteFile(exefile+'.exe');
+RenameFile('TEMP-FTPSTLK.bin', exefile+'.exe');
+ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+exefile+'.exe'), nil, nil, SW_RESTORE);
 Application.Terminate;
 Exit;
 end;
@@ -75,8 +75,10 @@ begin
 if dnl<>'Yeah!' then
 begin
 dnl:='0';
+nu:='0';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','UPDDWNL',dnl);
+Ini.WriteString('PROGRAM','NEW UPDATE',nu);
 Ini.Free;
 close;
 end;
