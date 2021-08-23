@@ -1,4 +1,4 @@
-# FTPSTLK 1.11
+# FTPSTLK 1.12
 
 # 🇷🇺 RUSSIAN
 
@@ -65,12 +65,18 @@
 - Поправлена ошибка обновления, при которой в момент обновления файл не мог обновится, и запускалась старая версия программы.
 - Обновлена логика update программы. 
 - Незначительные улучшения и баг фиксы.
+   
+ ## v. 1.12-ru <h4>
+   от 23.08.21
+- Добавлена информация о новой версии после обновления программы.
+- Теперь нет необходимости создавать директорию на FTP. Предоставьте это программе! Теперь это делается автоматически
+- Множество улучшения и баг фиксы.
         
         
 ## В планах... <h2>
 - ДОБАВИТЬ ВОЗМОЖНОСТЬ ОТПРАВКИ НА FTP ФАЙЛОВ СРАЗУ ПОСЛЕ СЕЙВА.
 - АВТОМАТИЧЕСКОЕ ОТСЛЕЖИВАНИЕ ДОБАВЛЕНИЯ НА FTP И ПОСЛЕДУЮЩЕЕ СКАЧИВАНИЕ.
-- АВТОМАТИЧЕСКОЕ СОЗДАНИЕ ПАПКИ НА FTP.
+- АВТОМАТИЧЕСКОЕ СОЗДАНИЕ ПАПКИ НА FTP. [Added in ver. 1.12]
 - ФАЙЛОВЫЙ МЕНЕДЖЕР ФАЙЛОВ НА ХОСТИНГЕ И ВЫКАЧКА ЛЮБОГО ИЗ ФАЙЛОВ.
       
 ## Приемущества <h2>
@@ -83,14 +89,13 @@
     
 ## Использование <h2>
 1. Для начала Вам необходимо FTP. Вы можете использовать любой бесплатный хостинг сайтов, например Ucoz или https://freewha.com/ или любой другой хостинг. Можете найти самый дешевый, вплоть до 10 руб (0,3$) / месяц. Это тоже подойдёт:)  
-2. Получите данные от FTP, а также через файловый менеджер или посредством программы Filezilla после подключения к FTP в корне сайта создайте папку. Название не принципиально, главное, чтобы было латиницей.
-3. Полученные данные FTP необходимо ввести в настройках программы.
-4. Необходимо указать адрес Вашего сайта в формате "https://site.com" или "http://site.com".
-5. Перезагрузить программу для применения изменений.
-6. Выберите файл на первой вкладке с сохранением. Под каждой кнопкой или полем для ввода есть подсказка ввиде "?", поэтому если что-то не понятно, можно обратится:)
-7. Для Выкачивания сохранения на второй вкладке Выберите путь куда складывать сохранения
-8. Вы можете проверить всё ли ок, перед тем как скачать. Соответвующая кнопка присутвует.
-9. В добавлении добавлен импорт/экспорт в настройках. Вы сможете импортировать в программу данные Ваших друзей, или самим экспортировать свои и поделиться в любой из соц сетей или дискорде:) Удачи! А будут вопросы или предложения, готов выслушать:)
+2. Полученные данные FTP необходимо ввести в настройках программы.
+3. Необходимо указать адрес Вашего сайта в формате "https://site.com" или "http://site.com".
+4. Перезагрузить программу для применения изменений.
+5. Выберите файл на первой вкладке с сохранением. Под каждой кнопкой или полем для ввода есть подсказка ввиде "?", поэтому если что-то не понятно, можно обратится:)
+6. Для Выкачивания сохранения на второй вкладке Выберите путь куда складывать сохранения
+7. Вы можете проверить всё ли ок, перед тем как скачать. Соответвующая кнопка присутвует.
+8. В добавлении добавлен импорт/экспорт в настройках. Вы сможете импортировать в программу данные Ваших друзей, или самим экспортировать свои и поделиться в любой из соц сетей или дискорде:) Удачи! А будут вопросы или предложения, готов выслушать:)
 <br><br><br><br>
 
 # 🇬🇧 ENGLISH
@@ -157,12 +162,18 @@ Disabled<br><br>
 - Fixed update error, when at the time of update the file could not be updated, and the old version of the program was started.
 - Updated program update logic.
 - Minor improvements and bug fixes.
- 
+   
+   ## v. 1.12-en <h4>
+   from 23.08.21
+- Added information about the new version after updating the program.
+- Now there is no need to create a directory on FTP. Leave it to the program! Now this is done automatically
+- Many improvements and bug fixes.
+
  
 ## In the plans... <h2>
 - ADD THE ABILITY TO SEND FILES TO FTP IMMEDIATELY AFTER THE SAVE.
 - AUTOMATIC TRACKING OF ADDING TO FTP AND SUBSEQUENT DOWNLOADING.
-- AUTOMATIC CREATION OF A FOLDER ON FTP.
+- AUTOMATIC CREATION OF A FOLDER ON FTP. [Added in ver. 1.12]
 - FILE MANAGER OF FILES ON THE HOSTING AND DOWNLOADING ANY OF THE FILES.
 
 ## Advantages <h2>
@@ -175,11 +186,10 @@ Disabled<br><br>
 
 ## Using <h2>
 1. First you need FTP. You can use any free website hosting, for example, Ucoz or https://freewha.com/ or any other hosting service. You can find the cheapest, up to $0.3 / month. This will also work:)
-2. Get the data from FTP, as well as through the file manager or through the Filezilla program after connecting to FTP, create a folder in the root of the site. The name does not matter, the main thing is that it should be in Latin.
-3. The received FTP data must be entered in the program settings.
-4. You must specify the address of your site in the format "https://site.com" or "http://site.com".
-5. Restart Program.
-6. Select the file on the first tab with saving. Under each button or input field there is a hint in the form "?", so if something is not clear, you can contact:)
-7. To pump out the save, on the second tab, select the path where to put the saves
-8. You can check if everything is ok before downloading. The corresponding button is present.
-9. The addition added import/export in the settings. You can import the data of your friends into the program, or export your own and share it in any of the social networks or discord:) Good luck! And if there are questions or suggestions, I am ready to listen:)
+2. The received FTP data must be entered in the program settings.
+3. You must specify the address of your site in the format "https://site.com" or "http://site.com".
+4. Restart Program.
+5. Select the file on the first tab with saving. Under each button or input field there is a hint in the form "?", so if something is not clear, you can contact:)
+6. To pump out the save, on the second tab, select the path where to put the saves
+7. You can check if everything is ok before downloading. The corresponding button is present.
+8. The addition added import/export in the settings. You can import the data of your friends into the program, or export your own and share it in any of the social networks or discord:) Good luck! And if there are questions or suggestions, I am ready to listen:)
