@@ -1,4 +1,4 @@
-# FTPSTLK 1.12
+# FTPSTLK 1.13
 
 # 🇷🇺 RUSSIAN
 
@@ -71,6 +71,15 @@
 - Добавлена информация о новой версии после обновления программы.
 - Теперь нет необходимости создавать директорию на FTP. Предоставьте это программе! Теперь это делается автоматически
 - Множество улучшения и баг фиксы.
+   
+ ## v. 1.13-ru <h4>
+   от 23.08.21
+- Обновлен update.exe. Сделал чтобы отображать процесс обновления поверх всех окон.
+- В update.exe добавлен вывод пути до exe файла. Теперь даже если Вы его переименуете или скачаете вторую копию, файл всё равно 
+обновится.
+- В update.exe переделана логика новых версий. Поправлена критическая ошибка, когда при обновлении не показывал changelog. Надеюсь с 
+новыми версиями будет всё стабильно.
+- Много мелких улучшения и баг фиксы.
         
         
 ## В планах... <h2>
@@ -168,6 +177,15 @@ Disabled<br><br>
 - Added information about the new version after updating the program.
 - Now there is no need to create a directory on FTP. Leave it to the program! Now this is done automatically
 - Many improvements and bug fixes.
+
+   ## v. 1.13-en <h4>
+   from 23.08.21
+- Updated update.exe. Made it to display the update process on top of all windows.
+- Added the output of the path to the exe file to update.exe. Now even if you rename it or download a second copy, the file will still
+will be updated.
+- In update.exe, the logic of new versions has been reworked. Fixed a critical error when the changelog was not shown during the update. I hope 
+everything will be stable with new versions.
+- Many minor improvements and bug fixes.
 
  
 ## In the plans... <h2>
