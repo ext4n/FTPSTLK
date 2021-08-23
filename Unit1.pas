@@ -247,7 +247,7 @@ type
 
 var
   Form1: TForm1;
-  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd: string;
+  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd, exename: string;
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
@@ -497,6 +497,7 @@ tap:=Ini.ReadString('TAP','NUM',tap);
 resr:=Ini.ReadString('TAP','RES',resr);
 Scheckbox2.Checked:=Ini.ReadBool('PROGRAM','UPDATE', Scheckbox2.Checked);
 newupd:=Ini.ReadString('PROGRAM','NEW UPDATE',newupd);
+exename:=Ini.ReadString('PROGRAM','EXE',exename);
 resr:=Ini.ReadString('TAP','RES',resr);
 Ini.Free;
 lang.Text:=rulang.Text;
@@ -563,6 +564,7 @@ procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  resr:='n';
  newupd:='0';
+ exename:=ExtractFileName(Application.ExeName);
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('MAIN','H',sEdit1.Text);
 Ini.WriteString('MAIN','U',sEdit2.Text);
@@ -583,6 +585,7 @@ Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
 Ini.WriteString('TAP','RES',resr);
 Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
+Ini.WriteString('PROGRAM','EXE',exename);
 Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
 Ini.Free;
 end;
@@ -1010,6 +1013,7 @@ end;
 resr:='n';
 enterupd:='0';
 dnl:='0';
+exename:=ExtractFileName(Application.ExeName);
 if (sCheckbox2.Checked=true) and (FileExists('libeay32.dll')) and (FileExists('ssleay32.dll')) then
 begin
   URLXD:=TURLD.Create(False);
@@ -1923,6 +1927,7 @@ buttonSelected := MessageDlg(lang.Lines[89],mtInformation, mbOKCancel, 0);
  ExtractRes('EXEFILE', 'SSLEAY32', 'ssleay32.dll');
  ExtractRes('EXEFILE', 'UPDATE', 'update.exe');
  resr:='y';
+ exename:=ExtractFileName(Application.ExeName);
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('MAIN','H',sEdit1.Text);
 Ini.WriteString('MAIN','U',sEdit2.Text);
@@ -1943,6 +1948,7 @@ Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
 Ini.WriteString('TAP','RES',resr);
 Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
+Ini.WriteString('PROGRAM','EXE',exename);
 Ini.Free;
  FullProgPath:=PChar(Application.ExeName);
  WinExec(FullProgPath,SW_SHOW);
@@ -2050,7 +2056,9 @@ begin
 buttonSelected := MessageDlg(lang.Lines[102],mtInformation, mbOKCancel, 0);
   if (buttonSelected = mrOK) and (FileExists('update.exe')) then
   begin
-DeleteFile('TEMP-FTPSTLK.bin');
+exename := StringReplace(exename, '.exe', '', [rfReplaceAll]);
+DeleteFile('TEMP-'+exename+'.bin');
+exename := exename+'.exe';
 Form1.pbFile.Visible:=true;
 Form1.lbProgress.Visible:=true;
   URLXF:=TURLF.Create(False);
@@ -2084,11 +2092,13 @@ procedure TForm1.Timer1Timer(Sender: TObject);
 begin
     if (Form1.lbProgress.Caption='100%') or (Form1.lbProgress.Caption='99%') then
     begin
-dnl:='Yeah!';
 newupd:='1';
+dnl:='Yeah!';
+exename:=ExtractFileName(Application.ExeName);
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','UPDDWNL',dnl);
 Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
+Ini.WriteString('PROGRAM','EXE',exename);
 Ini.Free;
     ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+'update.exe'), nil, nil, SW_RESTORE);
     Form1.Close;
@@ -2114,6 +2124,7 @@ begin
  sButton5.Visible:=true;
  sButton6.Visible:=true;
  sButton1.Visible:=true;
+ sButton13.Visible:=true;
  ruslang.Visible:=false;
  englang.Visible:=false;
  sGroupBox7.Visible:=false;
