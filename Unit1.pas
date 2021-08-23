@@ -139,6 +139,17 @@ type
     pbFile: TsProgressBar;
     lbProgress: TsLabelFX;
     Timer1: TTimer;
+    sGroupBox7: TsGroupBox;
+    updlog: TsMemo;
+    namesprogs: TsLabelFX;
+    clcont: TsBitBtn;
+    actvers: TsLabelFX;
+    ruupd: TsMemo;
+    enupd: TsMemo;
+    ruslang: TsBitBtn;
+    englang: TsBitBtn;
+    sCheckBox3: TsCheckBox;
+    sButton13: TsButton;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -208,6 +219,9 @@ type
     procedure sTitleBar1Items0Click(Sender: TObject);
     procedure updversClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure ruslangClick(Sender: TObject);
+    procedure englangClick(Sender: TObject);
+    procedure clcontClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -233,13 +247,11 @@ type
 
 var
   Form1: TForm1;
-  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl: string;
+  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd: string;
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
   H: THandle;
-
-
   URLXD: TURLD;
   URLXF: TURLF;
 
@@ -254,9 +266,6 @@ var Res : TResourceStream;
  Res.SavetoFile(ResNewName);
  Res.Free;
 end;
-
-
-
 
 function TURLF.GetSize(URL: string): int64;
 var i:integer;
@@ -314,27 +323,6 @@ begin
       Application.ProcessMessages;
     end
 end;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 procedure TURLD.execute;
 begin
@@ -404,6 +392,7 @@ FTP.PassiveMode:=sCheckBox1.Checked;
  if FTP.Login then
  begin
   sLabelFX5.Caption:=lang.Lines[46];
+  FTP.CreateDir(sEdit5.Text);
   FTP.DataStream.LoadFromFile(path+save);
   FTP.StoreFile('/'+sEdit5.Text+'/'+save,false);
   if FileExists(path+dds) then
@@ -470,6 +459,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 N12.Caption:=versionprogs.Caption;
+namesprogs.Caption:=Form1.Caption;
 Form1.ClientHeight:=300;
 Form1.ClientWidth:=360;
 sGroupBox1.Left:=8;
@@ -484,6 +474,8 @@ sGroupBox5.Left:=8;
 sGroupBox5.Top:=48;
 sGroupBox6.Left:=8;
 sGroupBox6.Top:=48;
+sGroupBox7.Left:=8;
+sGroupBox7.Top:=48;
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 sEdit1.Text:=Ini.ReadString('MAIN','H',sEdit1.Text);
 sEdit2.Text:=Ini.ReadString('MAIN','U',sEdit2.Text);
@@ -504,16 +496,22 @@ sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
 tap:=Ini.ReadString('TAP','NUM',tap);
 resr:=Ini.ReadString('TAP','RES',resr);
 Scheckbox2.Checked:=Ini.ReadBool('PROGRAM','UPDATE', Scheckbox2.Checked);
+newupd:=Ini.ReadString('PROGRAM','NEW UPDATE',newupd);
+resr:=Ini.ReadString('TAP','RES',resr);
 Ini.Free;
 lang.Text:=rulang.Text;
 ////////////////////////////////////////////
 languages.Click;
 if N4.Checked=true then begin
 N4.Click;
-l:='ru' end;
+ruslang.Enabled:=false;
+englang.Enabled:=true;
+l:='ru'; end;
 if E1.Checked=true then begin
 E1.Click;
-l:='en' end;
+ruslang.Enabled:=true;
+englang.Enabled:=false;
+l:='en'; end;
 if N8.Checked=true then N8.Click;
 if N7.Checked=true then N7.Click;
 if N9.Checked=true then N9.Click;
@@ -533,11 +531,38 @@ N16.Checked:=false;
 N16.Enabled:=true;
 N17.Enabled:=false;
 end;
+if newupd='0' then
+begin
+ sButton5.Visible:=true;
+ sButton6.Visible:=true;
+ sButton1.Visible:=true;
+ sButton13.Visible:=true;
+ ruslang.Visible:=false;
+ englang.Visible:=false;
+end;
+if newupd='1' then
+begin
+ sGroupBox1.Visible:=false;
+ sGroupBox2.Visible:=false;
+ sGroupBox3.Visible:=false;
+ sGroupBox4.Visible:=false;
+ sGroupBox5.Visible:=false;
+ sGroupBox6.Visible:=false;
+ sGroupBox7.Visible:=true;
+ sButton5.Visible:=false;
+ sButton6.Visible:=false;
+ sButton1.Visible:=false;
+ sButton13.Visible:=false;
+ ruslang.Visible:=true;
+ englang.Visible:=true;
+ newupd:='0';
+end;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  resr:='n';
+ newupd:='0';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('MAIN','H',sEdit1.Text);
 Ini.WriteString('MAIN','U',sEdit2.Text);
@@ -558,6 +583,7 @@ Ini.WriteString('SITE','FOLDER',sEdit5.Text);
 Ini.WriteString('TAP','NUM',tap);
 Ini.WriteString('TAP','RES',resr);
 Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
+Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
 Ini.Free;
 end;
 
@@ -569,7 +595,7 @@ sGroupBox2.Visible:=true;
 sGroupBox3.Visible:=false;
 sGroupBox4.Visible:=false;
 sGroupBox5.Visible:=false;
-sGroupBox5.Visible:=false;
+sGroupBox6.Visible:=false;
 sButton5.Enabled:=false;
 sButton6.Enabled:=true;
 tap:='1';
@@ -646,6 +672,10 @@ end;
 
 procedure TForm1.sButton4Click(Sender: TObject);
 begin
+if sDirectoryEdit1.Text='' then
+begin
+ShowMessage(lang.Lines[106]);
+end else begin
 HTTP:=THTTPSend.Create;
 sLabelFX6.Caption:='';
 sLabelFX7.Caption:='';
@@ -702,14 +732,20 @@ end;
     end;
       end;
         end;
+          end;
 
 procedure TForm1.sButton8Click(Sender: TObject);
 begin
+if sDirectoryEdit1.Text='' then
+begin
+ShowMessage(lang.Lines[106])
+end else begin
 HTTP:=THTTPSend.Create;
     if HTTP.HTTPMethod('GET',sEdit4.Text+'/'+sEdit5.Text+'/'+namess.Lines[0]+'.dds') then
    HTTP.Document.SaveToFile(sDirectoryEdit1.Text+'\'+namess.Lines[0]+'.dds');
     HTTP.Free;
     sLabelFX6.Caption:=lang.Lines[61];
+end;
 end;
 
 procedure TForm1.sLabelFX13Click(Sender: TObject);
@@ -1309,6 +1345,7 @@ N4.Checked:=true;
 E1.Checked:=false;
 l:='ru';
 lang.Text:=rulang.Text;
+updlog.Text:=ruupd.Text;
 languages.Click;
 if ((N7.Checked=true) and (N14.Checked=true)) or ((N7.Checked=true) and (N13.Checked=true)) then
 begin
@@ -1344,6 +1381,7 @@ N4.Checked:=false;
 E1.Checked:=true;
 l:='en';
 lang.Text:=enlang.Text;
+updlog.Text:=enupd.Text;
 languages.Click;
 if ((N7.Checked=true) and (N14.Checked=true)) or ((N7.Checked=true) and (N13.Checked=true)) then
 begin
@@ -1384,6 +1422,7 @@ sGroupBox1.Caption:=lang.Lines[2];
 sGroupBox4.Caption:=lang.Lines[25];
 sGroupBox5.Caption:=lang.Lines[31];
 sGroupBox6.Caption:=lang.Lines[90];
+sGroupBox7.Caption:=lang.Lines[96];
 sButton2.Caption:=lang.Lines[3];
 sButton3.Caption:=lang.Lines[4];
 sLabelFx4.Caption:=lang.Lines[5];
@@ -1406,10 +1445,12 @@ N3.Caption:=lang.Lines[21];
 /////////////////////
 //ru lang
 N4.Caption:=lang.Lines[22];
+ruslang.Caption:=lang.Lines[22];
 //ru lang
 ////////////////////
 //en lang
 E1.Caption:=lang.Lines[23];
+englang.Caption:=lang.Lines[23];
 //en lang
 ///////////////////
 N2.Caption:=lang.Lines[24];
@@ -1454,6 +1495,9 @@ end;
 if enterupd='1' then begin
 sTitleBar1.Items[0].Caption:=lang.Lines[101];
 end;
+actvers.Caption:=lang.Lines[103]+versionprogs.Caption;
+clcont.Caption:=lang.Lines[104];
+sDirectoryEdit1.TextHint:=lang.Lines[107];
 end;
 
 procedure TForm1.N8Click(Sender: TObject);
@@ -2000,10 +2044,11 @@ end;
 
 procedure TForm1.updversClick(Sender: TObject);
 var
-  buttonSelected : Integer;
+  buttonSelected, buttonSelected1 : Integer;
+  FullProgPath: PChar;
 begin
 buttonSelected := MessageDlg(lang.Lines[102],mtInformation, mbOKCancel, 0);
-  if (buttonSelected = mrOK) then
+  if (buttonSelected = mrOK) and (FileExists('update.exe')) then
   begin
 DeleteFile('TEMP-FTPSTLK.bin');
 Form1.pbFile.Visible:=true;
@@ -2013,6 +2058,26 @@ Form1.lbProgress.Visible:=true;
   URLXF.FreeOnTerminate:=true;
 Timer1.Enabled:=true;
 end;
+  if (buttonSelected = mrOK) and (Not FileExists('update.exe')) then
+  begin
+buttonSelected1 := MessageDlg(lang.Lines[105],mtWarning, mbOKCancel, 0);
+  if (buttonSelected1 = mrOK) and (Not FileExists('update.exe')) then
+  begin
+ ExtractRes('EXEFILE', 'UPDATE', 'update.exe');
+DeleteFile('TEMP-FTPSTLK.bin');
+Form1.pbFile.Visible:=true;
+Form1.lbProgress.Visible:=true;
+URLXF:=TURLF.Create(False);
+URLXF.Priority:=tphigher;
+URLXF.FreeOnTerminate:=true;
+Timer1.Enabled:=true;
+end;
+
+
+
+
+
+end;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
@@ -2020,12 +2085,42 @@ begin
     if (Form1.lbProgress.Caption='100%') or (Form1.lbProgress.Caption='99%') then
     begin
 dnl:='Yeah!';
+newupd:='1';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','UPDDWNL',dnl);
+Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
 Ini.Free;
     ShellExecute(0, PChar('open'), PChar(ExtractFilePath(ParamStr(0))+'update.exe'), nil, nil, SW_RESTORE);
     Form1.Close;
     end;
+end;
+
+procedure TForm1.ruslangClick(Sender: TObject);
+begin
+N4.Click;
+ruslang.Enabled:=false;
+englang.Enabled:=true;
+end;
+
+procedure TForm1.englangClick(Sender: TObject);
+begin
+E1.Click;
+ruslang.Enabled:=true;
+englang.Enabled:=false;
+end;
+
+procedure TForm1.clcontClick(Sender: TObject);
+begin
+ sButton5.Visible:=true;
+ sButton6.Visible:=true;
+ sButton1.Visible:=true;
+ ruslang.Visible:=false;
+ englang.Visible:=false;
+ sGroupBox7.Visible:=false;
+newupd:='0';
+Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
+Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
+Ini.Free;
 end;
 
 end.
