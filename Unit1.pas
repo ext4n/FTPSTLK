@@ -20,7 +20,7 @@ uses
   sCustomComboEdit, sToolEdit, sLabel, sSkinManager, sGroupBox, IniFiles,
   sMemo, ComCtrls, httpSend, ssl_openssl, ExtCtrls, Buttons, sSpeedButton, Menus, CLIPBrd,
   sDialogs, RegExpr, ShellAPI, acAlphaHints, sBitBtn, acFloatCtrls,
-  acTitleBar, acProgressBar, blcksock, synautil;
+  acTitleBar, acProgressBar, blcksock, synautil, sListBox;
 
 type
   TForm1 = class(TForm)
@@ -150,6 +150,23 @@ type
     englang: TsBitBtn;
     sCheckBox3: TsCheckBox;
     sButton13: TsButton;
+    sGroupBox8: TsGroupBox;
+    sListView1: TsListBox;
+    sBitBtn2: TsBitBtn;
+    sSpeedButton3: TsSpeedButton;
+    PopupMenu3: TPopupMenu;
+    N18: TMenuItem;
+    d1: TMenuItem;
+    N19: TMenuItem;
+    N20: TMenuItem;
+    N21: TMenuItem;
+    N22: TMenuItem;
+    N23: TMenuItem;
+    N24: TMenuItem;
+    X1: TMenuItem;
+    sLabelFX40: TsLabelFX;
+    sLabelFX41: TsBitBtn;
+    Timer2: TTimer;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -222,6 +239,18 @@ type
     procedure ruslangClick(Sender: TObject);
     procedure englangClick(Sender: TObject);
     procedure clcontClick(Sender: TObject);
+    procedure sButton13Click(Sender: TObject);
+    procedure sBitBtn2Click(Sender: TObject);
+    procedure sListView1DblClick(Sender: TObject);
+    procedure N21Click(Sender: TObject);
+    procedure N22Click(Sender: TObject);
+    procedure N19Click(Sender: TObject);
+    procedure N20Click(Sender: TObject);
+    procedure N24Click(Sender: TObject);
+    procedure X1Click(Sender: TObject);
+    procedure sLabelFX40Click(Sender: TObject);
+    procedure sLabelFX41Click(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -247,13 +276,14 @@ type
 
 var
   Form1: TForm1;
-  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd, exename: string;
+  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd, exename, dwnftp: string;
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
   H: THandle;
   URLXD: TURLD;
   URLXF: TURLF;
+  FTPClient: TFTPSend;
 
 implementation
 
@@ -424,8 +454,11 @@ sGroupBox3.Visible:=false;
 sGroupBox4.Visible:=false;
 sGroupBox5.Visible:=false;
 sGroupBox6.Visible:=false;
+sGroupBox7.Visible:=false;
+sGroupBox8.Visible:=false;
 sButton5.Enabled:=true;
 sButton6.Enabled:=true;
+sButton13.Enabled:=true;
 tap:='3';
 sLabelFX38.Caption:='';
 updvers.Visible:=false;
@@ -476,6 +509,8 @@ sGroupBox6.Left:=8;
 sGroupBox6.Top:=48;
 sGroupBox7.Left:=8;
 sGroupBox7.Top:=48;
+sGroupBox8.Left:=8;
+sGroupBox8.Top:=48;
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 sEdit1.Text:=Ini.ReadString('MAIN','H',sEdit1.Text);
 sEdit2.Text:=Ini.ReadString('MAIN','U',sEdit2.Text);
@@ -493,6 +528,12 @@ N16.Checked:=Ini.ReadBool('THEME','THEME1', N16.Checked);
 N17.Checked:=Ini.ReadBool('THEME','THEME2', N17.Checked);
 sEdit4.Text:=Ini.ReadString('SITE','URL',sEdit4.Text);
 sEdit5.Text:=Ini.ReadString('SITE','FOLDER',sEdit5.Text);
+N19.Checked:=Ini.ReadBool('FTP','DOUBLECLICKLOAD', N19.Checked);
+N20.Checked:=Ini.ReadBool('FTP','RIGHTBUTTONLOAD', N20.Checked);
+N21.Checked:=Ini.ReadBool('FTP','PATH', N21.Checked);
+N22.Checked:=Ini.ReadBool('FTP','SAVEDIALOG', N22.Checked);
+N24.Checked:=Ini.ReadBool('FTP','USEDFTP', N24.Checked);
+X1.Checked:=Ini.ReadBool('FTP','USEDHTTP', X1.Checked);
 tap:=Ini.ReadString('TAP','NUM',tap);
 resr:=Ini.ReadString('TAP','RES',resr);
 Scheckbox2.Checked:=Ini.ReadBool('PROGRAM','UPDATE', Scheckbox2.Checked);
@@ -518,6 +559,12 @@ if N7.Checked=true then N7.Click;
 if N9.Checked=true then N9.Click;
 if N13.Checked=true then N13.Click;
 if N14.Checked=true then N14.Click;
+if N19.Checked=true then N19.Click;
+if N20.Checked=true then N20.Click;
+if N21.Checked=true then N21.Click;
+if N22.Checked=true then N22.Click;
+if N24.Checked=true then N24.Click;
+if X1.Checked=true then X1.Click;
 if N16.Checked=true then begin
 N16.Click;
 N16.Checked:=true;
@@ -582,6 +629,12 @@ Ini.WriteBool('THEME','THEME1', N16.Checked);
 Ini.WriteBool('THEME','THEME2', N17.Checked);
 Ini.WriteString('SITE','URL',sEdit4.Text);
 Ini.WriteString('SITE','FOLDER',sEdit5.Text);
+Ini.WriteBool('FTP','DOUBLECLICKLOAD', N19.Checked);
+Ini.WriteBool('FTP','RIGHTBUTTONLOAD', N20.Checked);
+Ini.WriteBool('FTP','PATH', N21.Checked);
+Ini.WriteBool('FTP','SAVEDIALOG', N22.Checked);
+Ini.WriteBool('FTP','USEDFTP', N24.Checked);
+Ini.WriteBool('FTP','USEDHTTP', X1.Checked);
 Ini.WriteString('TAP','NUM',tap);
 Ini.WriteString('TAP','RES',resr);
 Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
@@ -601,6 +654,9 @@ sGroupBox5.Visible:=false;
 sGroupBox6.Visible:=false;
 sButton5.Enabled:=false;
 sButton6.Enabled:=true;
+sGroupBox7.Visible:=false;
+sGroupBox8.Visible:=false;
+sButton13.Enabled:=true;
 tap:='1';
 sLabelFX38.Caption:='';
 updvers.Visible:=false;
@@ -618,7 +674,30 @@ sGroupBox5.Visible:=false;
 sGroupBox6.Visible:=false;
 sButton5.Enabled:=true;
 sButton6.Enabled:=false;
+sGroupBox7.Visible:=false;
+sGroupBox8.Visible:=false;
+sButton13.Enabled:=true;
 tap:='2';
+sLabelFX38.Caption:='';
+updvers.Visible:=false;
+sLabelFX39.Visible:=false;
+end;
+
+procedure TForm1.sButton13Click(Sender: TObject);
+begin
+sButton1.Enabled:=true;
+sGroupBox1.Visible:=false;
+sGroupBox2.Visible:=false;
+sGroupBox3.Visible:=false;
+sGroupBox4.Visible:=false;
+sGroupBox5.Visible:=false;
+sGroupBox6.Visible:=false;
+sButton5.Enabled:=true;
+sButton6.Enabled:=true;
+sGroupBox7.Visible:=false;
+sGroupBox8.Visible:=true;
+sButton13.Enabled:=false;
+tap:='4';
 sLabelFX38.Caption:='';
 updvers.Visible:=false;
 sLabelFX39.Visible:=false;
@@ -959,6 +1038,26 @@ ShowMessage (lang.Lines[76]);
 end;
 end;
 
+procedure TForm1.sLabelFX40Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX40.Hint:=lang.Lines[122];
+end else begin
+ShowMessage (lang.Lines[122]);
+end;
+end;
+
+procedure TForm1.sLabelFX41Click(Sender: TObject);
+begin
+if N7.Checked=true then
+begin
+sLabelFX41.Hint:=lang.Lines[122];
+end else begin
+ShowMessage (lang.Lines[122]);
+end;
+end;
+
 procedure TForm1.sEdit4KeyPress(Sender: TObject; var Key: Char);
 begin
 if Key=#13 then begin
@@ -999,6 +1098,7 @@ begin
 if tap='1' then sButton5.Click;
 if tap='2' then sButton6.Click;
 if tap='3' then sButton1.Click;
+if tap='4' then sButton13.Click;
 if resr='y' then
 begin
  sGroupBox1.Visible:=false;
@@ -1376,6 +1476,7 @@ sLabelFX33.OnClick(sLabelFX33);
 sLabelFX34.OnClick(sLabelFX34);
 sLabelFX35.OnClick(sLabelFX35);
 sLabelFX36.OnClick(sLabelFX36);
+sLabelFX40.OnClick(sLabelFX40);
 end;
 end;
 
@@ -1412,6 +1513,7 @@ sLabelFX33.OnClick(sLabelFX33);
 sLabelFX34.OnClick(sLabelFX34);
 sLabelFX35.OnClick(sLabelFX35);
 sLabelFX36.OnClick(sLabelFX36);
+sLabelFX40.OnClick(sLabelFX40);
 end;
 end;
 
@@ -1420,6 +1522,7 @@ begin
 sButton5.Caption:=lang.Lines[0];
 sButton6.Caption:=lang.Lines[1];
 sButton1.Caption:=lang.Lines[2];
+sButton13.Caption:=lang.Lines[117];
 sGroupBox2.Caption:=lang.Lines[0];
 sGroupBox3.Caption:=lang.Lines[1];
 sGroupBox1.Caption:=lang.Lines[2];
@@ -1427,6 +1530,7 @@ sGroupBox4.Caption:=lang.Lines[25];
 sGroupBox5.Caption:=lang.Lines[31];
 sGroupBox6.Caption:=lang.Lines[90];
 sGroupBox7.Caption:=lang.Lines[96];
+sGroupBox8.Caption:=lang.Lines[118];
 sButton2.Caption:=lang.Lines[3];
 sButton3.Caption:=lang.Lines[4];
 sLabelFx4.Caption:=lang.Lines[5];
@@ -1502,6 +1606,20 @@ end;
 actvers.Caption:=lang.Lines[103]+versionprogs.Caption;
 clcont.Caption:=lang.Lines[104];
 sDirectoryEdit1.TextHint:=lang.Lines[107];
+
+
+sBitBtn2.Caption:=lang.Lines[108];
+sSpeedButton3.Caption:=lang.Lines[2];
+N18.Caption:=lang.Lines[109];
+N19.Caption:=lang.Lines[110];
+N20.Caption:=lang.Lines[111];
+d1.Caption:=lang.Lines[112];
+N21.Caption:=lang.Lines[113];
+N22.Caption:=lang.Lines[114];
+N23.Caption:=lang.Lines[0];
+N24.Caption:=lang.Lines[115];
+X1.Caption:=lang.Lines[116];
+
 end;
 
 procedure TForm1.N8Click(Sender: TObject);
@@ -1519,6 +1637,7 @@ sLabelFX15.Visible:=true;
 sLabelFX16.Visible:=true;
 sLabelFX17.Visible:=true;
 sLabelFX22.Visible:=true;
+sLabelFX41.Visible:=true;
 sLabelFX13.Visible:=true;
 sLabelFX12.Visible:=true;
 sLabelFX11.Visible:=true;
@@ -1562,6 +1681,7 @@ sLabelFX33.Visible:=true;
 sLabelFX34.Visible:=true;
 sLabelFX35.Visible:=true;
 sLabelFX36.Visible:=true;
+sLabelFX40.Visible:=true;
 sLabelFX25.ShowHint:=false;
 sLabelFX26.ShowHint:=false;
 sLabelFX27.ShowHint:=false;
@@ -1574,6 +1694,7 @@ sLabelFX33.ShowHint:=false;
 sLabelFX34.ShowHint:=false;
 sLabelFX35.ShowHint:=false;
 sLabelFX36.ShowHint:=false;
+sLabelFX40.ShowHint:=false;
 sLabelFX25.Hint:='';
 sLabelFX26.Hint:='';
 sLabelFX27.Hint:='';
@@ -1586,6 +1707,7 @@ sLabelFX33.Hint:='';
 sLabelFX34.Hint:='';
 sLabelFX35.Hint:='';
 sLabelFX36.Hint:='';
+sLabelFX40.Hint:='';
 end;
 end;
 
@@ -1604,6 +1726,7 @@ sLabelFX15.Visible:=true;
 sLabelFX16.Visible:=true;
 sLabelFX17.Visible:=true;
 sLabelFX22.Visible:=true;
+sLabelFX41.Visible:=true;
 sLabelFX13.Visible:=true;
 sLabelFX12.Visible:=true;
 sLabelFX11.Visible:=true;
@@ -1658,6 +1781,7 @@ sLabelFX33.Visible:=true;
 sLabelFX34.Visible:=true;
 sLabelFX35.Visible:=true;
 sLabelFX36.Visible:=true;
+sLabelFX40.Visible:=true;
 sLabelFX25.ShowHint:=true;
 sLabelFX26.ShowHint:=true;
 sLabelFX27.ShowHint:=true;
@@ -1670,6 +1794,7 @@ sLabelFX33.ShowHint:=true;
 sLabelFX34.ShowHint:=true;
 sLabelFX35.ShowHint:=true;
 sLabelFX36.ShowHint:=true;
+sLabelFX40.ShowHint:=true;
 sLabelFX25.Hint:='';
 sLabelFX26.Hint:='';
 sLabelFX27.Hint:='';
@@ -1682,6 +1807,7 @@ sLabelFX33.Hint:='';
 sLabelFX34.Hint:='';
 sLabelFX35.Hint:='';
 sLabelFX36.Hint:='';
+sLabelFX40.Hint:='';
 sLabelFX25.OnClick(sLabelFX25);
 sLabelFX26.OnClick(sLabelFX26);
 sLabelFX27.OnClick(sLabelFX27);
@@ -1694,6 +1820,7 @@ sLabelFX33.OnClick(sLabelFX33);
 sLabelFX34.OnClick(sLabelFX34);
 sLabelFX35.OnClick(sLabelFX35);
 sLabelFX36.OnClick(sLabelFX36);
+sLabelFX40.OnClick(sLabelFX40);
 end;
 
 
@@ -1711,6 +1838,7 @@ sLabelFX15.Visible:=false;
 sLabelFX16.Visible:=false;
 sLabelFX17.Visible:=false;
 sLabelFX22.Visible:=false;
+sLabelFX41.Visible:=false;
 sLabelFX13.Visible:=false;
 sLabelFX12.Visible:=false;
 sLabelFX11.Visible:=false;
@@ -1729,6 +1857,7 @@ sLabelFX33.Visible:=false;
 sLabelFX34.Visible:=false;
 sLabelFX35.Visible:=false;
 sLabelFX36.Visible:=false;
+sLabelFX40.Visible:=false;
 N10.Visible:=false;
 end;
 
@@ -1748,6 +1877,7 @@ sLabelFX33.Visible:=true;
 sLabelFX34.Visible:=true;
 sLabelFX35.Visible:=true;
 sLabelFX36.Visible:=true;
+sLabelFX40.Visible:=true;
 sLabelFX18.Visible:=false;
 sLabelFX19.Visible:=false;
 sLabelFX15.Visible:=false;
@@ -1760,6 +1890,7 @@ sLabelFX10.Visible:=false;
 sLabelFX14.Visible:=false;
 sLabelFX20.Visible:=false;
 sLabelFX22.Visible:=false;
+sLabelFX41.Visible:=false;
 
 if (N14.Checked=true) and (N7.Checked=true) then
 begin
@@ -1775,6 +1906,7 @@ sLabelFX33.Visible:=true;
 sLabelFX34.Visible:=true;
 sLabelFX35.Visible:=true;
 sLabelFX36.Visible:=true;
+sLabelFX40.Visible:=true;
 sLabelFX25.ShowHint:=true;
 sLabelFX26.ShowHint:=true;
 sLabelFX27.ShowHint:=true;
@@ -1787,6 +1919,7 @@ sLabelFX33.ShowHint:=true;
 sLabelFX34.ShowHint:=true;
 sLabelFX35.ShowHint:=true;
 sLabelFX36.ShowHint:=true;
+sLabelFX40.ShowHint:=true;
 sLabelFX25.Hint:='';
 sLabelFX26.Hint:='';
 sLabelFX27.Hint:='';
@@ -1799,6 +1932,7 @@ sLabelFX33.Hint:='';
 sLabelFX34.Hint:='';
 sLabelFX35.Hint:='';
 sLabelFX36.Hint:='';
+sLabelFX40.Hint:='';
 sLabelFX25.OnClick(sLabelFX25);
 sLabelFX26.OnClick(sLabelFX26);
 sLabelFX27.OnClick(sLabelFX27);
@@ -1811,6 +1945,7 @@ sLabelFX33.OnClick(sLabelFX33);
 sLabelFX34.OnClick(sLabelFX34);
 sLabelFX35.OnClick(sLabelFX35);
 sLabelFX36.OnClick(sLabelFX36);
+sLabelFX40.OnClick(sLabelFX40);
 end;
 
 end;
@@ -1831,6 +1966,7 @@ sLabelFX33.Visible:=false;
 sLabelFX34.Visible:=false;
 sLabelFX35.Visible:=false;
 sLabelFX36.Visible:=false;
+sLabelFX40.Visible:=false;
 sLabelFX18.Visible:=true;
 sLabelFX19.Visible:=true;
 sLabelFX15.Visible:=true;
@@ -1843,6 +1979,7 @@ sLabelFX10.Visible:=true;
 sLabelFX14.Visible:=true;
 sLabelFX20.Visible:=true;
 sLabelFX22.Visible:=true;
+sLabelFX41.Visible:=true;
 
 if (N13.Checked=true) and (N7.Checked=true) then
 begin
@@ -1852,6 +1989,7 @@ sLabelFX15.Visible:=true;
 sLabelFX16.Visible:=true;
 sLabelFX17.Visible:=true;
 sLabelFX22.Visible:=true;
+sLabelFX41.Visible:=true;
 sLabelFX13.Visible:=true;
 sLabelFX12.Visible:=true;
 sLabelFX11.Visible:=true;
@@ -1945,6 +2083,12 @@ Ini.WriteBool('THEME','THEME1', N16.Checked);
 Ini.WriteBool('THEME','THEME2', N17.Checked);
 Ini.WriteString('SITE','URL',sEdit4.Text);
 Ini.WriteString('SITE','FOLDER',sEdit5.Text);
+Ini.WriteBool('FTP','DOUBLECLICKLOAD', N19.Checked);
+Ini.WriteBool('FTP','RIGHTBUTTONLOAD', N20.Checked);
+Ini.WriteBool('FTP','PATH', N21.Checked);
+Ini.WriteBool('FTP','SAVEDIALOG', N22.Checked);
+Ini.WriteBool('FTP','USEDFTP', N24.Checked);
+Ini.WriteBool('FTP','USEDHTTP', X1.Checked);
 Ini.WriteString('TAP','NUM',tap);
 Ini.WriteString('TAP','RES',resr);
 Ini.WriteBool('PROGRAM','UPDATE', Scheckbox2.Checked);
@@ -2132,6 +2276,166 @@ newupd:='0';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
 Ini.Free;
+end;
+
+procedure TForm1.sBitBtn2Click(Sender: TObject);
+var
+i:integer;
+begin
+if (N21.Checked=true) and (sDirectoryEdit1.Text='') then
+begin
+ShowMessage(lang.Lines[106]);
+sListView1.Clear;
+sButton6.Click;
+end else begin
+  FTPClient:=TFTPSend.Create;
+  FTPClient.TargetHost:=sEdit1.Text;
+  FTPClient.TargetPort:='21';
+  FTPClient.UserName:=sEdit2.Text;
+  FTPClient.Password:=sEdit3.Text;
+  FTPClient.PassiveMode:=sCheckBox1.Checked;
+     if FTPClient.Login then
+   begin
+     FTPClient.CreateDir(sEdit5.Text);
+//     Memo1.Lines.Add('Connected!');
+//     Memo1.Lines.Add('Директория '+FTPClient.GetCurrentDir+'STLKSAVE/');
+     sListView1.Clear;
+     FTPClient.List(FTPClient.GetCurrentDir+sEdit5.Text,false);
+     for i := 0 to FTPClient.FtpList.Count-1 do
+       begin
+         with sListView1 do
+           begin
+           sListview1.Items.Add(FTPClient.FtpList[i].FileName);
+             //Caption:=FTPClient.FtpList[i].FileName;
+             if FTPClient.FtpList[i].Directory then
+                //SubItems.Add('Директория')
+             else
+               //SubItems.Add('файл');
+             //ubItems.Add(DateToStr(FTPClient.FtpList[i].FileTime))
+
+           end;
+       end;
+   end;
+  // Memo1.Lines.Add(FTPClient.FullResult.Text);
+   for i:=sListview1.Count-1 downto 0 do
+    if pos('.dds', sListview1.items[i]) > 0 then
+      sListview1.items.Delete(i);
+         for i:=sListview1.Count-1 downto 0 do
+    if pos('.txt', sListview1.items[i]) > 0 then
+      sListview1.items.Delete(i);
+end;
+end;
+
+procedure TForm1.sListView1DblClick(Sender: TObject);
+var
+  saveDialog:TsSaveDialog;
+  i:integer;
+begin
+if N19.Checked=true then
+begin
+
+if (N21.Checked=true) and (sDirectoryEdit1.Text<>'') then
+begin
+sGroupBox8.Caption :=lang.Lines[119];
+dwnftp:=sListView1.Items[sListView1.ItemIndex];
+   FTPClient.RetrieveFile(FTPClient.GetCurrentDir+sEdit5.Text+'/'+sListView1.Items[sListView1.ItemIndex],false);
+   FTPClient.DataStream.SaveToFile(sDirectoryEdit1.Text+'/'+sListView1.Items[sListView1.ItemIndex]);
+dwnftp:= StringReplace(dwnftp, '.sav', '.dds', [rfReplaceAll]);
+   FTPClient.RetrieveFile(FTPClient.GetCurrentDir+sEdit5.Text+'/'+dwnftp,false);
+   FTPClient.DataStream.SaveToFile(sDirectoryEdit1.Text+'/'+dwnftp);
+namesav.Lines.LoadFromFile(sDirectoryEdit1.Text+'/'+dwnftp);
+sGroupBox8.Caption:=lang.Lines[120]+sListView1.Items[sListView1.ItemIndex]+lang.Lines[121];
+Timer2.Enabled:=true;
+if namesav.Text='' then
+begin
+Deletefile(sDirectoryEdit1.Text+'/'+dwnftp);
+namesav.Clear;
+end;
+end;
+
+if (N22.Checked=true) and (N19.Checked=true) then
+begin
+  saveDialog := TsSaveDialog.Create(self);
+  saveDialog.InitialDir := GetCurrentDir;
+  saveDialog.Filter := 'S.T.A.L.K.E.R. save (*.sav)|*.sav';
+  For i:=0 to sListView1.Items.Count-1 do
+  If (sListView1.Selected[i]) then
+  begin
+  saveDialog.FileName:= sListView1.Items.Strings[i];
+  end;
+  if saveDialog.Execute then
+  begin
+  sGroupBox8.Caption :=lang.Lines[119];
+  dwnftp:=sListView1.Items[sListView1.ItemIndex];
+   FTPClient.RetrieveFile(FTPClient.GetCurrentDir+sEdit5.Text+'/'+sListView1.Items[sListView1.ItemIndex],false);
+   FTPClient.DataStream.SaveToFile(Extractfilepath(saveDialog.FileName)+sListView1.Items[sListView1.ItemIndex]);
+dwnftp:= StringReplace(dwnftp, '.sav', '.dds', [rfReplaceAll]);
+   FTPClient.RetrieveFile(FTPClient.GetCurrentDir+sEdit5.Text+'/'+dwnftp,false);
+   FTPClient.DataStream.SaveToFile(Extractfilepath(saveDialog.FileName)+dwnftp);
+namesav.Lines.LoadFromFile(Extractfilepath(saveDialog.FileName)+dwnftp);
+    saveDialog.Free;
+    sGroupBox8.Caption:=lang.Lines[120]+sListView1.Items[sListView1.ItemIndex]+lang.Lines[121];
+    Timer2.Enabled:=true;
+if namesav.Text='' then
+begin
+Deletefile(Extractfilepath(saveDialog.FileName)+dwnftp);
+namesav.Clear;
+end;
+
+if N19.Checked=true then
+begin
+if (N21.Checked=true) and (sDirectoryEdit1.Text='') then
+begin
+ShowMessage(lang.Lines[106]);
+sButton6.Click;
+end;
+end;
+end;
+end;
+namesav.Clear;
+end;
+end;
+
+procedure TForm1.N21Click(Sender: TObject);
+begin
+N21.Checked:=true;
+N22.Checked:=false;
+end;
+
+procedure TForm1.N22Click(Sender: TObject);
+begin
+N21.Checked:=false;
+N22.Checked:=true;
+end;
+
+procedure TForm1.N19Click(Sender: TObject);
+begin
+N19.Checked:=true;
+N20.Checked:=false;
+end;
+
+procedure TForm1.N20Click(Sender: TObject);
+begin
+N19.Checked:=false;
+N20.Checked:=true;
+end;
+
+procedure TForm1.N24Click(Sender: TObject);
+begin
+N24.Checked:=true;
+X1.Checked:=false;
+end;
+
+procedure TForm1.X1Click(Sender: TObject);
+begin
+N24.Checked:=false;
+X1.Checked:=true;
+end;
+
+procedure TForm1.Timer2Timer(Sender: TObject);
+begin
+sGroupBox8.Caption:=lang.Lines[118];
+Timer2.Enabled:=false;
 end;
 
 end.
