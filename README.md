@@ -1,4 +1,4 @@
-# FTPSTLK 1.13
+# FTPSTLK 1.14
 
 # 🇷🇺 RUSSIAN
 
@@ -80,13 +80,20 @@
 - В update.exe переделана логика новых версий. Поправлена критическая ошибка, когда при обновлении не показывал changelog. Надеюсь с 
 новыми версиями будет всё стабильно.
 - Много мелких улучшения и баг фиксы.
-        
+   
+ ## v. 1.14-ru <h4>
+   от 04.09.21
+- Добавлен файловый менеджер (Пока в тестовом режиме).
+- Сделал выбор скачивания. Можно скачивать исходя из выбранной папки, либо отображать диалоговое окно.
+- Добавлены и поправлены переводы.
+- У некоторых позиций появились иконки. (Тестовый вариант)
+- Много мелких улучшения и баг фиксы.  
         
 ## В планах... <h2>
 - ДОБАВИТЬ ВОЗМОЖНОСТЬ ОТПРАВКИ НА FTP ФАЙЛОВ СРАЗУ ПОСЛЕ СЕЙВА.
 - АВТОМАТИЧЕСКОЕ ОТСЛЕЖИВАНИЕ ДОБАВЛЕНИЯ НА FTP И ПОСЛЕДУЮЩЕЕ СКАЧИВАНИЕ.
 - АВТОМАТИЧЕСКОЕ СОЗДАНИЕ ПАПКИ НА FTP. [Added in ver. 1.12]
-- ФАЙЛОВЫЙ МЕНЕДЖЕР ФАЙЛОВ НА ХОСТИНГЕ И ВЫКАЧКА ЛЮБОГО ИЗ ФАЙЛОВ.
+- ФАЙЛОВЫЙ МЕНЕДЖЕР ФАЙЛОВ НА ХОСТИНГЕ И ВЫКАЧКА ЛЮБОГО ИЗ ФАЙЛОВ. [Added in ver. 1.14]
       
 ## Приемущества <h2>
     
@@ -186,13 +193,21 @@ will be updated.
 - In update.exe, the logic of new versions has been reworked. Fixed a critical error when the changelog was not shown during the update. I hope 
 everything will be stable with new versions.
 - Many minor improvements and bug fixes.
+   
+   ## v. 1.14-en <h4>
+   from 04.09.21
+- Added file manager (While in test mode).
+- I made a choice of downloading. You can download based on the selected folder, or display a dialog box.
+- Added and corrected translations.
+- Icons appeared for some positions. (Test variant).
+- Many minor improvements and bug fixes.
 
  
 ## In the plans... <h2>
 - ADD THE ABILITY TO SEND FILES TO FTP IMMEDIATELY AFTER THE SAVE.
 - AUTOMATIC TRACKING OF ADDING TO FTP AND SUBSEQUENT DOWNLOADING.
 - AUTOMATIC CREATION OF A FOLDER ON FTP. [Added in ver. 1.12]
-- FILE MANAGER OF FILES ON THE HOSTING AND DOWNLOADING ANY OF THE FILES.
+- FILE MANAGER OF FILES ON THE HOSTING AND DOWNLOADING ANY OF THE FILES. [Added in ver. 1.14]
 
 ## Advantages <h2>
 
