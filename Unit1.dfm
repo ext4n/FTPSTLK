@@ -1800,6 +1800,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 24
+    Visible = False
     object sSpeedButton3: TsSpeedButton
       Left = 224
       Top = 24
