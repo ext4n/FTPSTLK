@@ -2280,6 +2280,10 @@ begin
  ruslang.Visible:=false;
  englang.Visible:=false;
  sGroupBox7.Visible:=false;
+ if tap='1' then sButton5.Click;
+ if tap='2' then sButton6.Click;
+ if tap='3' then sButton1.Click;
+ if tap='4' then sButton13.Click;
 newupd:='0';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
