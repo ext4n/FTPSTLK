@@ -276,7 +276,7 @@ type
 
 var
   Form1: TForm1;
-  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd, exename, dwnftp: string;
+  save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd, exename, dwnftp, scrpr: string;
   count: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
@@ -491,10 +491,17 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+scrpr:=inttostr(Screen.Width)+inttostr(Screen.Height);
 N12.Caption:=versionprogs.Caption;
 namesprogs.Caption:=Form1.Caption;
+if scrpr<>'38402160' then
+begin
+Form1.ClientHeight:=250;
+Form1.ClientWidth:=300;
+end else begin
 Form1.ClientHeight:=300;
 Form1.ClientWidth:=360;
+end;
 sGroupBox1.Left:=8;
 sGroupBox1.Top:=48;
 sGroupBox2.Left:=8;
@@ -587,6 +594,10 @@ begin
  sButton13.Visible:=true;
  ruslang.Visible:=false;
  englang.Visible:=false;
+ if tap='1' then sButton5.Click;
+ if tap='2' then sButton6.Click;
+ if tap='3' then sButton1.Click;
+ if tap='4' then sButton13.Click;
 end;
 if newupd='1' then
 begin
@@ -597,6 +608,7 @@ begin
  sGroupBox5.Visible:=false;
  sGroupBox6.Visible:=false;
  sGroupBox7.Visible:=true;
+ sGroupBox8.Visible:=false;
  sButton5.Visible:=false;
  sButton6.Visible:=false;
  sButton1.Visible:=false;
@@ -1095,10 +1107,6 @@ end;
 
 procedure TForm1.FormShow(Sender: TObject);
 begin
-if tap='1' then sButton5.Click;
-if tap='2' then sButton6.Click;
-if tap='3' then sButton1.Click;
-if tap='4' then sButton13.Click;
 if resr='y' then
 begin
  sGroupBox1.Visible:=false;
@@ -2282,6 +2290,15 @@ procedure TForm1.sBitBtn2Click(Sender: TObject);
 var
 i:integer;
 begin
+if (sEdit1.Text = '') or (sEdit2.Text = '') or (sEdit3.Text = '') then
+begin
+ShowMessage(lang.Lines[123]);
+sButton1.Click;
+end;
+////////////////////////
+if (sEdit1.Text <> '') or (sEdit2.Text <> '') or (sEdit3.Text <> '') then
+begin
+
 if (N21.Checked=true) and (sDirectoryEdit1.Text='') then
 begin
 ShowMessage(lang.Lines[106]);
@@ -2323,6 +2340,7 @@ end else begin
          for i:=sListview1.Count-1 downto 0 do
     if pos('.txt', sListview1.items[i]) > 0 then
       sListview1.items.Delete(i);
+end;
 end;
 end;
 
