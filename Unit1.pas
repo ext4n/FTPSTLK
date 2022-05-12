@@ -167,6 +167,7 @@ type
     sLabelFX40: TsLabelFX;
     sLabelFX41: TsBitBtn;
     Timer2: TTimer;
+    sBitBtn3: TsBitBtn;
     procedure sButton2Click(Sender: TObject);
     procedure sButton3Click(Sender: TObject);
     procedure sButton1Click(Sender: TObject);
@@ -251,6 +252,7 @@ type
     procedure sLabelFX40Click(Sender: TObject);
     procedure sLabelFX41Click(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
+    procedure sBitBtn3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -277,7 +279,7 @@ type
 var
   Form1: TForm1;
   save, dds, path, impt, pasive, tap,vg, newv, resr, l, enterupd, dnl, newupd, exename, dwnftp, scrpr: string;
-  count: integer;
+  count, clc: integer;
   Ini:TiniFile;
   HTTP: THTTPSend;
   H: THandle;
@@ -2132,6 +2134,7 @@ release:tregexpr;
 git:string;
 begin
 sLabelFX38.Caption:='';
+sLabelFX38.Visible:=true;
 ngit.Clear;
 HttpGetText('https://github.com/ext4n/FTPSTLK/releases.atom', ngit.Lines);
 //////////////////////////////////////////////////////////////////////////
@@ -2288,6 +2291,12 @@ newupd:='0';
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'set.ini');
 Ini.WriteString('PROGRAM','NEW UPDATE',newupd);
 Ini.Free;
+if clc = 1 then
+begin
+ clc:=0;
+ sGroupBox7.Visible:=false;
+ sGroupBox6.Visible:=true;
+end;
 end;
 
 procedure TForm1.sBitBtn2Click(Sender: TObject);
@@ -2458,6 +2467,12 @@ procedure TForm1.Timer2Timer(Sender: TObject);
 begin
 sGroupBox8.Caption:=lang.Lines[118];
 Timer2.Enabled:=false;
+end;
+
+procedure TForm1.sBitBtn3Click(Sender: TObject);
+begin
+clc:=1;
+sGroupBox7.Visible:=true;
 end;
 
 end.
