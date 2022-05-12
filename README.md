@@ -95,6 +95,12 @@
 - В очередной раз исправлено окно с отображением изменений после обновления программы.
 - Поправлен масштаб программы на FullHD мониторах.
 - Баг фиксы.
+   
+ ## v. 1.16-ru <h4>
+   от 12.05.22
+- Обновлен визуальный пакет компонентов.
+- Добавлена кнопка "История изменения" в меню проверки обновлений.
+- Баг фиксы.
         
 ## В планах... <h2>
 - ДОБАВИТЬ ВОЗМОЖНОСТЬ ОТПРАВКИ НА FTP ФАЙЛОВ СРАЗУ ПОСЛЕ СЕЙВА.
@@ -215,7 +221,12 @@ everything will be stable with new versions.
 - Once again, the window with the display of changes after updating the program has been fixed.
 - Fixed the scale of the program on FullHD monitors.
 - Bug fixes.
-
+   
+      ## v. 1.16-en <h4>
+   from 12.05.22
+- Updated visual component package.
+- Added "Change history" button to the update check menu.
+- Bug fixes.
  
 ## In the plans... <h2>
 - ADD THE ABILITY TO SEND FILES TO FTP IMMEDIATELY AFTER THE SAVE.
