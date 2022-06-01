@@ -1,5 +1,131 @@
 # FTPSTLK 1.16
 
+# 🇬🇧 ENGLISH
+
+The program is designed so that you can share your save with a friend who is going through a single game.
+
+
+## Changelog <h2>
+## v. 1.00-en <h4>
+   from 27.07.21   
+- Added basic functionality and functions.
+
+## v. 1.02-en <h4>
+   from 30.07.21 
+- The mechanism of spoiling settings in the program has been redesigned. Now the RegExpr module is responsible for this. Settings can be added to the program as a whole line, or several lines.
+- The settings page has been slightly changed. Now everything is more compact. In the settings, you can view the version of the program. Additional links were also hidden.
+- Minor improvements and bug fixes.
+
+## v. 1.03-en <h4>
+   from 01.08.21
+- Fixed bugs in hint texts.
+- Minor improvements and bug fixes.
+
+## v. 1.04b-en <h4>
+   from 14.08.21
+- Added a partial translation into English.
+- The mechanics of selecting and loading a language into the program have been redesigned.
+- Minor improvements and bug fixes.
+
+   ## v. 1.05-en <h4>
+   from 14.08.21
+- The program is fully translated into English.
+- Added and improved options for selecting hints. Now there are 3 states of hints in the program:<br>
+Pop-up message<br>
+Hover hint<br>
+Disabled<br><br>
+- Language settings and hints, they are able to remember the state, and the next time the program is turned on, the last selected option will load.
+- Many small improvements and bug fixes.
+        
+   ## v. 1.06-en <h4>
+   from 16.08.21
+- Added options for suggestions in the form of text or buttons to choose from.
+- The translation has been finalized.
+- Minor improvements and bug fixes.
+        
+   ## v. 1.07-en <h4>
+   from 16.08.21
+- Added a dark theme. The ability to choose between light and dark dark.
+- Corrected translation in some places
+- Minor improvements and bug fixes.
+   
+    ## v. 1.10-en <h4>
+    from 21.08.21
+- Added update function. The program is updated from the github. Improvement of this function is expected in the future.
+- Now it is not necessary to constantly visit the github in the hope of a new version. Check the box in the update settings, and the program will notify you when the next update is released.
+- All additional libraries are stored inside the program. And they will be unpacked only when you want it :) + any action will ask for your permission :)
+- Added update.exe to the program and its sources.
+- Fixed translation and output of information.
+- Many improvements and bugs.
+- Improvements and bug fixes.
+   
+   ## v. 1.11-en <h4>
+   from 22.08.21
+- Fixed update error, when at the time of update the file could not be updated, and the old version of the program was started.
+- Updated program update logic.
+- Minor improvements and bug fixes.
+   
+   ## v. 1.12-en <h4>
+   from 23.08.21
+- Added information about the new version after updating the program.
+- Now there is no need to create a directory on FTP. Leave it to the program! Now this is done automatically
+- Many improvements and bug fixes.
+
+   ## v. 1.13-en <h4>
+   from 23.08.21
+- Updated update.exe. Made it to display the update process on top of all windows.
+- Added the output of the path to the exe file to update.exe. Now even if you rename it or download a second copy, the file will still
+will be updated.
+- In update.exe, the logic of new versions has been reworked. Fixed a critical error when the changelog was not shown during the update. I hope 
+everything will be stable with new versions.
+- Many minor improvements and bug fixes.
+   
+   ## v. 1.14-en <h4>
+   from 04.09.21
+- Added file manager (While in test mode).
+- I made a choice of downloading. You can download based on the selected folder, or display a dialog box.
+- Added and corrected translations.
+- Icons appeared for some positions. (Test variant).
+- Many minor improvements and bug fixes.
+   
+   ## v. 1.15-en <h4>
+   from 07.09.21
+- Fixed some bugs with the file manager.
+- Once again, the window with the display of changes after updating the program has been fixed.
+- Fixed the scale of the program on FullHD monitors.
+- Bug fixes.
+   
+   ## v. 1.16-en <h4>
+   from 12.05.22
+- Updated visual component package.
+- Added "Change history" button to the update check menu.
+- Bug fixes.
+ 
+## In the plans... <h2>
+- ADD THE ABILITY TO SEND FILES TO FTP IMMEDIATELY AFTER THE SAVE.
+- AUTOMATIC TRACKING OF ADDING TO FTP AND SUBSEQUENT DOWNLOADING.
+- AUTOMATIC CREATION OF A FOLDER ON FTP. [Added in ver. 1.12]
+- FILE MANAGER OF FILES ON THE HOSTING AND DOWNLOADING ANY OF THE FILES. [Added in ver. 1.14]
+
+## Advantages <h2>
+
+▶ Open source code that you can download and view.<br>
+▶ For the correct functionality of the source code, third-party libraries are required: <a href='https://www.alphaskins.com/'>AlphaControls</a>, and <a href='http://synapse.ararat.cz/doku.php/download'>Synapse</a><br><br>
+▶ The program does not store or use your passwords. All the safety of your data is on your computer.<br>
+▶ The program provides import/export of settings. Be careful who you pass your settings to! The responsibility lies only on your shoulders:)<br>
+
+
+## Using <h2>
+1. First you need FTP. You can use any free website hosting, for example, Ucoz or https://freewha.com/ or any other hosting service. You can find the cheapest, up to $0.3 / month. This will also work:)
+2. The received FTP data must be entered in the program settings.
+3. You must specify the address of your site in the format "https://site.com" or "http://site.com".
+4. Restart Program.
+5. Select the file on the first tab with saving. Under each button or input field there is a hint in the form "?", so if something is not clear, you can contact:)
+6. To pump out the save, on the second tab, select the path where to put the saves
+7. You can check if everything is ok before downloading. The corresponding button is present.
+8. The addition added import/export in the settings. You can import the data of your friends into the program, or export your own and share it in any of the social networks or discord:) Good luck! And if there are questions or suggestions, I am ready to listen:)
+<br><br><br><br>
+   
 # 🇷🇺 RUSSIAN
 
 Программа предназначена для того, чтобы Вы смогли поделиться своим сохранением с другом, проходящем одиночную игру.
@@ -125,129 +251,3 @@
 6. Для Выкачивания сохранения на второй вкладке Выберите путь куда складывать сохранения
 7. Вы можете проверить всё ли ок, перед тем как скачать. Соответвующая кнопка присутвует.
 8. В добавлении добавлен импорт/экспорт в настройках. Вы сможете импортировать в программу данные Ваших друзей, или самим экспортировать свои и поделиться в любой из соц сетей или дискорде:) Удачи! А будут вопросы или предложения, готов выслушать:)
-<br><br><br><br>
-
-# 🇬🇧 ENGLISH
-
-The program is designed so that you can share your save with a friend who is going through a single game.
-
-
-## Changelog <h2>
-## v. 1.00-en <h4>
-   from 27.07.21   
-- Added basic functionality and functions.
-
-## v. 1.02-en <h4>
-   from 30.07.21 
-- The mechanism of spoiling settings in the program has been redesigned. Now the RegExpr module is responsible for this. Settings can be added to the program as a whole line, or several lines.
-- The settings page has been slightly changed. Now everything is more compact. In the settings, you can view the version of the program. Additional links were also hidden.
-- Minor improvements and bug fixes.
-
-## v. 1.03-en <h4>
-   from 01.08.21
-- Fixed bugs in hint texts.
-- Minor improvements and bug fixes.
-
-## v. 1.04b-en <h4>
-   from 14.08.21
-- Added a partial translation into English.
-- The mechanics of selecting and loading a language into the program have been redesigned.
-- Minor improvements and bug fixes.
-
-   ## v. 1.05-en <h4>
-   from 14.08.21
-- The program is fully translated into English.
-- Added and improved options for selecting hints. Now there are 3 states of hints in the program:<br>
-Pop-up message<br>
-Hover hint<br>
-Disabled<br><br>
-- Language settings and hints, they are able to remember the state, and the next time the program is turned on, the last selected option will load.
-- Many small improvements and bug fixes.
-        
-   ## v. 1.06-en <h4>
-   from 16.08.21
-- Added options for suggestions in the form of text or buttons to choose from.
-- The translation has been finalized.
-- Minor improvements and bug fixes.
-        
-   ## v. 1.07-en <h4>
-   from 16.08.21
-- Added a dark theme. The ability to choose between light and dark dark.
-- Corrected translation in some places
-- Minor improvements and bug fixes.
-   
-    ## v. 1.10-en <h4>
-    from 21.08.21
-- Added update function. The program is updated from the github. Improvement of this function is expected in the future.
-- Now it is not necessary to constantly visit the github in the hope of a new version. Check the box in the update settings, and the program will notify you when the next update is released.
-- All additional libraries are stored inside the program. And they will be unpacked only when you want it :) + any action will ask for your permission :)
-- Added update.exe to the program and its sources.
-- Fixed translation and output of information.
-- Many improvements and bugs.
-- Improvements and bug fixes.
-   
-   ## v. 1.11-en <h4>
-   from 22.08.21
-- Fixed update error, when at the time of update the file could not be updated, and the old version of the program was started.
-- Updated program update logic.
-- Minor improvements and bug fixes.
-   
-   ## v. 1.12-en <h4>
-   from 23.08.21
-- Added information about the new version after updating the program.
-- Now there is no need to create a directory on FTP. Leave it to the program! Now this is done automatically
-- Many improvements and bug fixes.
-
-   ## v. 1.13-en <h4>
-   from 23.08.21
-- Updated update.exe. Made it to display the update process on top of all windows.
-- Added the output of the path to the exe file to update.exe. Now even if you rename it or download a second copy, the file will still
-will be updated.
-- In update.exe, the logic of new versions has been reworked. Fixed a critical error when the changelog was not shown during the update. I hope 
-everything will be stable with new versions.
-- Many minor improvements and bug fixes.
-   
-   ## v. 1.14-en <h4>
-   from 04.09.21
-- Added file manager (While in test mode).
-- I made a choice of downloading. You can download based on the selected folder, or display a dialog box.
-- Added and corrected translations.
-- Icons appeared for some positions. (Test variant).
-- Many minor improvements and bug fixes.
-   
-   ## v. 1.15-en <h4>
-   from 07.09.21
-- Fixed some bugs with the file manager.
-- Once again, the window with the display of changes after updating the program has been fixed.
-- Fixed the scale of the program on FullHD monitors.
-- Bug fixes.
-   
-   ## v. 1.16-en <h4>
-   from 12.05.22
-- Updated visual component package.
-- Added "Change history" button to the update check menu.
-- Bug fixes.
- 
-## In the plans... <h2>
-- ADD THE ABILITY TO SEND FILES TO FTP IMMEDIATELY AFTER THE SAVE.
-- AUTOMATIC TRACKING OF ADDING TO FTP AND SUBSEQUENT DOWNLOADING.
-- AUTOMATIC CREATION OF A FOLDER ON FTP. [Added in ver. 1.12]
-- FILE MANAGER OF FILES ON THE HOSTING AND DOWNLOADING ANY OF THE FILES. [Added in ver. 1.14]
-
-## Advantages <h2>
-
-▶ Open source code that you can download and view.<br>
-▶ For the correct functionality of the source code, third-party libraries are required: <a href='https://www.alphaskins.com/'>AlphaControls</a>, and <a href='http://synapse.ararat.cz/doku.php/download'>Synapse</a><br><br>
-▶ The program does not store or use your passwords. All the safety of your data is on your computer.<br>
-▶ The program provides import/export of settings. Be careful who you pass your settings to! The responsibility lies only on your shoulders:)<br>
-
-
-## Using <h2>
-1. First you need FTP. You can use any free website hosting, for example, Ucoz or https://freewha.com/ or any other hosting service. You can find the cheapest, up to $0.3 / month. This will also work:)
-2. The received FTP data must be entered in the program settings.
-3. You must specify the address of your site in the format "https://site.com" or "http://site.com".
-4. Restart Program.
-5. Select the file on the first tab with saving. Under each button or input field there is a hint in the form "?", so if something is not clear, you can contact:)
-6. To pump out the save, on the second tab, select the path where to put the saves
-7. You can check if everything is ok before downloading. The corresponding button is present.
-8. The addition added import/export in the settings. You can import the data of your friends into the program, or export your own and share it in any of the social networks or discord:) Good luck! And if there are questions or suggestions, I am ready to listen:)
