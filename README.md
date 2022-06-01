@@ -222,7 +222,7 @@ everything will be stable with new versions.
 - Fixed the scale of the program on FullHD monitors.
 - Bug fixes.
    
-      ## v. 1.16-en <h4>
+   ## v. 1.16-en <h4>
    from 12.05.22
 - Updated visual component package.
 - Added "Change history" button to the update check menu.
